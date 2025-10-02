@@ -1,18 +1,27 @@
+import { motion } from "framer-motion";
+import { useInView } from "react-intersection-observer";
 import { MapPin, Phone, Mail, Facebook, Send } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const Contact = () => {
+  const { ref, inView } = useInView({ threshold: 0.1, triggerOnce: true });
+  const { t } = useLanguage();
   return (
-    <section id="contact" className="py-20 bg-background">
+    <section id="contact" className="py-20 bg-background" ref={ref}>
       <div className="container mx-auto px-4 lg:px-8">
         <div className="max-w-6xl mx-auto space-y-12">
-          {/* Header */}
-          <div className="text-center space-y-4">
-            <h2 className="text-4xl md:text-5xl font-bold text-primary">Contact Us</h2>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={inView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.6 }}
+            className="text-center space-y-4"
+          >
+            <h2 className="text-4xl md:text-5xl font-bold text-primary">{t.contact.title}</h2>
             <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto">
-              Get in touch with us for any inquiries or information
+              {t.contact.subtitle}
             </p>
-          </div>
+          </motion.div>
 
           {/* Contact Grid */}
           <div className="grid lg:grid-cols-2 gap-8">

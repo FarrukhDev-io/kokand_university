@@ -1,0 +1,129 @@
+{
+  "nav": {
+    "about": "About",
+    "programs": "Programs",
+    "admissions": "Admissions",
+    "campus": "Campus Life",
+    "news": "News",
+    "contact": "Contact",
+    "applyNow": "Apply Now"
+  },
+  "hero": {
+    "title": "Welcome to Kokand University",
+    "subtitle": "Shaping Future Leaders in Uzbekistan",
+    "quote": "There is and will be no salvation in the world except through knowledge",
+    "learnMore": "Learn More",
+    "stats": {
+      "students": "Students",
+      "professors": "Professors",
+      "fields": "Fields",
+      "programs": "Joint Programs"
+    }
+  },
+  "about": {
+    "title": "About Kokand University",
+    "subtitle": "Discover Your Dreams With Us",
+    "description1": "Kokand University operates as a non-state higher educational institution in accordance with the Resolution No. 683 of the Cabinet of Ministers of the Republic of Uzbekistan dated August 17, 2019, 'On the establishment of Kokand University'. We are committed to providing world-class education and fostering innovation, research, and international collaboration.",
+    "description2": "Located in Turkiston Street, Kokand, Fergana Region, our university combines modern facilities with traditional values, creating an ideal environment for academic excellence and personal growth.",
+    "partnerships": "International Partnerships",
+    "stats": {
+      "students": "Students",
+      "professors": "Professors & Teachers",
+      "doctoral": "Doctoral Students",
+      "researchers": "Independent Researchers",
+      "classrooms": "Classrooms",
+      "fields": "Educational Fields",
+      "programs": "Joint Programs",
+      "faculties": "Faculties"
+    }
+  },
+  "programs": {
+    "title": "Programs & Faculties",
+    "subtitle": "Explore our diverse range of academic programs designed to prepare you for success",
+    "learnMore": "Learn More",
+    "viewAll": "View All Programs"
+  },
+  "admissions": {
+    "title": "Admissions",
+    "subtitle": "2025/2026 Academic Year Admissions Now Open",
+    "banner": {
+      "title": "Become a Student at One of Uzbekistan's Leading Universities!",
+      "description": "Join thousands of students pursuing excellence in education. Applications for the 2025/2026 academic year are now being accepted.",
+      "cta": "Start Your Application"
+    },
+    "steps": {
+      "step1": {
+        "title": "Fill Application",
+        "description": "Complete the online application form with your personal and academic information"
+      },
+      "step2": {
+        "title": "Submit Documents",
+        "description": "Upload required documents including transcripts, certificates, and ID copies"
+      },
+      "step3": {
+        "title": "Interview",
+        "description": "Participate in an interview with our admissions committee"
+      },
+      "step4": {
+        "title": "Decision",
+        "description": "Receive your admission decision and enrollment instructions"
+      }
+    },
+    "help": {
+      "title": "Need Help with Your Application?",
+      "contactCenter": "Contact Center",
+      "location": "Location",
+      "address": "Turkiston Street\nKokand City, Fergana Region\nUzbekistan"
+    }
+  },
+  "analytics": {
+    "title": "University Analytics",
+    "subtitle": "Visual insights into our academic community and programs",
+    "info": "Our data-driven approach ensures that we maintain balanced enrollment across all faculties, providing optimal learning environments and resources for every student."
+  },
+  "campus": {
+    "title": "Campus Life & Gallery",
+    "subtitle": "Experience the vibrant community and beautiful campus of Kokand University",
+    "features": {
+      "excellence": {
+        "title": "Academic Excellence",
+        "description": "Rigorous programs with experienced faculty"
+      },
+      "global": {
+        "title": "Global Opportunities",
+        "description": "International partnerships and exchange programs"
+      },
+      "success": {
+        "title": "Student Success",
+        "description": "Support services for career and personal development"
+      }
+    }
+  },
+  "news": {
+    "title": "Latest News & Events",
+    "subtitle": "Stay updated with the latest happenings at Kokand University",
+    "readMore": "Read More",
+    "viewAll": "View All News"
+  },
+  "testimonials": {
+    "title": "What Our Students Say",
+    "subtitle": "Hear from our successful students about their experience"
+  },
+  "contact": {
+    "title": "Contact Us",
+    "subtitle": "Get in touch with us for any inquiries or information",
+    "address": "Address",
+    "phone": "Phone",
+    "email": "Email",
+    "followUs": "Follow Us"
+  },
+  "footer": {
+    "about": "Leading non-state higher educational institution in Uzbekistan, established in 2019 to provide world-class education and foster innovation.",
+    "quickLinks": "Quick Links",
+    "resources": "Resources",
+    "library": "Library",
+    "studentPortal": "Student Portal",
+    "webmail": "Webmail",
+    "copyright": "© 2025 Kokand University. All rights reserved."
+  }
+}

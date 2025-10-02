@@ -1,28 +1,15 @@
 import { FileText, Upload, UserCheck, CheckCircle2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const Admissions = () => {
+  const { t } = useLanguage();
+  
   const steps = [
-    {
-      icon: FileText,
-      title: "Fill Application",
-      description: "Complete the online application form with your personal and academic information"
-    },
-    {
-      icon: Upload,
-      title: "Submit Documents",
-      description: "Upload required documents including transcripts, certificates, and ID copies"
-    },
-    {
-      icon: UserCheck,
-      title: "Interview",
-      description: "Participate in an interview with our admissions committee"
-    },
-    {
-      icon: CheckCircle2,
-      title: "Decision",
-      description: "Receive your admission decision and enrollment instructions"
-    }
+    { icon: FileText, key: "step1" },
+    { icon: Upload, key: "step2" },
+    { icon: UserCheck, key: "step3" },
+    { icon: CheckCircle2, key: "step4" }
   ];
 
   return (
@@ -31,19 +18,19 @@ const Admissions = () => {
         <div className="max-w-6xl mx-auto space-y-12">
           {/* Header */}
           <div className="text-center space-y-4">
-            <h2 className="text-4xl md:text-5xl font-bold text-primary">Admissions</h2>
+            <h2 className="text-4xl md:text-5xl font-bold text-primary">{t.admissions.title}</h2>
             <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto">
-              2025/2026 Academic Year Admissions Now Open
+              {t.admissions.subtitle}
             </p>
           </div>
 
           {/* Banner */}
           <div className="hero-gradient rounded-2xl p-8 md:p-12 text-center text-white space-y-6">
             <h3 className="text-3xl md:text-4xl font-bold">
-              Become a Student at One of Uzbekistan's Leading Universities!
+              {t.admissions.banner.title}
             </h3>
             <p className="text-lg md:text-xl max-w-2xl mx-auto">
-              Join thousands of students pursuing excellence in education. Applications for the 2025/2026 academic year are now being accepted.
+              {t.admissions.banner.description}
             </p>
             <Button 
               size="lg"
@@ -51,7 +38,7 @@ const Admissions = () => {
               className="text-lg px-8 py-6"
               onClick={() => window.open("https://ikkinchitalim.kokanduni.uz/", "_blank")}
             >
-              Start Your Application
+              {t.admissions.banner.cta}
             </Button>
           </div>
 
@@ -70,8 +57,8 @@ const Admissions = () => {
                   </div>
                   
                   <Icon className="h-12 w-12 mx-auto mb-4 mt-4 text-primary" />
-                  <h4 className="text-lg font-bold text-foreground mb-2">{step.title}</h4>
-                  <p className="text-sm text-muted-foreground">{step.description}</p>
+                  <h4 className="text-lg font-bold text-foreground mb-2">{t.admissions.steps[step.key].title}</h4>
+                  <p className="text-sm text-muted-foreground">{t.admissions.steps[step.key].description}</p>
                 </div>
               );
             })}

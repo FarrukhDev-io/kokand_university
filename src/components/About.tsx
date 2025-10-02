@@ -1,67 +1,90 @@
+import { motion } from "framer-motion";
+import { useInView } from "react-intersection-observer";
 import { GraduationCap, Users, BookOpen, Search, Building, Library, Globe, School } from "lucide-react";
 import { universityStats } from "@/data/facultiesData";
-
-const iconMap: { [key: string]: any } = {
-  GraduationCap,
-  Users,
-  BookOpen,
-  Search,
-  Building,
-  Library,
-  Globe,
-  School
-};
+import AnimatedCounter from "./AnimatedCounter";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const About = () => {
+  const { ref, inView } = useInView({ threshold: 0.1, triggerOnce: true });
+  const { t } = useLanguage();
+
+  const iconComponents = [
+    GraduationCap,
+    Users,
+    BookOpen,
+    Search,
+    Building,
+    Library,
+    Globe,
+    School
+  ];
+
   return (
-    <section id="about" className="py-20 bg-muted/30">
+    <section id="about" className="py-20 bg-muted/30" ref={ref}>
       <div className="container mx-auto px-4 lg:px-8">
         <div className="max-w-6xl mx-auto space-y-12">
           {/* Header */}
-          <div className="text-center space-y-4">
-            <h2 className="text-4xl md:text-5xl font-bold text-primary">About Kokand University</h2>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={inView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.6 }}
+            className="text-center space-y-4"
+          >
+            <h2 className="text-4xl md:text-5xl font-bold text-primary">{t.about.title}</h2>
             <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto">
-              Discover Your Dreams With Us
+              {t.about.subtitle}
             </p>
-          </div>
+          </motion.div>
 
           {/* Description */}
-          <div className="glass-card rounded-2xl p-8 md:p-12">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={inView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="glass-card rounded-2xl p-8 md:p-12"
+          >
             <p className="text-lg leading-relaxed text-foreground">
-              Kokand University operates as a <strong>non-state higher educational institution</strong> in accordance with 
-              the <strong>Resolution No. 683 of the Cabinet of Ministers of the Republic of Uzbekistan</strong> dated 
-              August 17, 2019, 'On the establishment of Kokand University'. We are committed to providing world-class 
-              education and fostering innovation, research, and international collaboration.
+              {t.about.description1}
             </p>
             <p className="text-lg leading-relaxed text-foreground mt-4">
-              Located in <strong>Turkiston Street, Kokand, Fergana Region</strong>, our university combines modern 
-              facilities with traditional values, creating an ideal environment for academic excellence and personal growth.
+              {t.about.description2}
             </p>
-          </div>
+          </motion.div>
 
           {/* Stats Grid */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
             {universityStats.map((stat, index) => {
-              const Icon = iconMap[stat.icon];
+              const Icon = iconComponents[index];
               return (
-                <div
+                <motion.div
                   key={index}
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  animate={inView ? { opacity: 1, scale: 1 } : {}}
+                  transition={{ duration: 0.5, delay: 0.1 * index }}
                   className="glass-card rounded-xl p-6 text-center hover:scale-105 transition-transform cursor-pointer group"
                 >
                   <Icon className="h-10 w-10 mx-auto mb-4 text-primary group-hover:text-secondary transition-colors" />
                   <div className="text-3xl md:text-4xl font-bold text-primary mb-2">
-                    {stat.value.toLocaleString()}
+                    <AnimatedCounter end={stat.value} suffix={stat.value >= 1000 ? "+" : ""} />
                   </div>
-                  <div className="text-sm text-muted-foreground">{stat.label}</div>
-                </div>
+                  <div className="text-sm text-muted-foreground">
+                    {t.about.stats[stat.label.toLowerCase().replace(/\s+/g, '').replace('&', '')] || stat.label}
+                  </div>
+                </motion.div>
               );
             })}
           </div>
 
           {/* International Partnerships */}
-          <div className="glass-card rounded-2xl p-8 md:p-12">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={inView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.6, delay: 0.4 }}
+            className="glass-card rounded-2xl p-8 md:p-12"
+          >
             <h3 className="text-2xl md:text-3xl font-bold text-primary mb-6 text-center">
-              International Partnerships
+              {t.about.partnerships}
             </h3>
             <div className="grid md:grid-cols-2 gap-6">
               <div className="space-y-2">
@@ -93,7 +116,7 @@ const About = () => {
                 <p className="text-muted-foreground">Advanced programs in transport and ICT</p>
               </div>
             </div>
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>

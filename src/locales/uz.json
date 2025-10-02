@@ -1,0 +1,129 @@
+{
+  "nav": {
+    "about": "Biz haqimizda",
+    "programs": "Dasturlar",
+    "admissions": "Qabul",
+    "campus": "Kampus hayoti",
+    "news": "Yangiliklar",
+    "contact": "Aloqa",
+    "applyNow": "Hozir ariza bering"
+  },
+  "hero": {
+    "title": "Qoʻqon Universitetiga xush kelibsiz",
+    "subtitle": "Oʻzbekistonda kelajak liderlarini shakllantirish",
+    "quote": "Dunyoda bilimdan boshqa najot yoʻq va boʻlmaydi",
+    "learnMore": "Batafsil",
+    "stats": {
+      "students": "Talabalar",
+      "professors": "Professorlar",
+      "fields": "Yoʻnalishlar",
+      "programs": "Qoʻshma dasturlar"
+    }
+  },
+  "about": {
+    "title": "Qoʻqon Universiteti haqida",
+    "subtitle": "Biz bilan orzularingizni kashf eting!",
+    "description1": "Qoʻqon Universiteti Oʻzbekiston Respublikasi Vazirlar Mahkamasining 2019-yil 17-avgustdagi 683-sonli qarori bilan tashkil etilgan nodavlat oliy taʼlim muassasasi sifatida faoliyat yuritadi. Biz dunyo darajasidagi taʼlim berish, innovatsiya va xalqaro hamkorlikni rivojlantirishga sodiqmiz.",
+    "description2": "Qoʻqon shahri, Fargʻona viloyati, Turkiston koʻchasida joylashgan universitetimiz zamonaviy inshootlar va anʼanaviy qadriyatlarni birlashtiradi, akademik mukammallik va shaxsiy rivojlanish uchun ideal muhit yaratadi.",
+    "partnerships": "Xalqaro hamkorlik",
+    "stats": {
+      "students": "Talabalar",
+      "professors": "Professor va oʻqituvchilar",
+      "doctoral": "Doktorantlar",
+      "researchers": "Mustaqil tadqiqotchilar",
+      "classrooms": "Auditoriyalar",
+      "fields": "Taʼlim yoʻnalishlari",
+      "programs": "Qoʻshma dasturlar",
+      "faculties": "Fakultetlar"
+    }
+  },
+  "programs": {
+    "title": "Dasturlar va Fakultetlar",
+    "subtitle": "Muvaffaqiyatga tayyorlash uchun moʻljallangan turli akademik dasturlarni oʻrganing",
+    "learnMore": "Batafsil",
+    "viewAll": "Barcha dasturlarni koʻrish"
+  },
+  "admissions": {
+    "title": "Qabul",
+    "subtitle": "2025/2026 oʻquv yili uchun qabul boshlandi",
+    "banner": {
+      "title": "Oʻzbekistonning yetakchi universitetlaridan birida talaba boʻling!",
+      "description": "Taʼlim mukammalligiga intilayotgan minglab talabalarga qoʻshiling. 2025/2026 oʻquv yili uchun arizalar qabul qilinmoqda.",
+      "cta": "Arizani boshlash"
+    },
+    "steps": {
+      "step1": {
+        "title": "Arizani toʻldirish",
+        "description": "Shaxsiy va akademik maʼlumotlaringiz bilan onlayn ariza shaklini toʻldiring"
+      },
+      "step2": {
+        "title": "Hujjatlarni topshirish",
+        "description": "Transkriptlar, sertifikatlar va ID nusxalarini yuklang"
+      },
+      "step3": {
+        "title": "Suhbat",
+        "description": "Qabul komissiyasi bilan suhbatda qatnashing"
+      },
+      "step4": {
+        "title": "Qaror",
+        "description": "Qabul qarori va roʻyxatdan oʻtish koʻrsatmalarini oling"
+      }
+    },
+    "help": {
+      "title": "Ariza berish uchun yordam kerakmi?",
+      "contactCenter": "Aloqa markazi",
+      "location": "Manzil",
+      "address": "Turkiston koʻchasi\nQoʻqon shahri, Fargʻona viloyati\nOʻzbekiston"
+    }
+  },
+  "analytics": {
+    "title": "Universitet analitikasi",
+    "subtitle": "Akademik jamoamiz va dasturlarimiz haqida vizual maʼlumotlar",
+    "info": "Maʼlumotlarga asoslangan yondashuvimiz barcha fakultetlarda muvozanatli qabulni taʼminlaydi va har bir talaba uchun optimal oʻquv muhiti va resurslarni taqdim etadi."
+  },
+  "campus": {
+    "title": "Kampus hayoti va galereya",
+    "subtitle": "Qoʻqon Universitetining jonli jamiyati va goʻzal kampusini his eting",
+    "features": {
+      "excellence": {
+        "title": "Akademik mukammallik",
+        "description": "Tajribali oʻqituvchilar bilan qattiq dasturlar"
+      },
+      "global": {
+        "title": "Global imkoniyatlar",
+        "description": "Xalqaro hamkorlik va almashinuv dasturlari"
+      },
+      "success": {
+        "title": "Talaba muvaffaqiyati",
+        "description": "Martaba va shaxsiy rivojlanish uchun yordam xizmatlari"
+      }
+    }
+  },
+  "news": {
+    "title": "Soʻnggi yangiliklar va tadbirlar",
+    "subtitle": "Qoʻqon Universitetidagi soʻnggi voqealardan xabardor boʻling",
+    "readMore": "Batafsil",
+    "viewAll": "Barcha yangiliklarni koʻrish"
+  },
+  "testimonials": {
+    "title": "Talabalarimiz nimani aytishadi",
+    "subtitle": "Muvaffaqiyatli talabalarimizdan tajribalarini eshiting"
+  },
+  "contact": {
+    "title": "Biz bilan bogʻlaning",
+    "subtitle": "Har qanday savol yoki maʼlumot uchun biz bilan bogʻlaning",
+    "address": "Manzil",
+    "phone": "Telefon",
+    "email": "Elektron pochta",
+    "followUs": "Bizni kuzatib boring"
+  },
+  "footer": {
+    "about": "2019-yilda tashkil etilgan, dunyo darajasidagi taʼlim berish va innovatsiyani rivojlantirish uchun Oʻzbekistonning yetakchi nodavlat oliy taʼlim muassasasi.",
+    "quickLinks": "Tezkor havolalar",
+    "resources": "Resurslar",
+    "library": "Kutubxona",
+    "studentPortal": "Talaba portali",
+    "webmail": "Elektron pochta",
+    "copyright": "© 2025 Qoʻqon Universiteti. Barcha huquqlar himoyalangan."
+  }
+}

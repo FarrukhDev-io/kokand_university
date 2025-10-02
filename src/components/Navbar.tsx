@@ -1,16 +1,21 @@
 import { useState } from "react";
 import { Menu, X, GraduationCap } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import LanguageSwitcher from "./LanguageSwitcher";
+import ThemeToggle from "./ThemeToggle";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const { t } = useLanguage();
 
   const navLinks = [
-    { name: "About", href: "#about" },
-    { name: "Programs", href: "#programs" },
-    { name: "Admissions", href: "#admissions" },
-    { name: "Campus Life", href: "#campus" },
-    { name: "Contact", href: "#contact" }
+    { name: t.nav.about, href: "#about" },
+    { name: t.nav.programs, href: "#programs" },
+    { name: t.nav.admissions, href: "#admissions" },
+    { name: t.nav.campus, href: "#campus" },
+    { name: t.nav.news, href: "#news" },
+    { name: t.nav.contact, href: "#contact" }
   ];
 
   const scrollToSection = (href: string) => {
@@ -40,7 +45,7 @@ const Navbar = () => {
           </a>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-1">
+          <div className="hidden lg:flex items-center space-x-1">
             {navLinks.map((link) => (
               <button
                 key={link.name}
@@ -50,26 +55,34 @@ const Navbar = () => {
                 {link.name}
               </button>
             ))}
+          </div>
+
+          {/* Right side actions */}
+          <div className="hidden lg:flex items-center space-x-2">
+            <ThemeToggle />
+            <LanguageSwitcher />
             <Button 
-              className="ml-4"
               onClick={() => window.open("https://ikkinchitalim.kokanduni.uz/", "_blank")}
             >
-              Apply Now
+              {t.nav.applyNow}
             </Button>
           </div>
 
           {/* Mobile menu button */}
-          <button
-            onClick={() => setIsOpen(!isOpen)}
-            className="md:hidden p-2 rounded-md text-foreground hover:bg-muted"
-          >
-            {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-          </button>
+          <div className="lg:hidden flex items-center gap-2">
+            <ThemeToggle />
+            <button
+              onClick={() => setIsOpen(!isOpen)}
+              className="p-2 rounded-md text-foreground hover:bg-muted"
+            >
+              {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+            </button>
+          </div>
         </div>
 
         {/* Mobile Navigation */}
         {isOpen && (
-          <div className="md:hidden py-4 space-y-2">
+          <div className="lg:hidden py-4 space-y-2">
             {navLinks.map((link) => (
               <button
                 key={link.name}
@@ -79,14 +92,17 @@ const Navbar = () => {
                 {link.name}
               </button>
             ))}
+            <div className="px-4 pt-2">
+              <LanguageSwitcher />
+            </div>
             <Button 
-              className="w-full mt-2"
+              className="w-full mt-2 mx-4"
               onClick={() => {
                 window.open("https://ikkinchitalim.kokanduni.uz/", "_blank");
                 setIsOpen(false);
               }}
             >
-              Apply Now
+              {t.nav.applyNow}
             </Button>
           </div>
         )}
