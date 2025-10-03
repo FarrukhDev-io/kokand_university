@@ -83,7 +83,7 @@ const Hero = () => {
                 }}
               >
                 <img
-                  src="https://images.unsplash.com/photo-1541339907198-e08756dedf3f?q=80&w=2070"
+                  src="https://www.kokanduni.uz/build/assets/hero-bg-CFIvlFTq.webp"
                   alt="Kokand University"
                   className="w-full h-full object-cover"
                   style={{ minHeight: '400px' }}
