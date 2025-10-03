@@ -9,15 +9,19 @@
     "applyNow": "Hozir ariza bering"
   },
   "hero": {
-    "title": "Qoʻqon Universitetiga xush kelibsiz",
-    "subtitle": "Oʻzbekistonda kelajak liderlarini shakllantirish",
-    "quote": "Dunyoda bilimdan boshqa najot yoʻq va boʻlmaydi",
-    "learnMore": "Batafsil",
+    "title": "Qo'qon Universiteti",
+    "subtitle": "O'zbekistonda kelajak liderlarini shakllantirish",
+    "quote": "Dunyoda bilimdan boshqa najot yo'q va bo'lmaydi",
+    "welcomeCard": {
+      "title": "Xush kelibsiz!",
+      "description": "Qo'qon Universiteti rasmiy statistika portali",
+      "cta": "Universitetga kirish"
+    },
     "stats": {
       "students": "Talabalar",
-      "professors": "Professorlar",
-      "fields": "Yoʻnalishlar",
-      "programs": "Qoʻshma dasturlar"
+      "faculty": "Professor va o'qituvchilar",
+      "programs": "Ta'lim yo'nalishlari",
+      "partners": "Xalqaro hamkorlar"
     }
   },
   "about": {
@@ -77,9 +81,28 @@
     }
   },
   "analytics": {
-    "title": "Universitet analitikasi",
-    "subtitle": "Akademik jamoamiz va dasturlarimiz haqida vizual maʼlumotlar",
-    "info": "Maʼlumotlarga asoslangan yondashuvimiz barcha fakultetlarda muvozanatli qabulni taʼminlaydi va har bir talaba uchun optimal oʻquv muhiti va resurslarni taqdim etadi."
+    "title": "Universitet ko'rsatkichlari",
+    "subtitle": "Qo'qon Universiteti statistikasi va analitikasi",
+    "info": "Ma'lumotlarga asoslangan yondashuvimiz barcha fakultetlarda muvozanatli qabulni ta'minlaydi va har bir talaba uchun optimal o'quv muhiti va resurslarni taqdim etadi.",
+    "selectYear": "Yilni tanlang",
+    "allYears": "Barcha yillar",
+    "charts": {
+      "studentsByFaculty": "Fakultetlar bo'yicha talabalar soni",
+      "facultyDistribution": "Fakultetlar taqsimoti (%)",
+      "enrollmentTrend": "Talabalar sonining o'sishi",
+      "graduationRate": "Bitiruvchilar ko'rsatkichi (%)",
+      "students": "Talabalar soni",
+      "graduated": "Bitirgan",
+      "studying": "O'qiyotgan"
+    },
+    "faculties": {
+      "economics": "Iqtisodiyot va biznes",
+      "engineering": "Muhandislik va texnologiya",
+      "sciences": "Tabiiy fanlar",
+      "social": "Ijtimoiy fanlar",
+      "philology": "Filologiya",
+      "law": "Huquqshunoslik"
+    }
   },
   "campus": {
     "title": "Kampus hayoti va galereya",

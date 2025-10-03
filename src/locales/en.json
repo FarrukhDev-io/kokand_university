@@ -9,15 +9,19 @@
     "applyNow": "Apply Now"
   },
   "hero": {
-    "title": "Welcome to Kokand University",
+    "title": "Kokand University",
     "subtitle": "Shaping Future Leaders in Uzbekistan",
     "quote": "There is and will be no salvation in the world except through knowledge",
-    "learnMore": "Learn More",
+    "welcomeCard": {
+      "title": "Welcome!",
+      "description": "Kokand University Official Statistics Portal",
+      "cta": "Visit University Website"
+    },
     "stats": {
       "students": "Students",
-      "professors": "Professors",
-      "fields": "Fields",
-      "programs": "Joint Programs"
+      "faculty": "Professors & Teachers",
+      "programs": "Educational Fields",
+      "partners": "International Partners"
     }
   },
   "about": {
@@ -77,9 +81,28 @@
     }
   },
   "analytics": {
-    "title": "University Analytics",
-    "subtitle": "Visual insights into our academic community and programs",
-    "info": "Our data-driven approach ensures that we maintain balanced enrollment across all faculties, providing optimal learning environments and resources for every student."
+    "title": "University Statistics",
+    "subtitle": "Kokand University Statistics and Analytics",
+    "info": "Our data-driven approach ensures that we maintain balanced enrollment across all faculties, providing optimal learning environments and resources for every student.",
+    "selectYear": "Select Year",
+    "allYears": "All Years",
+    "charts": {
+      "studentsByFaculty": "Students by Faculty",
+      "facultyDistribution": "Faculty Distribution (%)",
+      "enrollmentTrend": "Student Enrollment Growth",
+      "graduationRate": "Graduation Rate (%)",
+      "students": "Number of Students",
+      "graduated": "Graduated",
+      "studying": "Studying"
+    },
+    "faculties": {
+      "economics": "Economics & Business",
+      "engineering": "Engineering & Technology",
+      "sciences": "Natural Sciences",
+      "social": "Social Sciences",
+      "philology": "Philology",
+      "law": "Law"
+    }
   },
   "campus": {
     "title": "Campus Life & Gallery",

@@ -1,99 +1,58 @@
-export const studentsByFacultyData = {
-  labels: [
-    'Economics & Business',
-    'Engineering & Tech',
-    'Natural Sciences',
-    'Social Sciences',
-    'Philology',
-    'Law'
-  ],
-  datasets: [
-    {
-      label: 'Number of Students',
-      data: [2500, 2800, 1900, 1600, 1400, 1500],
-      backgroundColor: [
-        'rgba(139, 36, 50, 0.8)',
-        'rgba(59, 130, 246, 0.8)',
-        'rgba(245, 158, 11, 0.8)',
-        'rgba(16, 185, 129, 0.8)',
-        'rgba(139, 92, 246, 0.8)',
-        'rgba(236, 72, 153, 0.8)'
-      ],
-      borderColor: [
-        'rgb(139, 36, 50)',
-        'rgb(59, 130, 246)',
-        'rgb(245, 158, 11)',
-        'rgb(16, 185, 129)',
-        'rgb(139, 92, 246)',
-        'rgb(236, 72, 153)'
-      ],
-      borderWidth: 2
-    }
-  ]
-};
+export interface YearData {
+  studentsByFaculty: number[];
+  facultyDistribution: number[];
+  enrollmentTotal: number;
+  graduationRate: { graduated: number; studying: number };
+}
 
-export const facultyDistributionData = {
-  labels: [
-    'Economics & Business',
-    'Engineering & Tech',
-    'Natural Sciences',
-    'Social Sciences',
-    'Philology',
-    'Law'
-  ],
-  datasets: [
-    {
-      label: 'Faculty Distribution',
-      data: [21, 24, 16, 14, 12, 13],
-      backgroundColor: [
-        'rgba(139, 36, 50, 0.8)',
-        'rgba(59, 130, 246, 0.8)',
-        'rgba(245, 158, 11, 0.8)',
-        'rgba(16, 185, 129, 0.8)',
-        'rgba(139, 92, 246, 0.8)',
-        'rgba(236, 72, 153, 0.8)'
-      ],
-      borderColor: '#fff',
-      borderWidth: 2
-    }
-  ]
+export const chartDataByYear: Record<string, YearData> = {
+  '2020': {
+    studentsByFaculty: [1800, 2100, 1500, 1200, 1100, 1200],
+    facultyDistribution: [20, 23, 17, 13, 12, 15],
+    enrollmentTotal: 8900,
+    graduationRate: { graduated: 89, studying: 11 }
+  },
+  '2021': {
+    studentsByFaculty: [2000, 2300, 1600, 1300, 1200, 1300],
+    facultyDistribution: [20, 24, 16, 13, 12, 15],
+    enrollmentTotal: 9700,
+    graduationRate: { graduated: 90, studying: 10 }
+  },
+  '2022': {
+    studentsByFaculty: [2200, 2500, 1700, 1400, 1300, 1400],
+    facultyDistribution: [21, 24, 16, 13, 12, 14],
+    enrollmentTotal: 10500,
+    graduationRate: { graduated: 91, studying: 9 }
+  },
+  '2023': {
+    studentsByFaculty: [2350, 2650, 1800, 1500, 1350, 1450],
+    facultyDistribution: [21, 24, 16, 14, 12, 13],
+    enrollmentTotal: 11100,
+    graduationRate: { graduated: 92, studying: 8 }
+  },
+  '2024': {
+    studentsByFaculty: [2500, 2800, 1900, 1600, 1400, 1500],
+    facultyDistribution: [21, 24, 16, 14, 12, 13],
+    enrollmentTotal: 11700,
+    graduationRate: { graduated: 92, studying: 8 }
+  }
 };
 
 export const enrollmentTrendData = {
   labels: ['2019', '2020', '2021', '2022', '2023', '2024'],
-  datasets: [
-    {
-      label: 'Talabalar soni',
-      data: [8500, 9200, 10100, 10800, 11200, 11700],
-      borderColor: 'rgba(139, 36, 50, 1)',
-      backgroundColor: 'rgba(139, 36, 50, 0.1)',
-      fill: true,
-      tension: 0.4,
-      borderWidth: 3,
-      pointRadius: 6,
-      pointHoverRadius: 8,
-      pointBackgroundColor: 'rgba(139, 36, 50, 1)',
-      pointBorderColor: '#fff',
-      pointBorderWidth: 2
-    }
-  ]
-};
-
-export const graduationRateData = {
-  labels: ['Bitirgan', 'O\'qiyotgan'],
-  datasets: [
-    {
-      label: 'Bitiruvchilar',
-      data: [92, 8],
-      backgroundColor: [
-        'rgba(139, 36, 50, 0.8)',
-        'rgba(59, 130, 246, 0.3)'
-      ],
-      borderColor: ['rgb(139, 36, 50)', 'rgb(59, 130, 246)'],
-      borderWidth: 3,
-      hoverOffset: 15
-    }
-  ]
+  datasets: [{
+    data: [8500, 8900, 9700, 10500, 11100, 11700],
+    borderColor: 'rgba(139, 36, 50, 1)',
+    backgroundColor: 'rgba(139, 36, 50, 0.1)',
+    fill: true,
+    tension: 0.4,
+    borderWidth: 3,
+    pointRadius: 6,
+    pointHoverRadius: 8,
+    pointBackgroundColor: 'rgba(139, 36, 50, 1)',
+    pointBorderColor: '#fff',
+    pointBorderWidth: 2
+  }]
 };
 
 export const chartOptions = {

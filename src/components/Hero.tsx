@@ -1,72 +1,126 @@
 import { motion } from "framer-motion";
-import { GraduationCap, Users, BookOpen, Award } from "lucide-react";
+import { GraduationCap, Users, BookOpen, Award, ExternalLink } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
 
 const Hero = () => {
   const { t } = useLanguage();
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* 3D Background with parallax */}
-      <motion.div 
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-        style={{
-          backgroundImage: "url('https://images.unsplash.com/photo-1541339907198-e08756dedf3f?q=80&w=2070')",
-        }}
-        initial={{ scale: 1.1 }}
-        animate={{ scale: 1 }}
-        transition={{ duration: 1.5 }}
-      >
-        <div className="absolute inset-0 hero-gradient opacity-92" />
-      </motion.div>
-
-      {/* Content */}
-      <div className="container relative z-10 mx-auto px-4 lg:px-8">
-        <div className="max-w-5xl mx-auto text-center space-y-12">
-          {/* University Logo & Name */}
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-background">
+      <div className="container relative z-10 mx-auto px-4 lg:px-8 py-20">
+        <div className="max-w-7xl mx-auto space-y-12">
+          {/* Title Section */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="space-y-6"
+            className="text-center space-y-4"
           >
-            <div className="inline-block glass-card rounded-3xl p-8 mb-6">
-              <GraduationCap className="h-24 w-24 mx-auto text-white" />
-            </div>
-            <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold text-white leading-tight">
+            <h1 className="text-5xl md:text-7xl font-bold text-gradient">
               {t.hero.title}
             </h1>
-            <p className="text-xl md:text-3xl text-white/95 font-light max-w-3xl mx-auto">
+            <p className="text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto">
               {t.hero.subtitle}
             </p>
           </motion.div>
 
-          {/* Quick Stats with 3D effect */}
+          {/* Two Cards Section */}
+          <div className="grid md:grid-cols-2 gap-8 mt-16">
+            {/* Welcome Card */}
+            <motion.div
+              initial={{ opacity: 0, x: -50 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="glass-card rounded-3xl p-8 space-y-6"
+            >
+              <div className="inline-block p-4 rounded-2xl bg-primary/10">
+                <GraduationCap className="h-16 w-16 text-primary" />
+              </div>
+              <h2 className="text-3xl font-bold text-foreground">
+                {t.hero.welcomeCard.title}
+              </h2>
+              <p className="text-lg text-muted-foreground">
+                {t.hero.welcomeCard.description}
+              </p>
+              <a
+                href="https://www.kokanduni.uz"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-6 py-3 bg-primary text-primary-foreground rounded-xl font-semibold hover:scale-105 transition-transform"
+              >
+                {t.hero.welcomeCard.cta}
+                <ExternalLink className="h-5 w-5" />
+              </a>
+            </motion.div>
+
+            {/* University Image Card with 3D Effect */}
+            <motion.div
+              initial={{ opacity: 0, x: 50 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="relative group"
+              style={{ perspective: '1500px' }}
+            >
+              <div 
+                className="glass-card rounded-3xl overflow-hidden h-full"
+                style={{
+                  transformStyle: 'preserve-3d',
+                  transition: 'transform 0.5s ease',
+                }}
+                onMouseMove={(e) => {
+                  const card = e.currentTarget;
+                  const rect = card.getBoundingClientRect();
+                  const x = e.clientX - rect.left;
+                  const y = e.clientY - rect.top;
+                  const centerX = rect.width / 2;
+                  const centerY = rect.height / 2;
+                  const rotateX = (y - centerY) / 20;
+                  const rotateY = (centerX - x) / 20;
+                  card.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateZ(20px)`;
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.transform = 'rotateX(0deg) rotateY(0deg) translateZ(0px)';
+                }}
+              >
+                <img
+                  src="https://images.unsplash.com/photo-1541339907198-e08756dedf3f?q=80&w=2070"
+                  alt="Kokand University"
+                  className="w-full h-full object-cover"
+                  style={{ minHeight: '400px' }}
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/40 to-transparent flex items-end p-8">
+                  <h3 className="text-3xl font-bold text-foreground">{t.hero.title}</h3>
+                </div>
+              </div>
+            </motion.div>
+          </div>
+
+          {/* Quick Stats */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.3 }}
-            className="grid grid-cols-2 md:grid-cols-4 gap-6"
+            transition={{ duration: 0.8, delay: 0.4 }}
+            className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-16"
           >
-            <div className="glass-card rounded-2xl p-6 hover:scale-105 transition-all" style={{ transform: 'perspective(1000px) rotateY(0deg)' }}>
-              <GraduationCap className="h-12 w-12 mx-auto mb-3 text-white" />
-              <div className="text-4xl font-bold text-white">11,700+</div>
-              <div className="text-sm text-white/90 mt-2">{t.hero.stats.students}</div>
+            <div className="glass-card rounded-2xl p-6 text-center hover:scale-105 transition-all">
+              <GraduationCap className="h-12 w-12 mx-auto mb-3 text-primary" />
+              <div className="text-4xl font-bold text-foreground">11,700+</div>
+              <div className="text-sm text-muted-foreground mt-2">{t.hero.stats.students}</div>
             </div>
-            <div className="glass-card rounded-2xl p-6 hover:scale-105 transition-all" style={{ transform: 'perspective(1000px) rotateY(0deg)' }}>
-              <BookOpen className="h-12 w-12 mx-auto mb-3 text-white" />
-              <div className="text-4xl font-bold text-white">6</div>
-              <div className="text-sm text-white/90 mt-2">{t.hero.stats.programs}</div>
+            <div className="glass-card rounded-2xl p-6 text-center hover:scale-105 transition-all">
+              <Users className="h-12 w-12 mx-auto mb-3 text-secondary" />
+              <div className="text-4xl font-bold text-foreground">850+</div>
+              <div className="text-sm text-muted-foreground mt-2">{t.hero.stats.faculty}</div>
             </div>
-            <div className="glass-card rounded-2xl p-6 hover:scale-105 transition-all" style={{ transform: 'perspective(1000px) rotateY(0deg)' }}>
-              <Users className="h-12 w-12 mx-auto mb-3 text-white" />
-              <div className="text-4xl font-bold text-white">850+</div>
-              <div className="text-sm text-white/90 mt-2">{t.hero.stats.faculty}</div>
+            <div className="glass-card rounded-2xl p-6 text-center hover:scale-105 transition-all">
+              <BookOpen className="h-12 w-12 mx-auto mb-3 text-accent" />
+              <div className="text-4xl font-bold text-foreground">6</div>
+              <div className="text-sm text-muted-foreground mt-2">{t.hero.stats.programs}</div>
             </div>
-            <div className="glass-card rounded-2xl p-6 hover:scale-105 transition-all" style={{ transform: 'perspective(1000px) rotateY(0deg)' }}>
-              <Award className="h-12 w-12 mx-auto mb-3 text-white" />
-              <div className="text-4xl font-bold text-white">4</div>
-              <div className="text-sm text-white/90 mt-2">{t.hero.stats.partners || "Xalqaro hamkorlar"}</div>
+            <div className="glass-card rounded-2xl p-6 text-center hover:scale-105 transition-all">
+              <Award className="h-12 w-12 mx-auto mb-3 text-chart-4" />
+              <div className="text-4xl font-bold text-foreground">4</div>
+              <div className="text-sm text-muted-foreground mt-2">{t.hero.stats.partners}</div>
             </div>
           </motion.div>
         </div>
