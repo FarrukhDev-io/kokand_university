@@ -1,7 +1,6 @@
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
-import { MapPin, Phone, Mail, Facebook, Send } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { MapPin, Phone, Mail } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
 
 const Contact = () => {
@@ -72,29 +71,6 @@ const Contact = () => {
                       </a>
                     </p>
                   </div>
-                </div>
-              </div>
-
-              {/* Social Media */}
-              <div className="glass-card rounded-xl p-6">
-                <h3 className="text-lg font-bold text-foreground mb-4">Follow Us</h3>
-                <div className="flex gap-4">
-                  <Button
-                    variant="outline"
-                    size="icon"
-                    className="h-12 w-12"
-                    onClick={() => window.open("https://www.facebook.com/kokanduniversity/", "_blank")}
-                  >
-                    <Facebook className="h-5 w-5" />
-                  </Button>
-                  <Button
-                    variant="outline"
-                    size="icon"
-                    className="h-12 w-12"
-                    onClick={() => window.open("https://t.me/s/kokanduniversity", "_blank")}
-                  >
-                    <Send className="h-5 w-5" />
-                  </Button>
                 </div>
               </div>
             </div>

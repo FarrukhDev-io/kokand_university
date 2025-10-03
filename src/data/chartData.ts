@@ -59,6 +59,43 @@ export const facultyDistributionData = {
   ]
 };
 
+export const enrollmentTrendData = {
+  labels: ['2019', '2020', '2021', '2022', '2023', '2024'],
+  datasets: [
+    {
+      label: 'Talabalar soni',
+      data: [8500, 9200, 10100, 10800, 11200, 11700],
+      borderColor: 'rgba(139, 36, 50, 1)',
+      backgroundColor: 'rgba(139, 36, 50, 0.1)',
+      fill: true,
+      tension: 0.4,
+      borderWidth: 3,
+      pointRadius: 6,
+      pointHoverRadius: 8,
+      pointBackgroundColor: 'rgba(139, 36, 50, 1)',
+      pointBorderColor: '#fff',
+      pointBorderWidth: 2
+    }
+  ]
+};
+
+export const graduationRateData = {
+  labels: ['Bitirgan', 'O\'qiyotgan'],
+  datasets: [
+    {
+      label: 'Bitiruvchilar',
+      data: [92, 8],
+      backgroundColor: [
+        'rgba(139, 36, 50, 0.8)',
+        'rgba(59, 130, 246, 0.3)'
+      ],
+      borderColor: ['rgb(139, 36, 50)', 'rgb(59, 130, 246)'],
+      borderWidth: 3,
+      hoverOffset: 15
+    }
+  ]
+};
+
 export const chartOptions = {
   responsive: true,
   maintainAspectRatio: false,
@@ -70,7 +107,8 @@ export const chartOptions = {
         font: {
           size: 12,
           family: "'Inter', sans-serif"
-        }
+        },
+        usePointStyle: true
       }
     }
   }

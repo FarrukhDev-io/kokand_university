@@ -8,7 +8,7 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
+    --background: 0 0% 98%;
     --foreground: 345 30% 15%;
 
     --card: 0 0% 100%;
@@ -17,62 +17,78 @@ All colors MUST be HSL.
     --popover: 0 0% 100%;
     --popover-foreground: 345 30% 15%;
 
-    --primary: 350 65% 35%;
+    --primary: 350 70% 40%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 215 90% 50%;
+    --secondary: 220 85% 55%;
     --secondary-foreground: 0 0% 100%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    --muted: 210 40% 96%;
+    --muted-foreground: 220 15% 50%;
 
-    --accent: 42 95% 55%;
+    --accent: 42 100% 60%;
     --accent-foreground: 345 30% 15%;
 
-    --destructive: 0 84.2% 60.2%;
+    --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 350 65% 35%;
+    --border: 220 25% 88%;
+    --input: 220 25% 88%;
+    --ring: 350 70% 40%;
 
-    --radius: 0.5rem;
+    --radius: 0.75rem;
 
     /* Custom design tokens */
-    --hero-gradient-start: 350 65% 35%;
+    --hero-gradient-start: 350 70% 40%;
+    --hero-gradient-mid: 220 85% 55%;
     --hero-gradient-end: 350 75% 25%;
     --glass-bg: 0 0% 100%;
-    --glass-border: 0 0% 90%;
+    --glass-border: 220 25% 88%;
+    --chart-1: 350 70% 50%;
+    --chart-2: 220 85% 60%;
+    --chart-3: 42 100% 65%;
+    --chart-4: 160 75% 50%;
+    --chart-5: 280 70% 60%;
+    --chart-6: 10 85% 60%;
   }
 
   .dark {
-    --background: 345 30% 8%;
+    --background: 220 25% 10%;
     --foreground: 0 0% 98%;
 
-    --card: 345 25% 12%;
+    --card: 220 25% 14%;
     --card-foreground: 0 0% 98%;
 
-    --popover: 345 25% 12%;
+    --popover: 220 25% 14%;
     --popover-foreground: 0 0% 98%;
 
-    --primary: 350 70% 45%;
+    --primary: 350 75% 55%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 215 80% 55%;
+    --secondary: 220 90% 60%;
     --secondary-foreground: 0 0% 100%;
 
-    --muted: 345 20% 20%;
-    --muted-foreground: 215 20% 65%;
+    --muted: 220 20% 22%;
+    --muted-foreground: 220 20% 70%;
 
-    --accent: 42 95% 60%;
-    --accent-foreground: 345 30% 15%;
+    --accent: 42 100% 65%;
+    --accent-foreground: 220 25% 10%;
 
-    --destructive: 0 62.8% 50%;
+    --destructive: 0 75% 55%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 345 20% 20%;
-    --input: 345 20% 20%;
-    --ring: 350 70% 45%;
+    --border: 220 25% 22%;
+    --input: 220 25% 22%;
+    --ring: 350 75% 55%;
+    
+    --glass-bg: 220 25% 14%;
+    --glass-border: 220 25% 22%;
+    --chart-1: 350 75% 60%;
+    --chart-2: 220 90% 65%;
+    --chart-3: 42 100% 70%;
+    --chart-4: 160 75% 55%;
+    --chart-5: 280 70% 65%;
+    --chart-6: 10 85% 65%;
   }
 }
 
@@ -92,14 +108,34 @@ All colors MUST be HSL.
 
 @layer utilities {
   .glass-card {
-    @apply bg-card/80 backdrop-blur-lg border border-border/50 shadow-lg;
+    @apply bg-card/80 backdrop-blur-lg border border-border/50 shadow-xl;
+    transform-style: preserve-3d;
+    transition: transform 0.3s ease;
+  }
+
+  .glass-card:hover {
+    transform: translateY(-4px) rotateX(2deg);
   }
 
   .hero-gradient {
-    background: linear-gradient(135deg, hsl(var(--hero-gradient-start)), hsl(var(--hero-gradient-end)));
+    background: linear-gradient(135deg, hsl(var(--hero-gradient-start)), hsl(var(--hero-gradient-mid)), hsl(var(--hero-gradient-end)));
   }
 
   .text-gradient {
     @apply bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent;
+  }
+
+  .chart-container {
+    @apply relative;
+    perspective: 1000px;
+  }
+
+  .chart-3d {
+    transform-style: preserve-3d;
+    transition: transform 0.5s ease;
+  }
+
+  .chart-3d:hover {
+    transform: rotateY(5deg) rotateX(5deg);
   }
 }

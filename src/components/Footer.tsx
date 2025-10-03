@@ -1,98 +1,74 @@
-import { GraduationCap } from "lucide-react";
+import { Mail, Phone, MapPin } from "lucide-react";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const Footer = () => {
+  const { t } = useLanguage();
+  
   return (
-    <footer className="bg-primary text-primary-foreground py-12">
-      <div className="container mx-auto px-4 lg:px-8">
-        <div className="max-w-6xl mx-auto">
-          <div className="grid md:grid-cols-4 gap-8 mb-8">
-            {/* About */}
-            <div className="col-span-2">
-              <div className="flex items-center space-x-2 mb-4">
-                <GraduationCap className="h-8 w-8" />
-                <div>
-                  <div className="text-lg font-bold">Kokand University</div>
-                  <div className="text-sm opacity-80">Qoʻqon Universiteti</div>
-                </div>
-              </div>
-              <p className="text-sm opacity-90 mb-4">
-                Leading non-state higher educational institution in Uzbekistan, 
-                established in 2019 to provide world-class education and foster innovation.
-              </p>
-              <p className="text-xs opacity-80 italic">
-                "There is and will be no salvation in the world except through knowledge"
-              </p>
-            </div>
-
-            {/* Quick Links */}
-            <div>
-              <h3 className="text-lg font-bold mb-4">Quick Links</h3>
-              <ul className="space-y-2 text-sm">
-                <li>
-                  <a href="#about" className="opacity-90 hover:opacity-100 transition-opacity">
-                    About Us
-                  </a>
-                </li>
-                <li>
-                  <a href="#programs" className="opacity-90 hover:opacity-100 transition-opacity">
-                    Programs
-                  </a>
-                </li>
-                <li>
-                  <a href="#admissions" className="opacity-90 hover:opacity-100 transition-opacity">
-                    Admissions
-                  </a>
-                </li>
-                <li>
-                  <a href="https://www.kokanduni.uz/en" target="_blank" rel="noopener noreferrer" className="opacity-90 hover:opacity-100 transition-opacity">
-                    Official Website
-                  </a>
-                </li>
-              </ul>
-            </div>
-
-            {/* Resources */}
-            <div>
-              <h3 className="text-lg font-bold mb-4">Resources</h3>
-              <ul className="space-y-2 text-sm">
-                <li>
-                  <a href="https://ikkinchitalim.kokanduni.uz/" target="_blank" rel="noopener noreferrer" className="opacity-90 hover:opacity-100 transition-opacity">
-                    Apply Online
-                  </a>
-                </li>
-                <li>
-                  <a href="https://library.kokanduni.uz/" target="_blank" rel="noopener noreferrer" className="opacity-90 hover:opacity-100 transition-opacity">
-                    Library
-                  </a>
-                </li>
-                <li>
-                  <a href="https://hemis.kokanduni.uz/" target="_blank" rel="noopener noreferrer" className="opacity-90 hover:opacity-100 transition-opacity">
-                    Student Portal
-                  </a>
-                </li>
-                <li>
-                  <a href="https://webmail.kokanduni.uz/" target="_blank" rel="noopener noreferrer" className="opacity-90 hover:opacity-100 transition-opacity">
-                    Webmail
-                  </a>
-                </li>
-              </ul>
-            </div>
+    <footer className="bg-card border-t border-border">
+      <div className="container mx-auto px-4 lg:px-8 py-12">
+        <div className="grid md:grid-cols-3 gap-8">
+          {/* About */}
+          <div className="space-y-4">
+            <h3 className="text-xl font-bold text-primary">{t.footer.about}</h3>
+            <p className="text-muted-foreground text-sm">
+              {t.footer.aboutText}
+            </p>
           </div>
 
-          {/* Bottom Bar */}
-          <div className="border-t border-primary-foreground/20 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-sm">
-            <div className="opacity-90">
-              © 2025 Kokand University. All rights reserved.
-            </div>
-            <div className="flex gap-6 opacity-90">
-              <a href="mailto:info@kokanduni.uz" className="hover:opacity-100 transition-opacity">
-                info@kokanduni.uz
-              </a>
-              <a href="tel:+998735455555" className="hover:opacity-100 transition-opacity">
-                +998 73 545-55-55
-              </a>
-            </div>
+          {/* Quick Links */}
+          <div className="space-y-4">
+            <h3 className="text-xl font-bold text-primary">{t.footer.quickLinks}</h3>
+            <ul className="space-y-2">
+              <li>
+                <a href="#about" className="text-muted-foreground hover:text-primary transition-colors">
+                  {t.nav.about}
+                </a>
+              </li>
+              <li>
+                <a href="#analytics" className="text-muted-foreground hover:text-primary transition-colors">
+                  {t.nav.analytics || "Ko'rsatkichlar"}
+                </a>
+              </li>
+              <li>
+                <a href="#contact" className="text-muted-foreground hover:text-primary transition-colors">
+                  {t.nav.contact}
+                </a>
+              </li>
+            </ul>
           </div>
+
+          {/* Contact */}
+          <div className="space-y-4">
+            <h3 className="text-xl font-bold text-primary">{t.footer.contact}</h3>
+            <ul className="space-y-3">
+              <li className="flex items-start gap-3">
+                <MapPin className="h-5 w-5 text-primary flex-shrink-0 mt-1" />
+                <span className="text-muted-foreground text-sm">
+                  Turkiston ko'chasi, Qo'qon, Farg'ona viloyati, O'zbekiston
+                </span>
+              </li>
+              <li className="flex items-center gap-3">
+                <Phone className="h-5 w-5 text-primary" />
+                <a href="tel:+998735455555" className="text-muted-foreground hover:text-primary transition-colors text-sm">
+                  +998 73 545-55-55
+                </a>
+              </li>
+              <li className="flex items-center gap-3">
+                <Mail className="h-5 w-5 text-primary" />
+                <a href="mailto:info@kokanduni.uz" className="text-muted-foreground hover:text-primary transition-colors text-sm">
+                  info@kokanduni.uz
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        {/* Copyright */}
+        <div className="mt-12 pt-8 border-t border-border text-center">
+          <p className="text-muted-foreground text-sm">
+            © 2025 Qo'qon Universiteti. {t.footer.rights}
+          </p>
         </div>
       </div>
     </footer>

@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { Menu, X, GraduationCap } from "lucide-react";
-import { Button } from "@/components/ui/button";
 import LanguageSwitcher from "./LanguageSwitcher";
 import ThemeToggle from "./ThemeToggle";
 import { useLanguage } from "@/contexts/LanguageContext";
@@ -11,10 +10,7 @@ const Navbar = () => {
 
   const navLinks = [
     { name: t.nav.about, href: "#about" },
-    { name: t.nav.programs, href: "#programs" },
-    { name: t.nav.admissions, href: "#admissions" },
-    { name: t.nav.campus, href: "#campus" },
-    { name: t.nav.news, href: "#news" },
+    { name: t.nav.analytics || "Ko'rsatkichlar", href: "#analytics" },
     { name: t.nav.contact, href: "#contact" }
   ];
 
@@ -61,11 +57,6 @@ const Navbar = () => {
           <div className="hidden lg:flex items-center space-x-2">
             <ThemeToggle />
             <LanguageSwitcher />
-            <Button 
-              onClick={() => window.open("https://ikkinchitalim.kokanduni.uz/", "_blank")}
-            >
-              {t.nav.applyNow}
-            </Button>
           </div>
 
           {/* Mobile menu button */}
@@ -95,15 +86,6 @@ const Navbar = () => {
             <div className="px-4 pt-2">
               <LanguageSwitcher />
             </div>
-            <Button 
-              className="w-full mt-2 mx-4"
-              onClick={() => {
-                window.open("https://ikkinchitalim.kokanduni.uz/", "_blank");
-                setIsOpen(false);
-              }}
-            >
-              {t.nav.applyNow}
-            </Button>
           </div>
         )}
       </div>
