@@ -16,17 +16,23 @@ const Hero = () => {
             transition={{ duration: 0.8 }}
             className="text-center space-y-4"
           >
-            <h1 className="text-5xl md:text-7xl font-bold text-gradient">
-              {t.hero.title}
-            </h1>
+           <h1 className="flex justify-center items-center gap-4 text-5xl md:text-7xl font-bold text-gradient">
+  <img
+    src="/ku.png"
+    alt="Kokand University logo"
+    className="w-16 h-16 md:w-24 rounded-full md:h-24 object-contain"
+  />
+  <span>{t.hero.title}</span>
+</h1>
+
             <p className="text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto">
               {t.hero.subtitle}
             </p>
           </motion.div>
 
-          {/* Two Cards Section */}
+          
           <div className="grid md:grid-cols-2 gap-8 mt-16">
-            {/* Welcome Card */}
+            
             <motion.div
               initial={{ opacity: 0, x: -50 }}
               animate={{ opacity: 1, x: 0 }}

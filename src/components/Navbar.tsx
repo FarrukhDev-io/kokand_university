@@ -27,21 +27,21 @@ const Navbar = () => {
     <nav className="fixed top-0 left-0 right-0 z-50 glass-card border-b">
       <div className="container mx-auto px-4 lg:px-8">
         <div className="flex items-center justify-between h-16">
-          {/* Logo */}
+          
           <a 
             href="https://www.kokanduni.uz" 
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center space-x-2 group"
           >
-            <GraduationCap className="h-8 w-8 text-primary transition-transform group-hover:scale-110" />
+            <img className="h-10 w-10 text-primary transition-transform group-hover:scale-110" src="/ku.png" alt="Kokand university logo" />
             <div className="flex flex-col">
               <span className="text-lg font-bold text-primary">Kokand University</span>
               <span className="text-xs text-muted-foreground hidden sm:block">Qoʻqon Universiteti</span>
             </div>
           </a>
 
-          {/* Desktop Navigation */}
+          
           <div className="hidden lg:flex items-center space-x-1">
             {navLinks.map((link) => (
               <button
