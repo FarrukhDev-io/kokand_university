@@ -1,9 +1,9 @@
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
-import StudentBarChart from "./Charts/StudentBarChart";
-import FacultyPieChart from "./Charts/FacultyPieChart";
-import EnrollmentLineChart from "./Charts/EnrollmentLineChart";
-import GraduationRateChart from "./Charts/GraduationRateChart";
+import EmploymentByProgramChart from "./Charts/EmploymentByProgramChart";
+import EmploymentRateChart from "./Charts/EmploymentRateChart";
+import EmploymentTrendChart from "./Charts/EmploymentTrendChart";
+import GraduatesVsEmployedChart from "./Charts/GraduatesVsEmployedChart";
 import { useLanguage } from "@/contexts/LanguageContext";
 
 const DataVisualization = () => {
@@ -20,57 +20,40 @@ const DataVisualization = () => {
             transition={{ duration: 0.6 }}
             className="text-center space-y-4"
           >
-            <h2 className="text-4xl md:text-6xl font-bold text-gradient">{t.analytics.title}</h2>
+            <h2 className="text-4xl md:text-6xl font-bold text-gradient">{t.employment.title}</h2>
             <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto">
-              {t.analytics.subtitle}
+              {t.employment.subtitle}
             </p>
           </motion.div>
 
-          {/* Main Charts Grid with 3D effect */}
           <div className="grid lg:grid-cols-2 gap-8">
             <motion.div
-              initial={{ opacity: 0, x: -50 }}
-              animate={inView ? { opacity: 1, x: 0 } : {}}
+              initial={{ opacity: 0, y: 20 }}
+              animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="chart-container"
             >
-              <div className="chart-3d">
-                <StudentBarChart />
-              </div>
+              <EmploymentTrendChart />
             </motion.div>
             <motion.div
-              initial={{ opacity: 0, x: 50 }}
-              animate={inView ? { opacity: 1, x: 0 } : {}}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              className="chart-container"
+              initial={{ opacity: 0, y: 20 }}
+              animate={inView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.6, delay: 0.3 }}
             >
-              <div className="chart-3d">
-                <FacultyPieChart />
-              </div>
+              <GraduatesVsEmployedChart />
             </motion.div>
-          </div>
-
-          {/* Additional Charts */}
-          <div className="grid lg:grid-cols-2 gap-8">
             <motion.div
-              initial={{ opacity: 0, y: 50 }}
+              initial={{ opacity: 0, y: 20 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: 0.4 }}
-              className="chart-container"
             >
-              <div className="chart-3d">
-                <EnrollmentLineChart />
-              </div>
+              <EmploymentByProgramChart />
             </motion.div>
             <motion.div
-              initial={{ opacity: 0, y: 50 }}
+              initial={{ opacity: 0, y: 20 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.6, delay: 0.4 }}
-              className="chart-container"
+              transition={{ duration: 0.6, delay: 0.5 }}
             >
-              <div className="chart-3d">
-                <GraduationRateChart />
-              </div>
+              <EmploymentRateChart />
             </motion.div>
           </div>
         </div>

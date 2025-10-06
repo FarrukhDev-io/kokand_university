@@ -108,13 +108,13 @@ All colors MUST be HSL.
 
 @layer utilities {
   .glass-card {
-    @apply bg-card/80 backdrop-blur-lg border border-border/50 shadow-xl;
-    transform-style: preserve-3d;
-    transition: transform 0.3s ease;
+    @apply bg-card/80 backdrop-blur-md border border-border/50 shadow-lg;
+    transition: all 0.3s ease;
   }
 
   .glass-card:hover {
-    transform: translateY(-4px) rotateX(2deg);
+    @apply bg-card/90 shadow-xl border-primary/20;
+    transform: translateY(-2px);
   }
 
   .hero-gradient {
@@ -126,16 +126,6 @@ All colors MUST be HSL.
   }
 
   .chart-container {
-    @apply relative;
-    perspective: 1000px;
-  }
-
-  .chart-3d {
-    transform-style: preserve-3d;
-    transition: transform 0.5s ease;
-  }
-
-  .chart-3d:hover {
-    transform: rotateY(5deg) rotateX(5deg);
+    @apply relative rounded-xl overflow-hidden;
   }
 }

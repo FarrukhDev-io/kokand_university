@@ -10,7 +10,8 @@ const Navbar = () => {
 
   const navLinks = [
     { name: t.nav.about, href: "#about" },
-    { name: t.analytics.title, href: "#analytics" },
+    { name: t.nav.analytics, href: "#analytics" },
+    { name: t.nav.future, href: "#future" },
     { name: t.nav.contact, href: "#contact" }
   ];
 

@@ -1,12 +1,9 @@
 {
   "nav": {
     "about": "Biz haqimizda",
-    "programs": "Dasturlar",
-    "admissions": "Qabul",
-    "campus": "Kampus hayoti",
-    "news": "Yangiliklar",
+    "analytics": "Ko'rsatkichlar",
     "contact": "Aloqa",
-    "applyNow": "Hozir ariza bering"
+    "future": "Kelajakka qadam"
   },
   "hero": {
     "title": "Kokand University",
@@ -81,7 +78,70 @@
       "address": "Turkiston koʻchasi\nQoʻqon shahri, Fargʻona viloyati\nOʻzbekiston"
     }
   },
-  "analytics": {
+  "employment": {
+    "title": "Bitiruvchilar ish bilan bandligi",
+    "subtitle": "Qo'qon Universiteti bitiruvchilarining bandligi va analitikasi",
+    "charts": {
+      "employmentByProgram": "Yo'nalishlar bo'yicha bandlik",
+      "employmentRate": "Bandlik ko'rsatkichi",
+      "overallEmployment": "Umumiy bandlik darajasi",
+      "employmentTrend": "Bandlik tendensiyasi (2019-2025)",
+      "graduatesVsEmployed": "Bitiruvchilar va ish bilan bandlar",
+      "employed": "Ish bilan band",
+      "unemployed": "Ishsiz",
+      "totalGraduates": "Jami bitiruvchilar",
+      "totalEmployed": "Jami ish bilan bandlar"
+    },
+    "programs": {
+      "economics": "Iqtisodiyot",
+      "finance": "Moliya",
+      "management": "Menejment",
+      "tourism": "Mehmonxona va turizm",
+      "english": "Xorijiy til va adabiyoti (ingliz tili)",
+      "preschool": "Maktabgacha ta'lim",
+      "primary": "Boshlang'ich ta'lim",
+      "psychology": "Psixologiya",
+      "computerEngineering": "Kompyuter injiniring"
+    }
+  },
+  "future": {
+    "title": "Kelajakka qadam",
+    "subtitle": "Bitiruvchilar ish bilan ta'minlanishini qo'llab-quvvatlash bo'yicha Prezident qarori",
+    "decree": {
+      "title": "O'zbekiston Respublikasi Prezidentining qarori",
+      "date": "2025-yil 14-fevral - PQ-61-son",
+      "intro": "Oliy ta'lim tashkilotlari bitiruvchilarining ishga joylashishiga ko'maklashish bo'yicha qo'shimcha chora-tadbirlar to'g'risida. Yoshlarning bandligini ta'minlash, oliy ta'lim tashkilotlari bitiruvchilarining mehnat bozoriga integratsiyasini kuchaytirish, xususiy sektor va tijorat banklari ishtirokida kadrlar tayyorlash jarayonini takomillashtirish maqsadida:",
+      "president": "O'zbekiston Respublikasi Prezidenti Sh. MIRZIYOYEV",
+      "location": "Toshkent sh., 2025-yil 14-fevral",
+      "number": "PQ-61-son"
+    },
+    "program": {
+      "title": "\"Kelajakka qadam\" dasturi",
+      "description": "Oliy ta'lim, fan va innovatsiyalar vazirligi va \"O'zmilliybank\" AJ oliy ta'lim tashkilotlarining bitiruvchilarining ishga joylashtirishiga ko'maklashishga qaratilgan \"Kelajakka qadam\" dasturini amalga oshirish to'g'risidagi taklifiga rozilik berilsin:",
+      "point1": {
+        "title": "Biznes g'oyalarini qo'llab-quvvatlash",
+        "description": "O'z biznes g'oyalarini amalga oshirish istagi bo'lgan oliy ta'lim tashkilotlarining bitiruvchi bosqich talabalari uchun \"O'zmilliybank\" AJ tomonidan biznes g'oyani tayyor loyihagacha olib borish jarayonida to'liq hamrohlik qilish, shu jumladan qulay shartlarda moliyalashtirish."
+      },
+      "point2": {
+        "title": "Ochiq tanlovlar",
+        "description": "Oliy ta'lim tashkilotlarining bitiruvchi va quyi bosqich talabalari o'rtasida sohalar bo'yicha ochiq tanlovlar o'tkazish va g'oliblarni ish bilan ta'minlashga ko'maklashish:",
+        "item1": "Salohiyatli ish beruvchi tashkilotlar, shu jumladan yirik korxonalarning oliy ma'lumotli mutaxassislarga ehtiyojini aniqlash",
+        "item2": "Individual kasbiy ta'lim dasturlari asosida kasbga dastlabki tayyorlash tadbirlarini moliyalashtirish",
+        "item3": "Ishlab chiqarish obyektlarida amaliyot o'tash va chet eldagi oliy ta'lim tashkilotlarida qisqa muddatli o'quv kurslarida qatnashish imkoniyati"
+      }
+    },
+    "implementation": {
+      "title": "Amalga oshirish",
+      "point1": "Dastur \"O'zmilliybank\" AJ tomonidan hududlarda, shu jumladan autsorsing asosida tashkil etiladigan \"Kelajakka qadam\" markazlari orqali amalga oshiriladi",
+      "point2": "Barcha oliy ta'lim tashkilotlari Dastur ishtirokchilari hisoblanadi va talabalarni ishga joylashga ko'maklashish bo'yicha Markazlar bilan hamkorlik kelishuvlarini tuzadi"
+    },
+    "funding": {
+      "title": "Dasturni moliyalashtirish",
+      "amount1": "80 million AQSH dollari ekvivalenti miqdorida 10 yilga, shu jumladan 3 yillik imtiyozli davri bilan Markaziy bankning asosiy stavkasiga teng foizda",
+      "amount2": "20 million AQSH dollari ekvivalenti miqdorida talabalarni kasbga tayyorlash va ularning kasbiy amaliyot o'tash xarajatlarini moliyalashtirish uchun beg'araz asosda"
+    }
+  },
+  "Kelajak":{
     "title": "Universitet ko'rsatkichlari",
     "subtitle": "Qo'qon Universiteti statistikasi va analitikasi",
     "info": "Ma'lumotlarga asoslangan yondashuvimiz barcha fakultetlarda muvozanatli qabulni ta'minlaydi va har bir talaba uchun optimal o'quv muhiti va resurslarni taqdim etadi.",

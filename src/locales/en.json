@@ -1,38 +1,35 @@
 {
   "nav": {
     "about": "About",
-    "programs": "Programs",
-    "admissions": "Admissions",
-    "campus": "Campus Life",
-    "news": "News",
+    "analytics": "Analytics",
     "contact": "Contact",
-    "applyNow": "Apply Now"
+    "future": "Future Steps"
   },
   "hero": {
     "title": "Kokand University",
-    "subtitle": "Shaping Future Leaders in Uzbekistan",
-    "quote": "There is and will be no salvation in the world except through knowledge",
+    "subtitle": "",
+    "quote": "There is no salvation in the world except knowledge",
     "welcomeCard": {
       "title": "Welcome!",
-      "description": "Kokand University Official Statistics Portal",
-      "cta": "Visit University Website"
+      "description": "Career Development and Employment Support Center for Graduates",
+      "cta": "Visit University"
     },
     "stats": {
       "students": "Students",
-      "faculty": "Professors & Teachers",
-      "programs": "Educational Fields",
+      "faculty": "Professors and Teachers",
+      "programs": "Educational Programs",
       "partners": "International Partners"
     }
   },
   "about": {
-    "title": "About Kokand University",
-    "subtitle": "Discover Your Dreams With Us",
-    "description1": "Kokand University operates as a non-state higher educational institution in accordance with the Resolution No. 683 of the Cabinet of Ministers of the Republic of Uzbekistan dated August 17, 2019, 'On the establishment of Kokand University'. We are committed to providing world-class education and fostering innovation, research, and international collaboration.",
-    "description2": "Located in Turkiston Street, Kokand, Fergana Region, our university combines modern facilities with traditional values, creating an ideal environment for academic excellence and personal growth.",
-    "partnerships": "International Partnerships",
+    "title": "About the Center",
+    "subtitle": "Discover your dreams with us!",
+    "description1": "Following the instructions given by the President of the Republic of Uzbekistan during the video conference held on August 8, 2025, the 'Career Development and Employment Support Center for Graduates' was established to ensure that Kokand University graduates can easily find their place in the service market and work in decent positions in their specialties in the future.",
+    "description2": "",
+    "partnerships": "Partner Organizations and Enterprises",
     "stats": {
       "students": "Students",
-      "professors": "Professors & Teachers",
+      "professors": "Professors and Teachers",
       "doctoral": "Doctoral Students",
       "researchers": "Independent Researchers",
       "classrooms": "Classrooms",
@@ -41,107 +38,78 @@
       "faculties": "Faculties"
     }
   },
-  "programs": {
-    "title": "Programs & Faculties",
-    "subtitle": "Explore our diverse range of academic programs designed to prepare you for success",
-    "learnMore": "Learn More",
-    "viewAll": "View All Programs"
-  },
-  "admissions": {
-    "title": "Admissions",
-    "subtitle": "2025/2026 Academic Year Admissions Now Open",
-    "banner": {
-      "title": "Become a Student at One of Uzbekistan's Leading Universities!",
-      "description": "Join thousands of students pursuing excellence in education. Applications for the 2025/2026 academic year are now being accepted.",
-      "cta": "Start Your Application"
-    },
-    "steps": {
-      "step1": {
-        "title": "Fill Application",
-        "description": "Complete the online application form with your personal and academic information"
-      },
-      "step2": {
-        "title": "Submit Documents",
-        "description": "Upload required documents including transcripts, certificates, and ID copies"
-      },
-      "step3": {
-        "title": "Interview",
-        "description": "Participate in an interview with our admissions committee"
-      },
-      "step4": {
-        "title": "Decision",
-        "description": "Receive your admission decision and enrollment instructions"
-      }
-    },
-    "help": {
-      "title": "Need Help with Your Application?",
-      "contactCenter": "Contact Center",
-      "location": "Location",
-      "address": "Turkiston Street\nKokand City, Fergana Region\nUzbekistan"
-    }
-  },
-  "analytics": {
-    "title": "University Statistics",
-    "subtitle": "Kokand University Statistics and Analytics",
-    "info": "Our data-driven approach ensures that we maintain balanced enrollment across all faculties, providing optimal learning environments and resources for every student.",
-    "selectYear": "Select Year",
-    "allYears": "All Years",
+  "employment": {
+    "title": "Graduate Employment Statistics",
+    "subtitle": "Kokand University graduate employment data and analysis",
     "charts": {
-      "studentsByFaculty": "Students by Faculty",
-      "facultyDistribution": "Faculty Distribution (%)",
-      "enrollmentTrend": "Student Enrollment Growth",
-      "graduationRate": "Graduation Rate (%)",
-      "students": "Number of Students",
-      "graduated": "Graduated",
-      "studying": "Studying"
+      "employmentByProgram": "Employment by Program",
+      "employmentRate": "Employment Rate",
+      "overallEmployment": "Overall Employment Rate",
+      "employmentTrend": "Employment Rate Trend (2019-2025)",
+      "graduatesVsEmployed": "Graduates vs Employed",
+      "employed": "Employed",
+      "unemployed": "Unemployed",
+      "totalGraduates": "Total Graduates",
+      "totalEmployed": "Total Employed"
     },
-    "faculties": {
-      "economics": "Economics & Business",
-      "engineering": "Engineering & Technology",
-      "sciences": "Natural Sciences",
-      "social": "Social Sciences",
-      "philology": "Philology",
-      "law": "Law"
+    "programs": {
+      "economics": "Economics",
+      "finance": "Finance",
+      "management": "Management",
+      "tourism": "Tourism and Hospitality",
+      "english": "English Language and Literature",
+      "preschool": "Preschool Education",
+      "primary": "Primary Education",
+      "psychology": "Psychology",
+      "computerEngineering": "Computer Engineering"
     }
   },
-  "campus": {
-    "title": "Campus Life & Gallery",
-    "subtitle": "Experience the vibrant community and beautiful campus of Kokand University",
-    "features": {
-      "excellence": {
-        "title": "Academic Excellence",
-        "description": "Rigorous programs with experienced faculty"
+  "future": {
+    "title": "Future Steps",
+    "subtitle": "Presidential decree on supporting graduate employment",
+    "decree": {
+      "title": "Presidential Decree of the Republic of Uzbekistan",
+      "date": "February 14, 2025 - PQ-61",
+      "intro": "On additional measures to assist higher education institution graduates in finding employment. To ensure youth employment, strengthen labor market integration of higher education graduates, and improve the personnel training process with the participation of the private sector and commercial banks:",
+      "president": "President of the Republic of Uzbekistan Sh. MIRZIYOYEV",
+      "location": "Tashkent city, February 14, 2025",
+      "number": "PQ-61"
+    },
+    "program": {
+      "title": "\"Future Steps\" Program",
+      "description": "The Ministry of Higher Education, Science and Innovation and \"O'zmilliybank\" JSC approve the implementation of the \"Future Steps\" program aimed at assisting graduates of higher education institutions in employment:",
+      "point1": {
+        "title": "Business Support",
+        "description": "For graduating students of higher education institutions who wish to implement their business ideas, \"O'zmilliybank\" JSC provides full support in bringing business ideas to ready-made projects, including financing on favorable terms."
       },
-      "global": {
-        "title": "Global Opportunities",
-        "description": "International partnerships and exchange programs"
-      },
-      "success": {
-        "title": "Student Success",
-        "description": "Support services for career and personal development"
+      "point2": {
+        "title": "Open Competitions",
+        "description": "Conducting open competitions by field among graduating and lower-level students of higher education institutions and assisting winners in employment:",
+        "item1": "Identifying the need for qualified specialists from potential employers, including large enterprises",
+        "item2": "Financing initial professional training measures based on individual professional education programs",
+        "item3": "Creating opportunities for internships at production facilities and short-term courses at foreign universities"
       }
+    },
+    "implementation": {
+      "title": "Implementation",
+      "point1": "The program is implemented through \"Future Steps\" centers organized by \"O'zmilliybank\" JSC in regions, including on an outsourcing basis",
+      "point2": "All higher education institutions are program participants and enter into cooperation agreements with the centers"
+    },
+    "funding": {
+      "title": "Program Funding",
+      "amount1": "$80 million equivalent for 10 years, including a 3-year grace period at the Central Bank's base rate",
+      "amount2": "$20 million equivalent for financing student professional training and internship expenses on a grant basis"
     }
-  },
-  "news": {
-    "title": "Latest News & Events",
-    "subtitle": "Stay updated with the latest happenings at Kokand University",
-    "readMore": "Read More",
-    "viewAll": "View All News"
-  },
-  "testimonials": {
-    "title": "What Our Students Say",
-    "subtitle": "Hear from our successful students about their experience"
   },
   "contact": {
     "title": "Contact Us",
-    "subtitle": "Get in touch with us for any inquiries or information",
+    "subtitle": "Get in touch with us for any questions or information",
     "address": "Address",
     "phone": "Phone",
-    "email": "Email",
-    "followUs": "Follow Us"
+    "email": "Email"
   },
   "footer": {
-    "about": "Leading non-state higher educational institution in Uzbekistan, established in 2019 to provide world-class education and foster innovation.",
+    "about": "Established in 2019, Uzbekistan's leading private higher education institution for world-class education and innovation development.",
     "quickLinks": "Quick Links",
     "resources": "Resources",
     "library": "Library",

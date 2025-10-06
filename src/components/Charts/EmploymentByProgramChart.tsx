@@ -9,7 +9,7 @@ import {
   Tooltip,
   Legend
 } from 'chart.js';
-import { chartDataByYear, chartOptions } from '@/data/chartData';
+import { employmentDataByYear } from '@/data/employmentData';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { Button } from '@/components/ui/button';
 
@@ -22,52 +22,51 @@ ChartJS.register(
   Legend
 );
 
-const StudentBarChart = () => {
+const EmploymentByProgramChart = () => {
   const { t } = useLanguage();
-  const [selectedYear, setSelectedYear] = useState<string>('2024');
-  const years = ['2020', '2021', '2022', '2023', '2024'];
+  const [selectedYear, setSelectedYear] = useState<string>('2025');
+  const years = ['2019', '2020', '2021', '2022', '2023', '2024', '2025'];
 
+  const yearData = employmentDataByYear[selectedYear];
+  
   const data = {
-    labels: [
-      t.analytics.faculties.economics,
-      t.analytics.faculties.engineering,
-      t.analytics.faculties.sciences,
-      t.analytics.faculties.social,
-      t.analytics.faculties.philology,
-      t.analytics.faculties.law
-    ],
+    labels: yearData.programs.map(p => t.employment.programs[p.program]),
     datasets: [
       {
-        label: t.analytics.charts.students,
-        data: chartDataByYear[selectedYear].studentsByFaculty,
-        backgroundColor: [
-          'rgba(139, 36, 50, 0.8)',
-          'rgba(59, 130, 246, 0.8)',
-          'rgba(245, 158, 11, 0.8)',
-          'rgba(16, 185, 129, 0.8)',
-          'rgba(139, 92, 246, 0.8)',
-          'rgba(236, 72, 153, 0.8)'
-        ],
-        borderColor: [
-          'rgb(139, 36, 50)',
-          'rgb(59, 130, 246)',
-          'rgb(245, 158, 11)',
-          'rgb(16, 185, 129)',
-          'rgb(139, 92, 246)',
-          'rgb(236, 72, 153)'
-        ],
+        label: t.employment.charts.employed,
+        data: yearData.programs.map(p => p.employed),
+        backgroundColor: 'rgba(139, 36, 50, 0.8)',
+        borderColor: 'rgb(139, 36, 50)',
+        borderWidth: 2
+      },
+      {
+        label: t.employment.charts.unemployed,
+        data: yearData.programs.map(p => p.unemployed),
+        backgroundColor: 'rgba(220, 38, 38, 0.5)',
+        borderColor: 'rgb(220, 38, 38)',
         borderWidth: 2
       }
     ]
   };
 
   const options = {
-    ...chartOptions,
+    responsive: true,
+    maintainAspectRatio: false,
     plugins: {
-      ...chartOptions.plugins,
+      legend: {
+        position: 'bottom' as const,
+        labels: {
+          padding: 20,
+          font: {
+            size: 12,
+            family: "'Inter', sans-serif"
+          },
+          usePointStyle: true
+        }
+      },
       title: {
         display: true,
-        text: `${t.analytics.charts.studentsByFaculty} (${selectedYear})`,
+        text: `${t.employment.charts.employmentByProgram} (${selectedYear})`,
         font: {
           size: 18,
           family: "'Inter', sans-serif",
@@ -120,4 +119,4 @@ const StudentBarChart = () => {
   );
 };
 
-export default StudentBarChart;
+export default EmploymentByProgramChart;

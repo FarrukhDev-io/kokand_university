@@ -1,12 +1,12 @@
 import { useState } from 'react';
-import { Pie } from 'react-chartjs-2';
+import { Doughnut } from 'react-chartjs-2';
 import {
   Chart as ChartJS,
   ArcElement,
   Tooltip,
   Legend
 } from 'chart.js';
-import { chartDataByYear, chartOptions } from '@/data/chartData';
+import { employmentDataByYear } from '@/data/employmentData';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { Button } from '@/components/ui/button';
 
@@ -16,45 +16,48 @@ ChartJS.register(
   Legend
 );
 
-const FacultyPieChart = () => {
+const EmploymentRateChart = () => {
   const { t } = useLanguage();
-  const [selectedYear, setSelectedYear] = useState<string>('2024');
-  const years = ['2020', '2021', '2022', '2023', '2024'];
+  const [selectedYear, setSelectedYear] = useState<string>('2025');
+  const years = ['2019', '2020', '2021', '2022', '2023', '2024', '2025'];
+
+  const yearData = employmentDataByYear[selectedYear];
 
   const data = {
-    labels: [
-      t.analytics.faculties.economics,
-      t.analytics.faculties.engineering,
-      t.analytics.faculties.sciences,
-      t.analytics.faculties.social,
-      t.analytics.faculties.philology,
-      t.analytics.faculties.law
-    ],
+    labels: [t.employment.charts.employed, t.employment.charts.unemployed],
     datasets: [
       {
-        label: t.analytics.charts.facultyDistribution,
-        data: chartDataByYear[selectedYear].facultyDistribution,
+        label: t.employment.charts.employmentRate,
+        data: [yearData.totalEmployed, yearData.totalUnemployed],
         backgroundColor: [
           'rgba(139, 36, 50, 0.8)',
-          'rgba(59, 130, 246, 0.8)',
-          'rgba(245, 158, 11, 0.8)',
-          'rgba(16, 185, 129, 0.8)',
-          'rgba(139, 92, 246, 0.8)',
-          'rgba(236, 72, 153, 0.8)'
+          'rgba(220, 38, 38, 0.5)'
         ],
-        borderColor: 'hsl(var(--card))',
-        borderWidth: 2
+        borderColor: ['rgb(139, 36, 50)', 'rgb(220, 38, 38)'],
+        borderWidth: 3,
+        hoverOffset: 15
       }
     ]
   };
 
   const options = {
-    ...chartOptions,
+    responsive: true,
+    maintainAspectRatio: false,
     plugins: {
-      ...chartOptions.plugins,
+      legend: {
+        position: 'bottom' as const,
+        labels: {
+          padding: 20,
+          font: {
+            size: 12,
+            family: "'Inter', sans-serif"
+          },
+          usePointStyle: true
+        }
+      },
       title: {
         display: true,
-        text: `${t.analytics.charts.facultyDistribution} (${selectedYear})`,
+        text: `${t.employment.charts.overallEmployment} (${selectedYear}) - ${yearData.overallRate}%`,
         font: {
           size: 18,
           family: "'Inter', sans-serif",
@@ -80,10 +83,10 @@ const FacultyPieChart = () => {
         ))}
       </div>
       <div className="h-[400px] flex items-center justify-center">
-        <Pie data={data} options={options} />
+        <Doughnut data={data} options={options} />
       </div>
     </div>
   );
 };
 
-export default FacultyPieChart;
+export default EmploymentRateChart;
