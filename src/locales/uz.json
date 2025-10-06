@@ -9,12 +9,12 @@
     "applyNow": "Hozir ariza bering"
   },
   "hero": {
-    "title": "Qo'qon Universiteti",
-    "subtitle": "O'zbekistonda kelajak liderlarini shakllantirish",
+    "title": "Kokand University",
+    "subtitle": "",
     "quote": "Dunyoda bilimdan boshqa najot yo'q va bo'lmaydi",
     "welcomeCard": {
       "title": "Xush kelibsiz!",
-      "description": "Qo'qon Universiteti rasmiy statistika portali",
+      "description": "Bitiruvchilarniish bilan ta’minlashga ko’maklashish va karyeranirivojlantirish markazi",
       "cta": "Universitetga kirish"
     },
     "stats": {
@@ -25,10 +25,10 @@
     }
   },
   "about": {
-    "title": "Qoʻqon Universiteti haqida",
+    "title": "Markaz Haqida",
     "subtitle": "Biz bilan orzularingizni kashf eting!",
-    "description1": "Qoʻqon Universiteti Oʻzbekiston Respublikasi Vazirlar Mahkamasining 2019-yil 17-avgustdagi 683-sonli qarori bilan tashkil etilgan nodavlat oliy taʼlim muassasasi sifatida faoliyat yuritadi. Biz dunyo darajasidagi taʼlim berish, innovatsiya va xalqaro hamkorlikni rivojlantirishga sodiqmiz.",
-    "description2": "Qoʻqon shahri, Fargʻona viloyati, Turkiston koʻchasida joylashgan universitetimiz zamonaviy inshootlar va anʼanaviy qadriyatlarni birlashtiradi, akademik mukammallik va shaxsiy rivojlanish uchun ideal muhit yaratadi.",
+    "description1": "O‘zbekiston respublikasi prezidenti tomonidan2025-yil 8-avgust kuni o‘tkazilgan vidioselektordaberilgan topshiriqlarni ijrosini hamda Qo‘qonuniversiteti bitiruvchilarini xizmatlar bozorida o‘zo‘rinlarini oson topish va kelajakda o‘zmutaxassisliklari bo‘yicha munosib ish o‘rinlaridaishlashliklarini ta’minlash maqsadida “Bitiruvchilarniish bilan ta’minlashga ko’maklashish va karyeranirivojlantirish markazi” tashkil etildi.",
+    "description2": "",
     "partnerships": "Xalqaro hamkorlik",
     "stats": {
       "students": "Talabalar",
