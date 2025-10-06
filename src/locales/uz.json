@@ -29,7 +29,7 @@
     "subtitle": "Biz bilan orzularingizni kashf eting!",
     "description1": "O‘zbekiston respublikasi prezidenti tomonidan2025-yil 8-avgust kuni o‘tkazilgan vidioselektordaberilgan topshiriqlarni ijrosini hamda Qo‘qonuniversiteti bitiruvchilarini xizmatlar bozorida o‘zo‘rinlarini oson topish va kelajakda o‘zmutaxassisliklari bo‘yicha munosib ish o‘rinlaridaishlashliklarini ta’minlash maqsadida “Bitiruvchilarniish bilan ta’minlashga ko’maklashish va karyeranirivojlantirish markazi” tashkil etildi.",
     "description2": "",
-    "partnerships": "Xalqaro hamkorlik",
+    "partnerships": "Hamkor Tashkilot va Korxonalar",
     "stats": {
       "students": "Talabalar",
       "professors": "Professor va oʻqituvchilar",
@@ -40,6 +40,7 @@
       "programs": "Qoʻshma dasturlar",
       "faculties": "Fakultetlar"
     }
+    
   },
   "programs": {
     "title": "Dasturlar va Fakultetlar",
@@ -103,7 +104,15 @@
       "philology": "Filologiya",
       "law": "Huquqshunoslik"
     }
+    
   },
+  "Kelajak":{
+    
+      "title": "Oʻzbekiston Respublikasi Prezidentining\nqarori\nOliy taʼlim tashkilotlari bitiruvchilarining ishga joylashishiga koʻmaklashish boʻyicha qoʻshimcha chora-tadbirlar toʻgʻrisida\nYoshlarning bandligini taʼminlash, oliy taʼlim tashkilotlari bitiruvchilarining mehnat bozoriga integratsiyasini kuchaytirish, xususiy sektor va tijorat banklari ishtirokida kadrlar tayyorlash jarayonini takomillashtirish maqsadida:\n1. Oliy taʼlim, fan va innovatsiyalar vazirligi va \"Oʻzmilliybank\" AJning oliy taʼlim tashkilotlarining bitiruvchilarining ishga joylashtirishiga koʻmaklashishga qaratilgan quyidagilarni nazarda tutuvchi \"Kelajakka qadam\" dasturini (keyingi oʻrinlarda — Dastur) amalga oshirish toʻgʻrisidagi taklifiga rozilik berilsin:\na) oʻz biznes gʻoyalarini amalga oshirish istagi boʻlgan oliy taʼlim tashkilotlarining bitiruvchi bosqich talabalari uchun \"Oʻzmilliybank\" AJ tomonidan biznes gʻoyani tayyor loyihagacha olib borish jarayonida toʻliq hamrohlik qilish, shu jumladan qulay shartlarda moliyalashtirish;\nb) oliy taʼlim tashkilotlarining bitiruvchi va quyi bosqich talabalari oʻrtasida sohalar boʻyicha ochiq tanlovlar oʻtkazish va gʻoliblarni ish bilan taʼminlashga koʻmaklashish. Bunda:\nsalohiyatli ish beruvchi tashkilotlar, shu jumladan yirik korxonalarning oliy maʼlumotli mutaxassislarga ehtiyojini aniqlash va mutaxassislarga qoʻyiladigan talablarni shakllantirish amaliyoti yoʻlga qoʻyiladi;\ntanlov gʻoliblarini salohiyatli ish beruvchi tashkilotlar buyurtmasiga koʻra individual kasbiy taʼlim dasturlari asosida kasbga dastlabki tayyorlash tadbirlari moliyalashtiriladi;\nindividual kasbiy taʼlim dasturlarida ishlab chiqarish obyektlarida amaliyot oʻtash va chet eldagi oliy taʼlim tashkilotlarida qisqa muddatli oʻquv kurslarida qatnashish imkoniyati yaratiladi.\n2. Belgilansinki:\nDastur \"Oʻzmilliybank\" AJ tomonidan hududlarda, shu jumladan autsorsing asosida tashkil etiladigan \"Kelajakka qadam\" markazlari (keyingi oʻrinlarda — Markazlar) orqali amalga oshiriladi;\nbarcha oliy taʼlim tashkilotlari Dastur ishtirokchilari hisoblanadi va talabalarni ishga joylashga koʻmaklashish boʻyicha Markazlar bilan hamkorlik kelishuvlarini tuzadi.\n3. Dasturni amalga oshirish maqsadida \"Oʻzmilliybank\" AJga Tiklanish va taraqqiyot jamgʻarmasidan:\n80 million AQSH dollari ekvivalenti miqdorida 10 yilga, shu jumladan 3 yillik imtiyozli davri bilan Markaziy bankning asosiy stavkasiga teng foizda;\n20 million AQSH dollari ekvivalenti miqdorida talabalarni kasbga tayyorlash va ularning kasbiy amaliyot oʻtash xarajatlarini moliyalashtirish uchun begʻaraz asosda mablagʻ ajratilsin.\n4. Oliy taʼlim, fan va innovatsiyalar vazirligi \"Oʻzmilliybank\" AJ bilan birgalikda:\nbir oy muddatda Dasturni amalga oshirish boʻyicha uslubiy qoʻllanmalar va Markazlar faoliyatini tashkil etish tartibini tasdiqlasin;\nmazkur qarorning mazmun-mohiyatini barcha oliy taʼlim tashkilotlariga yetkazish, ish beruvchilar va talabalar orasida keng yoritish choralarini koʻrsin.\n5. Mazkur qarorning ijrosini nazorat qilish Oʻzbekiston Respublikasi Bosh vaziri A.N. Aripov zimmasiga yuklansin.\nOʻzbekiston Respublikasi Prezidenti Sh. MIRZIYOYEV\nToshkent sh.,\n2025-yil 14-fevral,\nPQ-61-son\n\n(Qonunchilik maʼlumotlari milliy bazasi, 18.02.2025-y., 07/25/61/0151-son)"
+    
+    
+      
+    },
   "campus": {
     "title": "Kampus hayoti va galereya",
     "subtitle": "Qoʻqon Universitetining jonli jamiyati va goʻzal kampusini his eting",

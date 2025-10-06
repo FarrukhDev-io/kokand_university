@@ -4,6 +4,7 @@ import About from "@/components/About";
 import DataVisualization from "@/components/DataVisualization";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
+import Future from "@/components/ui/Future";
 
 const Index = () => {
   return (
@@ -12,6 +13,7 @@ const Index = () => {
       <main>
         <Hero />
         <About />
+        <Future/>
         <DataVisualization />
         <Contact />
       </main>
