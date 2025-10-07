@@ -1,18 +1,25 @@
+"use client";
+
 import { useState } from "react";
-import { Menu, X, GraduationCap } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import LanguageSwitcher from "./LanguageSwitcher";
 import ThemeToggle from "./ThemeToggle";
 import { useLanguage } from "@/contexts/LanguageContext";
+import { useTheme } from "@/contexts/ThemeContext"; // ✅ Qo‘shildi
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const { t } = useLanguage();
+  const { theme } = useTheme(); // ✅ Contextdan theme olish
+
+  // 🔁 Themega qarab logo tanlash
+  const logoSrc = theme === "dark" ? "/ku-white.png" : "/ku-black.png";
 
   const navLinks = [
     { name: t.nav.about, href: "#about" },
     { name: t.nav.analytics, href: "#analytics" },
     { name: t.nav.future, href: "#future" },
-    { name: t.nav.contact, href: "#contact" }
+    { name: t.nav.contact, href: "#contact" },
   ];
 
   const scrollToSection = (href: string) => {
@@ -24,24 +31,32 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 glass-card border-b">
+    <nav className="fixed top-0 left-0 right-0 z-50 glass-card border-b backdrop-blur-xl bg-background/80 transition-colors duration-300">
       <div className="container mx-auto px-4 lg:px-8">
         <div className="flex items-center justify-between h-16">
-          
-          <a 
-            href="https://www.kokanduni.uz" 
+          {/* 🏫 Logo */}
+          <a
+            href="https://www.kokanduni.uz"
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center space-x-2 group"
           >
-            <img className="h-10 w-10 text-primary transition-transform group-hover:scale-110" src="/ku.png" alt="Kokand university logo" />
+            <img
+              src={logoSrc}
+              alt="Kokand University logo"
+              className="h-10 w-10 rounded-full object-contain transition-transform group-hover:scale-110 duration-300"
+            />
             <div className="flex flex-col">
-              <span className="text-lg font-bold text-primary">Kokand University</span>
-              <span className="text-xs text-muted-foreground hidden sm:block">Qoʻqon Universiteti</span>
+              <span className="text-lg font-bold text-primary group-hover:text-primary/80 transition-colors">
+                Kokand University
+              </span>
+              <span className="text-xs text-muted-foreground hidden sm:block">
+                Qoʻqon Universiteti
+              </span>
             </div>
           </a>
 
-          
+          {/* 💫 Desktop Navigation */}
           <div className="hidden lg:flex items-center space-x-1">
             {navLinks.map((link) => (
               <button
@@ -54,27 +69,27 @@ const Navbar = () => {
             ))}
           </div>
 
-          {/* Right side actions */}
+          {/* 🌗 Right side actions */}
           <div className="hidden lg:flex items-center space-x-2">
             <ThemeToggle />
             <LanguageSwitcher />
           </div>
 
-          {/* Mobile menu button */}
+          {/* 📱 Mobile menu button */}
           <div className="lg:hidden flex items-center gap-2">
             <ThemeToggle />
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="p-2 rounded-md text-foreground hover:bg-muted"
+              className="p-2 rounded-md text-foreground hover:bg-muted transition-colors"
             >
               {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
             </button>
           </div>
         </div>
 
-        {/* Mobile Navigation */}
+        {/* 📱 Mobile menu dropdown */}
         {isOpen && (
-          <div className="lg:hidden py-4 space-y-2">
+          <div className="lg:hidden py-4 space-y-2 animate-fadeIn">
             {navLinks.map((link) => (
               <button
                 key={link.name}
@@ -84,7 +99,7 @@ const Navbar = () => {
                 {link.name}
               </button>
             ))}
-            <div className="px-4 pt-2">
+            <div className="px-4 pt-2 flex items-center gap-2">
               <LanguageSwitcher />
             </div>
           </div>

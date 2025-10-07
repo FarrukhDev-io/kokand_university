@@ -53,7 +53,7 @@ const About = () => {
           </motion.div>
 
           {/* Stats Grid */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+          {/* <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
             {universityStats.map((stat, index) => {
               const Icon = iconComponents[index];
               return (
@@ -74,7 +74,7 @@ const About = () => {
                 </motion.div>
               );
             })}
-          </div>
+          </div> */}
 
           {/* International Partnerships */}
           <motion.div
