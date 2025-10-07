@@ -16,31 +16,30 @@ import { useLanguage } from "@/contexts/LanguageContext";
 import { useEffect, useState } from "react";
 import { useTheme } from "@/contexts/ThemeContext";
 
-
-
 const Hero = () => {
   const { t } = useLanguage();
-  const [isDarkMode, setIsDarkMode] = useState(false);
-  const [mounted, setMounted] = useState(false);
   const { theme } = useTheme();
-const logoSrc = theme === "dark" ? "/ku-white.png" : "/ku-black.png";
+  const [mounted, setMounted] = useState(false);
 
-
-  // Detect system theme (dark/light)
-  useEffect(() => {
-    setMounted(true);
-    const darkQuery = window.matchMedia("(prefers-color-scheme: dark)");
-
-    const updateTheme = () => setIsDarkMode(darkQuery.matches);
-    updateTheme();
-
-    darkQuery.addEventListener("change", updateTheme);
-    return () => darkQuery.removeEventListener("change", updateTheme);
-  }, []);
+  // Mounted flag to avoid hydration mismatch
+  useEffect(() => setMounted(true), []);
 
   if (!mounted) return null;
 
-  // const logoSrc = isDarkMode ? "/ku-white.png" : "/ku-black.png";
+  const logoSrc = theme === "dark" ? "/ku-white.png" : "/ku-black.png";
+
+  // Card ranglari light/dark mode uchun
+  const cardOverlay = theme === "dark"
+    ? "from-black/90 via-black/60 to-transparent"
+    : "from-white/70 via-white/50 to-transparent";
+
+  const newsBoardBg = theme === "dark"
+    ? "bg-black/60 text-gray-200"
+    : "bg-white/50 text-gray-800";
+
+  const newsBoardBorder = theme === "dark" ? "border-white/10" : "border-black/10";
+
+  const newsItemHoverBg = theme === "dark" ? "hover:bg-white/5" : "hover:bg-black/5";
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-background transition-all duration-500">
@@ -53,7 +52,7 @@ const logoSrc = theme === "dark" ? "/ku-white.png" : "/ku-black.png";
             transition={{ duration: 0.8 }}
             className="text-center space-y-4"
           >
-            <h1 className="flex justify-center items-center gap-4 text-5xl md:text-7xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary to-blue-400 drop-shadow-lg">
+            <h1 className="flex justify-center items-center gap-4 text-5xl md:text-7xl font-bold text-red-600 drop-shadow-lg">
               <img
                 key={logoSrc}
                 src={logoSrc}
@@ -62,7 +61,6 @@ const logoSrc = theme === "dark" ? "/ku-white.png" : "/ku-black.png";
               />
               <span>{t.hero.title}</span>
             </h1>
-
             <p className="text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto">
               {t.hero.subtitle}
             </p>
@@ -75,7 +73,7 @@ const logoSrc = theme === "dark" ? "/ku-white.png" : "/ku-black.png";
               initial={{ opacity: 0, x: -50 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className="relative glass-card rounded-3xl p-8 overflow-hidden shadow-2xl border border-white/10"
+              className={`relative glass-card rounded-3xl p-8 overflow-hidden shadow-2xl border ${newsBoardBorder}`}
             >
               <img
                 src="https://www.kokanduni.uz/build/assets/hero-bg-CFIvlFTq.webp"
@@ -86,12 +84,8 @@ const logoSrc = theme === "dark" ? "/ku-white.png" : "/ku-black.png";
                 <div className="inline-block p-4 rounded-2xl bg-primary/10 backdrop-blur-sm">
                   <GraduationCap className="h-16 w-16 text-primary" />
                 </div>
-                <h2 className="text-3xl font-bold text-foreground">
-                  {t.hero.welcomeCard.title}
-                </h2>
-                <p className="text-lg text-muted-foreground">
-                  {t.hero.welcomeCard.description}
-                </p>
+                <h2 className="text-3xl font-bold text-foreground">{t.hero.welcomeCard.title}</h2>
+                <p className="text-lg text-muted-foreground">{t.hero.welcomeCard.description}</p>
                 <a
                   href="https://www.kokanduni.uz"
                   target="_blank"
@@ -109,7 +103,7 @@ const logoSrc = theme === "dark" ? "/ku-white.png" : "/ku-black.png";
               initial={{ opacity: 0, x: 50 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, delay: 0.3 }}
-              className="relative glass-card rounded-3xl overflow-hidden shadow-2xl border border-white/10"
+              className={`relative glass-card rounded-3xl overflow-hidden shadow-2xl border ${newsBoardBorder}`}
             >
               <img
                 src="https://www.kokanduni.uz/build/assets/hero-bg-CFIvlFTq.webp"
@@ -118,55 +112,51 @@ const logoSrc = theme === "dark" ? "/ku-white.png" : "/ku-black.png";
                 style={{ minHeight: "420px" }}
               />
 
-              <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/60 to-transparent" />
+              <div className={`absolute inset-0 bg-gradient-to-t ${cardOverlay}`} />
 
-              <div className="absolute bottom-0 left-0 right-0 bg-black/60 backdrop-blur-md p-8 rounded-b-3xl border-t border-white/10">
-                <h3 className="text-3xl font-bold text-white mb-6 flex items-center gap-3 drop-shadow-md">
+              <div className={`absolute bottom-0 left-0 right-0 ${newsBoardBg} backdrop-blur-md p-8 rounded-b-3xl border-t ${newsBoardBorder}`}>
+                <h3 className="text-3xl font-bold mb-6 flex items-center gap-3 drop-shadow-md">
                   <Megaphone className="w-7 h-7 text-yellow-400 animate-pulse" />
                   E’lonlar va yangiliklar
                 </h3>
 
-                <ul className="space-y-5 text-gray-200">
-                  <li className="flex items-start gap-4 group hover:bg-white/5 p-3 rounded-xl transition-all duration-200">
+                <ul className="space-y-5">
+                  <li className={`flex items-start gap-4 group ${newsItemHoverBg} p-3 rounded-xl transition-all duration-200`}>
                     <div className="p-2 rounded-xl bg-blue-500/10 group-hover:bg-blue-500/20">
                       <CalendarDays className="w-6 h-6 text-blue-400" />
                     </div>
                     <span>
-                      <strong className="text-white">Yangi o‘quv yili</strong> uchun hujjatlar qabul qilinmoqda —{" "}
-                      <span className="text-blue-300 font-semibold">2025/2026</span>.
+                      <strong>Yangi o‘quv yili</strong> uchun hujjatlar qabul qilinmoqda — <span className="font-semibold">2025/2026</span>.
                     </span>
                   </li>
 
-                  <li className="flex items-start gap-4 group hover:bg-white/5 p-3 rounded-xl transition-all duration-200">
+                  <li className={`flex items-start gap-4 group ${newsItemHoverBg} p-3 rounded-xl transition-all duration-200`}>
                     <div className="p-2 rounded-xl bg-green-500/10 group-hover:bg-green-500/20">
                       <BookMarked className="w-6 h-6 text-green-400" />
                     </div>
                     <span>
-                      <strong className="text-white">Ingliz tili olimpiadasi</strong>{" "}
-                      <span className="text-green-300 font-semibold">12-oktabr</span> kuni universitet binosida o‘tkaziladi.
+                      <strong>Ingliz tili olimpiadasi</strong> <span className="font-semibold">12-oktabr</span> kuni universitet binosida o‘tkaziladi.
                     </span>
                   </li>
 
-                  <li className="flex items-start gap-4 group hover:bg-white/5 p-3 rounded-xl transition-all duration-200">
+                  <li className={`flex items-start gap-4 group ${newsItemHoverBg} p-3 rounded-xl transition-all duration-200`}>
                     <div className="p-2 rounded-xl bg-orange-500/10 group-hover:bg-orange-500/20">
                       <Globe className="w-6 h-6 text-orange-400" />
                     </div>
                     <span>
-                      <strong className="text-white">IT Bootcamp 2025</strong> uchun ro‘yxatdan o‘tish boshlandi.{" "}
-                      <span className="text-yellow-300 font-semibold">Joylar soni cheklangan!</span>
+                      <strong>IT Bootcamp 2025</strong> uchun ro‘yxatdan o‘tish boshlandi. <span className="font-semibold">Joylar soni cheklangan!</span>
                     </span>
                   </li>
                 </ul>
 
-                <div className="mt-6 border-t border-white/10 pt-3 text-sm text-gray-400 italic flex items-center gap-2">
+                <div className="mt-6 border-t border-white/10 pt-3 text-sm italic flex items-center gap-2">
                   <CalendarDays className="w-4 h-4" />
                   Yangilangan: 7-oktabr, 2025
                 </div>
               </div>
             </motion.div>
+            
           </div>
-
-          {/* 📊 Stats Section */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
