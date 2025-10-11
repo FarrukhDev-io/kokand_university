@@ -111,7 +111,7 @@ const Hero = () => {
 
             {/* Vacancies Section */}
             <section className="mt-20">
-              <h2 className="text-3xl font-bold mb-6">Vakansiyalar</h2>
+              <h2 className="flex justify-center text-3xl font-bold mb-6">E'lonlar</h2>
               <VacanciesList onSubscribe={handleSubscribe} />
             </section>
 

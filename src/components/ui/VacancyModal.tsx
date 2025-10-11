@@ -35,23 +35,32 @@ const VacancyModal = ({ vacancy, onClose }: VacancyModalProps) => {
     try {
       const formData = new FormData();
       Object.entries(form).forEach(([key, value]) => formData.append(key, value));
-      formData.append("vacansy_id", vacancy.id); // API nomi shunday
+      formData.append("vacansy_id", vacancy.id);
       formData.append("file", file);
 
       const res = await fetch("https://univer-xrec.onrender.com/subscriptions", {
         method: "POST",
+        headers: {
+          Authorization:
+            "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImY5MjJkZTAwLTlmZGMtNGYxNy04ZTQ0LTc1ZTk3YTYzNDdmNiIsImVtYWlsIjoiZXhhbXBsZUBleGFtcGxlLmNvbSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc2MDE4NzkwNCwiZXhwIjoxNzYwMTk1MTA0fQ.2b83X8fBZBMUAIhrlASEmTbcEke_Rs8CTWp3Kp0CH-U",
+        },
         body: formData,
       });
 
       const data = await res.json();
+
       if (res.ok) {
-        setMessage("Muvaffaqiyatli yuborildi ✅");
+        setMessage("✅ Muvaffaqiyatli yuborildi!");
+        console.log("Yangi subscription:", data);
+        // xohlasang bu yerda modalni yopsa bo‘ladi:
+        // onClose();
       } else {
-        setMessage("Xatolik: " + data.message);
+        setMessage("❌ Xatolik: " + (data.message || "Noma’lum xato"));
+        console.error("Server xatosi:", data);
       }
     } catch (err) {
       console.error(err);
-      setMessage("Xatolik yuz berdi ❌");
+      setMessage("❌ Xatolik yuz berdi");
     } finally {
       setLoading(false);
     }
@@ -60,22 +69,72 @@ const VacancyModal = ({ vacancy, onClose }: VacancyModalProps) => {
   return (
     <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
       <div className="bg-white dark:bg-gray-900 rounded-2xl p-6 max-w-lg w-full relative">
-        <button onClick={onClose} className="absolute top-3 right-3 text-gray-500 hover:text-gray-700">
+        <button
+          onClick={onClose}
+          className="absolute top-3 right-3 text-gray-500 hover:text-gray-700"
+        >
           ✕
         </button>
-        <h2 className="text-2xl font-bold mb-4">{vacancy.title} uchun ariza</h2>
+        <h2 className="text-2xl font-bold mb-4">
+          {vacancy.title} uchun ariza
+        </h2>
 
         <form onSubmit={handleSubmit} className="space-y-3">
-          <input type="text" name="fullName" placeholder="To‘liq ism" required onChange={handleChange} className="w-full border p-2 rounded" />
-          <input type="text" name="age" placeholder="Yosh" required onChange={handleChange} className="w-full border p-2 rounded" />
-          <select name="gender" onChange={handleChange} className="w-full border p-2 rounded">
+          <input
+            type="text"
+            name="fullName"
+            placeholder="To‘liq ism"
+            required
+            onChange={handleChange}
+            className="w-full border p-2 rounded"
+          />
+          <input
+            type="text"
+            name="age"
+            placeholder="Yosh"
+            required
+            onChange={handleChange}
+            className="w-full border p-2 rounded"
+          />
+          <select
+            name="gender"
+            onChange={handleChange}
+            className="w-full border p-2 rounded"
+          >
             <option value="male">Erkak</option>
             <option value="female">Ayol</option>
           </select>
-          <input type="text" name="phone" placeholder="Telefon raqam" required onChange={handleChange} className="w-full border p-2 rounded" />
-          <input type="email" name="email" placeholder="Email" required onChange={handleChange} className="w-full border p-2 rounded" />
-          <input type="text" name="major" placeholder="Yo‘nalish (masalan: Frontend, Backend)" required onChange={handleChange} className="w-full border p-2 rounded" />
-          <input type="file" accept=".pdf,.doc,.docx" required onChange={e => setFile(e.target.files?.[0] || null)} className="w-full border p-2 rounded" />
+          <input
+            type="text"
+            name="phone"
+            placeholder="Telefon raqam"
+            required
+            onChange={handleChange}
+            className="w-full border p-2 rounded"
+          />
+          <input
+            type="email"
+            name="email"
+            placeholder="Email"
+            required
+            onChange={handleChange}
+            className="w-full border p-2 rounded"
+          />
+          <input
+            type="text"
+            name="major"
+            placeholder="Yo‘nalish (masalan: Frontend, Backend)"
+            required
+            onChange={handleChange}
+            className="w-full border p-2 rounded"
+          />
+          <input
+            type="file"
+            accept=".pdf,.doc,.docx"
+            required
+            onChange={(e) => setFile(e.target.files?.[0] || null)}
+            className="w-full border p-2 rounded"
+          />
 
           <button
             type="submit"
@@ -86,7 +145,9 @@ const VacancyModal = ({ vacancy, onClose }: VacancyModalProps) => {
           </button>
         </form>
 
-        {message && <p className="mt-3 text-center text-sm text-gray-600">{message}</p>}
+        {message && (
+          <p className="mt-3 text-center text-sm text-gray-600">{message}</p>
+        )}
       </div>
     </div>
   );
