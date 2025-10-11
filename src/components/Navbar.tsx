@@ -16,10 +16,11 @@ const Navbar = () => {
   const logoSrc = theme === "dark" ? "/ku-white.png" : "/ku-black.png";
 
   const navLinks = [
+    { name: t.nav.home, href: "#home" },
     { name: t.nav.about, href: "#about" },
     { name: t.nav.analytics, href: "#analytics" },
-    { name: t.nav.future, href: "#future" },
-    { name: t.nav.contact, href: "#contact" },
+    // { name: t.nav.future, href: "#future" },
+    // { name: t.nav.contact, href: "#contact" },
   ];
 
   const scrollToSection = (href: string) => {
@@ -36,7 +37,7 @@ const Navbar = () => {
         <div className="flex items-center justify-between h-16">
           {/* 🏫 Logo */}
           <a
-            href="https://www.kokanduni.uz"
+            href="#home"
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center space-x-2 group"

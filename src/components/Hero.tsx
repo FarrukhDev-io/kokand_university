@@ -38,7 +38,7 @@ const Hero = () => {
 
   return (
     <>
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-background transition-all duration-500">
+      <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden bg-background transition-all duration-500">
         <div className="container relative z-10 mx-auto px-4 lg:px-8 py-20">
           <div className="max-w-7xl mx-auto space-y-12">
 
