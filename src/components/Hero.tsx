@@ -13,21 +13,43 @@ import { useTheme } from "@/contexts/ThemeContext";
 import { useEffect, useState } from "react";
 import VacanciesList from "@/components/ui/VacasiesList";
 import VacancyModal from "@/components/ui/VacancyModal";
+import OTPModal from "@/components/ui/OTPModal";
 import { Vacancy } from "@/components/ui/VacancyCard";
+import { useAuth } from "@/components/ui/AuthContext";
 
 const Hero = () => {
   const { t } = useLanguage();
   const { theme } = useTheme();
+  const { token } = useAuth();
   const [mounted, setMounted] = useState(false);
   const [modalVacancy, setModalVacancy] = useState<Vacancy | null>(null);
+  const [showOTP, setShowOTP] = useState(false);
+  const [userEmail, setUserEmail] = useState("");
 
   useEffect(() => setMounted(true), []);
   if (!mounted) return null;
 
   const logoSrc = theme === "dark" ? "/ku-white.png" : "/ku-black.png";
 
-  const handleSubscribe = (vacancy: Vacancy) => setModalVacancy(vacancy);
-  const closeModal = () => setModalVacancy(null);
+  const handleSubscribe = (vacancy: Vacancy) => {
+    if (!token) {
+      // Token yo'q - OTP modal ochilsin
+      const email = prompt("Email manzilingizni kiriting:");
+      if (email) {
+        setUserEmail(email);
+        setModalVacancy(vacancy);
+        setShowOTP(true);
+      }
+    } else {
+      // Token bor - to'g'ridan VacancyModal ochilsin
+      setModalVacancy(vacancy);
+    }
+  };
+
+  const closeModal = () => {
+    setModalVacancy(null);
+    setShowOTP(false);
+  };
 
   const stats = [
     { icon: <GraduationCap className="h-12 w-12 mx-auto mb-3 text-primary" />, value: "11,700+", label: t.hero.stats.students },
@@ -119,8 +141,17 @@ const Hero = () => {
         </div>
       </section>
 
-      {/* Modal */}
-      {modalVacancy && (
+      {/* OTP Modal */}
+      {showOTP && modalVacancy && (
+        <OTPModal
+          email={userEmail}
+          onClose={() => setShowOTP(false)}
+          onSuccess={() => setShowOTP(false)}
+        />
+      )}
+
+      {/* Vacancy Modal */}
+      {modalVacancy && !showOTP && token && (
         <VacancyModal vacancy={modalVacancy} onClose={closeModal} />
       )}
     </>

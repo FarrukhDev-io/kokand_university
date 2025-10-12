@@ -1,7 +1,10 @@
 "use client";
 
 import { useState } from "react";
+import { motion } from "framer-motion";
+import { X, Upload } from "lucide-react";
 import { Vacancy } from "./VacancyCard";
+import { useAuth } from "./AuthContext";
 
 interface VacancyModalProps {
   vacancy: Vacancy;
@@ -20,6 +23,7 @@ const VacancyModal = ({ vacancy, onClose }: VacancyModalProps) => {
   const [file, setFile] = useState<File | null>(null);
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState("");
+  const { token } = useAuth();
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
@@ -57,8 +61,7 @@ const VacancyModal = ({ vacancy, onClose }: VacancyModalProps) => {
       const res = await fetch("https://univer-xrec.onrender.com/subscriptions", {
         method: "POST",
         headers: {
-          Authorization:
-            "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImY5MjJkZTAwLTlmZGMtNGYxNy04ZTQ0LTc1ZTk3YTYzNDdmNiIsImVtYWlsIjoiZXhhbXBsZUBleGFtcGxlLmNvbSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc2MDE4NzkwNCwiZXhwIjoxNzYwMTk1MTA0fQ.2b83X8fBZBMUAIhrlASEmTbcEke_Rs8CTWp3Kp0CH-U",
+          Authorization: `Bearer ${token}`,
         },
         body: formData,
       });
@@ -83,15 +86,20 @@ const VacancyModal = ({ vacancy, onClose }: VacancyModalProps) => {
   };
 
   return (
-    <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
-      <div className="bg-white dark:bg-gray-900 rounded-2xl p-6 max-w-lg w-full relative">
+    <div className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-50 p-4">
+      <motion.div
+        initial={{ opacity: 0, scale: 0.9, y: 20 }}
+        animate={{ opacity: 1, scale: 1, y: 0 }}
+        exit={{ opacity: 0, scale: 0.9, y: 20 }}
+        className="bg-card border border-border rounded-2xl p-8 max-w-2xl w-full relative shadow-2xl max-h-[90vh] overflow-y-auto"
+      >
         <button
           onClick={onClose}
-          className="absolute top-3 right-3 text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200"
+          className="absolute top-4 right-4 text-muted-foreground hover:text-foreground transition-colors z-10"
         >
-          ✕
+          <X className="h-6 w-6" />
         </button>
-        <h2 className="text-2xl font-bold mb-4 dark:text-gray-100">
+        <h2 className="text-3xl font-bold mb-6 text-foreground">
           {vacancy.title} uchun ariza
         </h2>
 
@@ -124,7 +132,7 @@ const VacancyModal = ({ vacancy, onClose }: VacancyModalProps) => {
                   : undefined
               }
               onChange={handleChange}
-              className="w-full border border-gray-300 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-100 p-3 rounded-lg placeholder-gray-400 dark:placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 transition"
+              className="w-full border border-border bg-background text-foreground p-3 rounded-lg placeholder-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary transition"
             />
           ))}
 
@@ -133,7 +141,7 @@ const VacancyModal = ({ vacancy, onClose }: VacancyModalProps) => {
             name="gender"
             value={form.gender}
             onChange={handleChange}
-            className="w-full border border-gray-300 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-100 p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition"
+            className="w-full border border-border bg-background text-foreground p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary transition"
           >
             <option value="male">Erkak</option>
             <option value="female">Ayol</option>
@@ -148,28 +156,41 @@ const VacancyModal = ({ vacancy, onClose }: VacancyModalProps) => {
               onChange={(e) => setFile(e.target.files?.[0] || null)}
               className="hidden"
             />
-            <div className="cursor-pointer w-full border border-gray-300 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-100 p-3 rounded-lg flex justify-between items-center hover:border-blue-500 transition">
-              <span>{file ? file.name : "Rezyume yuklash (faqat PDF)"}</span>
-              <span className="text-blue-600 dark:text-blue-400 font-semibold">Yuklash</span>
+            <div className="cursor-pointer w-full border-2 border-dashed border-border bg-muted hover:bg-muted/80 p-6 rounded-lg flex flex-col items-center gap-2 hover:border-primary transition-all">
+              <Upload className="h-8 w-8 text-muted-foreground" />
+              <span className="text-sm text-foreground font-medium">
+                {file ? file.name : "Rezyume yuklash (PDF, DOC, DOCX)"}
+              </span>
+              {!file && (
+                <span className="text-xs text-muted-foreground">
+                  Faylni tanlash uchun bosing
+                </span>
+              )}
             </div>
           </label>
 
           {/* Submit Button */}
-          <button
+          <motion.button
             type="submit"
             disabled={loading}
-            className="w-full bg-blue-600 dark:bg-blue-500 text-white py-3 rounded-lg hover:bg-blue-700 dark:hover:bg-blue-600 transition font-medium"
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
+            className="w-full bg-primary text-primary-foreground py-4 rounded-lg hover:opacity-90 transition-opacity font-semibold text-lg disabled:opacity-50"
           >
             {loading ? "Yuborilmoqda..." : "Arizani yuborish"}
-          </button>
+          </motion.button>
         </form>
 
         {message && (
-          <p className="mt-3 text-center text-sm text-gray-600 dark:text-gray-300">
+          <motion.p
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="mt-4 text-center text-sm text-foreground font-medium"
+          >
             {message}
-          </p>
+          </motion.p>
         )}
-      </div>
+      </motion.div>
     </div>
   );
 };
