@@ -1,4 +1,4 @@
-import { Mail, Phone, MapPin } from "lucide-react";
+import { Mail, Phone, MapPin, Code2 } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
 
 const Footer = () => {
@@ -64,11 +64,35 @@ const Footer = () => {
           </div>
         </div>
 
-        {/* Copyright */}
-        <div className="mt-12 pt-8 border-t border-border text-center">
-          <p className="text-muted-foreground text-sm">
-            © 2025 Qo'qon Universiteti. {t.footer.rights}
-          </p>
+        {/* Copyright & Credits */}
+        <div className="mt-12 pt-8 border-t border-border">
+          <div className="text-center space-y-4">
+            <p className="text-muted-foreground text-sm">
+              © 2025 Qo'qon Universiteti. {t.footer.rights}
+            </p>
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-8 text-xs text-muted-foreground">
+              <div className="flex items-center gap-2">
+                <Code2 className="h-4 w-4 text-primary" />
+                <span>{t.footer.developed}</span>
+              </div>
+              <a 
+                href="mailto:farrukh.front.dev@gmail.com" 
+                className="hover:text-primary transition-colors flex items-center gap-2"
+              >
+                <Mail className="h-3 w-3" />
+                <span>farrukh.front.dev@gmail.com</span>
+                <span className="text-muted-foreground/60">({t.footer.frontend})</span>
+              </a>
+              <a 
+                href="mailto:jaloliddinov009@gmail.com" 
+                className="hover:text-primary transition-colors flex items-center gap-2"
+              >
+                <Mail className="h-3 w-3" />
+                <span>jaloliddinov009@gmail.com</span>
+                <span className="text-muted-foreground/60">({t.footer.backend})</span>
+              </a>
+            </div>
+          </div>
         </div>
       </div>
     </footer>

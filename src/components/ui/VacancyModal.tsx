@@ -5,6 +5,8 @@ import { motion } from "framer-motion";
 import { X, Upload } from "lucide-react";
 import { Vacancy } from "./VacancyCard";
 import { useAuth } from "./AuthContext";
+import { useLanguage } from "@/contexts/LanguageContext";
+import { toast } from "@/hooks/use-toast";
 
 interface VacancyModalProps {
   vacancy: Vacancy;
@@ -15,15 +17,15 @@ const VacancyModal = ({ vacancy, onClose }: VacancyModalProps) => {
   const [form, setForm] = useState({
     fullName: "",
     age: "",
-    phone: "", // faqat 9 raqam saqlanadi, +998 avvaldan qo‘shiladi
+    phone: "",
     gender: "male",
     email: "",
     major: "",
   });
   const [file, setFile] = useState<File | null>(null);
   const [loading, setLoading] = useState(false);
-  const [message, setMessage] = useState("");
   const { token } = useAuth();
+  const { t } = useLanguage();
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
@@ -31,7 +33,6 @@ const VacancyModal = ({ vacancy, onClose }: VacancyModalProps) => {
     const { name, value } = e.target;
 
     if (name === "phone") {
-      // faqat raqam qabul qilamiz va maksimal 9 ta raqam
       let numericValue = value.replace(/\D/g, "");
       if (numericValue.length > 9) numericValue = numericValue.slice(0, 9);
       setForm({ ...form, phone: numericValue });
@@ -42,10 +43,15 @@ const VacancyModal = ({ vacancy, onClose }: VacancyModalProps) => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!file) return setMessage("Iltimos, rezyumeni yuklang!");
+    if (!file) {
+      toast({
+        title: "❌ " + t.vacancy.uploadResume,
+        variant: "destructive",
+      });
+      return;
+    }
 
     setLoading(true);
-    setMessage("");
 
     try {
       const formData = new FormData();
@@ -54,8 +60,6 @@ const VacancyModal = ({ vacancy, onClose }: VacancyModalProps) => {
       );
       formData.append("vacancy_id", vacancy.id);
       formData.append("file", file);
-
-      // Telefonni +998 bilan birga yuboramiz
       formData.set("phone", "+998" + form.phone);
 
       const res = await fetch("https://univer-xrec.onrender.com/subscriptions", {
@@ -69,17 +73,23 @@ const VacancyModal = ({ vacancy, onClose }: VacancyModalProps) => {
       const data = await res.json();
 
       if (res.ok) {
-        setMessage("✅ Muvaffaqiyatli yuborildi!");
-        console.log("Yangi subscription:", data);
-        // xohlasangiz modalni yopish mumkin:
-        // onClose();
+        toast({
+          title: "✅ " + t.vacancy.success,
+        });
+        setTimeout(() => onClose(), 1500);
       } else {
-        setMessage("❌ Xatolik: " + (data.message || "Noma’lum xato"));
-        console.error("Server xatosi:", data);
+        toast({
+          title: "❌ " + t.vacancy.error,
+          description: data.message || t.vacancy.error,
+          variant: "destructive",
+        });
       }
     } catch (err) {
       console.error(err);
-      setMessage("❌ Xatolik yuz berdi");
+      toast({
+        title: "❌ " + t.vacancy.error,
+        variant: "destructive",
+      });
     } finally {
       setLoading(false);
     }
@@ -100,54 +110,72 @@ const VacancyModal = ({ vacancy, onClose }: VacancyModalProps) => {
           <X className="h-6 w-6" />
         </button>
         <h2 className="text-3xl font-bold mb-6 text-foreground">
-          {vacancy.title} uchun ariza
+          {t.vacancy.applyTitle} {vacancy.title}
         </h2>
 
         <form onSubmit={handleSubmit} className="space-y-4">
-          {/* Common Inputs */}
-          {["fullName", "age", "phone", "email", "major"].map((field) => (
-            <input
-              key={field}
-              type={field === "email" ? "email" : field === "phone" ? "tel" : "text"}
-              name={field}
-              value={
-                field === "phone" ? "+998" + form.phone : (form as any)[field]
-              }
-              placeholder={
-                field === "fullName"
-                  ? "To‘liq ism"
-                  : field === "age"
-                  ? "Yosh"
-                  : field === "phone"
-                  ? "+998 ___ ___ __ __"
-                  : field === "email"
-                  ? "Email"
-                  : "Yo‘nalish (masalan: Frontend, Backend)"
-              }
-              required
-              pattern={field === "phone" ? "^\\+998\\d{9}$" : undefined}
-              title={
-                field === "phone"
-                  ? "Telefon raqam +998XXXXXXXXX formatida bo‘lishi kerak"
-                  : undefined
-              }
-              onChange={handleChange}
-              className="w-full border border-border bg-background text-foreground p-3 rounded-lg placeholder-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary transition"
-            />
-          ))}
+          <input
+            type="text"
+            name="fullName"
+            value={form.fullName}
+            placeholder={t.vacancy.fullName}
+            required
+            onChange={handleChange}
+            className="w-full border border-border bg-background text-foreground p-3 rounded-lg placeholder-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary transition"
+          />
 
-          {/* Gender select */}
+          <input
+            type="number"
+            name="age"
+            value={form.age}
+            placeholder={t.vacancy.age}
+            required
+            onChange={handleChange}
+            className="w-full border border-border bg-background text-foreground p-3 rounded-lg placeholder-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary transition"
+          />
+
+          <input
+            type="tel"
+            name="phone"
+            value={"+998" + form.phone}
+            placeholder={t.vacancy.phonePlaceholder}
+            required
+            pattern="^\+998\d{9}$"
+            title={t.vacancy.phonePattern}
+            onChange={handleChange}
+            className="w-full border border-border bg-background text-foreground p-3 rounded-lg placeholder-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary transition"
+          />
+
+          <input
+            type="email"
+            name="email"
+            value={form.email}
+            placeholder={t.vacancy.email}
+            required
+            onChange={handleChange}
+            className="w-full border border-border bg-background text-foreground p-3 rounded-lg placeholder-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary transition"
+          />
+
+          <input
+            type="text"
+            name="major"
+            value={form.major}
+            placeholder={t.vacancy.majorPlaceholder}
+            required
+            onChange={handleChange}
+            className="w-full border border-border bg-background text-foreground p-3 rounded-lg placeholder-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary transition"
+          />
+
           <select
             name="gender"
             value={form.gender}
             onChange={handleChange}
             className="w-full border border-border bg-background text-foreground p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary transition"
           >
-            <option value="male">Erkak</option>
-            <option value="female">Ayol</option>
+            <option value="male">{t.vacancy.male}</option>
+            <option value="female">{t.vacancy.female}</option>
           </select>
 
-          {/* Custom File Input */}
           <label className="block w-full">
             <input
               type="file"
@@ -159,17 +187,16 @@ const VacancyModal = ({ vacancy, onClose }: VacancyModalProps) => {
             <div className="cursor-pointer w-full border-2 border-dashed border-border bg-muted hover:bg-muted/80 p-6 rounded-lg flex flex-col items-center gap-2 hover:border-primary transition-all">
               <Upload className="h-8 w-8 text-muted-foreground" />
               <span className="text-sm text-foreground font-medium">
-                {file ? file.name : "Rezyume yuklash (PDF, DOC, DOCX)"}
+                {file ? file.name : t.vacancy.resume}
               </span>
               {!file && (
                 <span className="text-xs text-muted-foreground">
-                  Faylni tanlash uchun bosing
+                  {t.vacancy.resumePlaceholder}
                 </span>
               )}
             </div>
           </label>
 
-          {/* Submit Button */}
           <motion.button
             type="submit"
             disabled={loading}
@@ -177,19 +204,9 @@ const VacancyModal = ({ vacancy, onClose }: VacancyModalProps) => {
             whileTap={{ scale: 0.98 }}
             className="w-full bg-primary text-primary-foreground py-4 rounded-lg hover:opacity-90 transition-opacity font-semibold text-lg disabled:opacity-50"
           >
-            {loading ? "Yuborilmoqda..." : "Arizani yuborish"}
+            {loading ? t.vacancy.submitting : t.vacancy.submit}
           </motion.button>
         </form>
-
-        {message && (
-          <motion.p
-            initial={{ opacity: 0, y: -10 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="mt-4 text-center text-sm text-foreground font-medium"
-          >
-            {message}
-          </motion.p>
-        )}
       </motion.div>
     </div>
   );

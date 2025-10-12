@@ -210,12 +210,52 @@
     "followUs": "Bizni kuzatib boring"
   },
   "footer": {
-    "about": "2019-yilda tashkil etilgan, dunyo darajasidagi taʼlim berish va innovatsiyani rivojlantirish uchun Oʻzbekistonning yetakchi nodavlat oliy taʼlim muassasasi.",
+    "about": "Biz haqimizda",
+    "aboutText": "2019-yilda tashkil etilgan, O'zbekistonning jahon darajasidagi ta'lim va innovatsiyalarni rivojlantirish uchun yetakchi xususiy oliy ta'lim muassasasi.",
     "quickLinks": "Tezkor havolalar",
-    "resources": "Resurslar",
-    "library": "Kutubxona",
-    "studentPortal": "Talaba portali",
-    "webmail": "Elektron pochta",
-    "copyright": "© 2025 Qoʻqon Universiteti. Barcha huquqlar himoyalangan."
+    "contact": "Aloqa",
+    "rights": "Barcha huquqlar himoyalangan.",
+    "developed": "Ishlab chiqilgan",
+    "frontend": "Frontend dasturchi",
+    "backend": "Backend dasturchi"
+  },
+  "otp": {
+    "title": "OTP Tasdiqlash",
+    "email": "Email",
+    "sendOTP": "OTP Yuborish",
+    "sending": "Yuborilmoqda...",
+    "otpCode": "6-raqamli OTP",
+    "verify": "Tasdiqlash",
+    "verifying": "Tekshirilmoqda...",
+    "otpSent": "OTP emailga yuborildi",
+    "otpVerified": "Tasdiqlandi! Ariza formasiga o'tilmoqda...",
+    "error": "Xatolik yuz berdi"
+  },
+  "vacancy": {
+    "applyTitle": "uchun ariza",
+    "fullName": "To'liq ism",
+    "age": "Yosh",
+    "phone": "Telefon raqam",
+    "email": "Email",
+    "major": "Yo'nalish",
+    "majorPlaceholder": "Masalan: Frontend, Backend",
+    "gender": "Jinsi",
+    "male": "Erkak",
+    "female": "Ayol",
+    "resume": "Rezyume yuklash (PDF, DOC, DOCX)",
+    "resumePlaceholder": "Faylni tanlash uchun bosing",
+    "submit": "Arizani yuborish",
+    "submitting": "Yuborilmoqda...",
+    "uploadResume": "Iltimos, rezyumeni yuklang!",
+    "success": "Ariza muvaffaqiyatli yuborildi!",
+    "error": "Xatolik yuz berdi",
+    "phonePlaceholder": "+998 ___ ___ __ __",
+    "phonePattern": "Telefon raqam +998XXXXXXXXX formatida bo'lishi kerak"
+  },
+  "vacancies": {
+    "loading": "Vakansiyalar yuklanmoqda...",
+    "notFound": "Hech qanday vakansiya topilmadi.",
+    "previous": "Oldingi",
+    "next": "Keyingi"
   }
 }

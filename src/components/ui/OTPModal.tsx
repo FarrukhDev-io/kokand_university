@@ -2,6 +2,8 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { useAuth } from "./AuthContext";
 import { X } from "lucide-react";
+import { useLanguage } from "@/contexts/LanguageContext";
+import { toast } from "@/hooks/use-toast";
 
 interface OTPModalProps {
   email: string;
@@ -12,12 +14,11 @@ interface OTPModalProps {
 const OTPModal = ({ email, onClose, onSuccess }: OTPModalProps) => {
   const [otp, setOtp] = useState("");
   const [loading, setLoading] = useState(false);
-  const [message, setMessage] = useState("");
   const { setToken } = useAuth();
+  const { t } = useLanguage();
 
   const handleSendOTP = async () => {
     setLoading(true);
-    setMessage("");
     try {
       const res = await fetch("https://univer-xrec.onrender.com/auth/send-otp", {
         method: "POST",
@@ -26,13 +27,23 @@ const OTPModal = ({ email, onClose, onSuccess }: OTPModalProps) => {
       });
       const data = await res.json();
       if (res.ok) {
-        setMessage("✅ OTP emailga yuborildi");
+        toast({
+          title: "✅ " + t.otp.otpSent,
+          description: email,
+        });
       } else {
-        setMessage("❌ " + (data.message || "Xatolik"));
+        toast({
+          title: "❌ " + t.otp.error,
+          description: data.message || t.otp.error,
+          variant: "destructive",
+        });
       }
     } catch (err) {
       console.error(err);
-      setMessage("❌ Xatolik yuz berdi");
+      toast({
+        title: "❌ " + t.otp.error,
+        variant: "destructive",
+      });
     } finally {
       setLoading(false);
     }
@@ -40,7 +51,6 @@ const OTPModal = ({ email, onClose, onSuccess }: OTPModalProps) => {
 
   const handleVerify = async () => {
     setLoading(true);
-    setMessage("");
     try {
       const res = await fetch("https://univer-xrec.onrender.com/auth/verify-otp", {
         method: "POST",
@@ -50,17 +60,26 @@ const OTPModal = ({ email, onClose, onSuccess }: OTPModalProps) => {
       const data = await res.json();
       if (res.ok) {
         setToken(data.access_token);
-        setMessage("✅ Token olindi");
+        toast({
+          title: "✅ " + t.otp.otpVerified,
+        });
         setTimeout(() => {
           onSuccess();
           onClose();
         }, 500);
       } else {
-        setMessage("❌ " + (data.message || "Xatolik"));
+        toast({
+          title: "❌ " + t.otp.error,
+          description: data.message || t.otp.error,
+          variant: "destructive",
+        });
       }
     } catch (err) {
       console.error(err);
-      setMessage("❌ Xatolik yuz berdi");
+      toast({
+        title: "❌ " + t.otp.error,
+        variant: "destructive",
+      });
     } finally {
       setLoading(false);
     }
@@ -75,7 +94,7 @@ const OTPModal = ({ email, onClose, onSuccess }: OTPModalProps) => {
         className="bg-card border border-border p-8 rounded-2xl max-w-md w-full shadow-2xl"
       >
         <div className="flex justify-between items-center mb-6">
-          <h2 className="text-2xl font-bold text-foreground">OTP Tasdiqlash</h2>
+          <h2 className="text-2xl font-bold text-foreground">{t.otp.title}</h2>
           <button
             onClick={onClose}
             className="text-muted-foreground hover:text-foreground transition-colors"
@@ -87,7 +106,7 @@ const OTPModal = ({ email, onClose, onSuccess }: OTPModalProps) => {
         <div className="space-y-4">
           <div>
             <label className="block text-sm font-medium text-muted-foreground mb-2">
-              Email
+              {t.otp.email}
             </label>
             <input
               type="email"
@@ -102,12 +121,12 @@ const OTPModal = ({ email, onClose, onSuccess }: OTPModalProps) => {
             disabled={loading}
             className="w-full bg-secondary text-secondary-foreground py-3 rounded-lg font-semibold hover:opacity-90 transition-opacity disabled:opacity-50"
           >
-            {loading ? "Yuborilmoqda..." : "OTP Yuborish"}
+            {loading ? t.otp.sending : t.otp.sendOTP}
           </button>
 
           <div>
             <label className="block text-sm font-medium text-muted-foreground mb-2">
-              6-raqamli OTP
+              {t.otp.otpCode}
             </label>
             <input
               type="text"
@@ -124,18 +143,8 @@ const OTPModal = ({ email, onClose, onSuccess }: OTPModalProps) => {
             disabled={loading || otp.length !== 6}
             className="w-full bg-primary text-primary-foreground py-3 rounded-lg font-semibold hover:opacity-90 transition-opacity disabled:opacity-50"
           >
-            {loading ? "Tekshirilmoqda..." : "Tasdiqlash"}
+            {loading ? t.otp.verifying : t.otp.verify}
           </button>
-
-          {message && (
-            <motion.p
-              initial={{ opacity: 0, y: -10 }}
-              animate={{ opacity: 1, y: 0 }}
-              className="mt-3 text-center text-sm text-foreground"
-            >
-              {message}
-            </motion.p>
-          )}
         </div>
       </motion.div>
     </div>

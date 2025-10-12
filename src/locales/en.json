@@ -109,12 +109,52 @@
     "email": "Email"
   },
   "footer": {
-    "about": "Established in 2019, Uzbekistan's leading private higher education institution for world-class education and innovation development.",
+    "about": "About Us",
+    "aboutText": "Established in 2019, Uzbekistan's leading private higher education institution for world-class education and innovation development.",
     "quickLinks": "Quick Links",
-    "resources": "Resources",
-    "library": "Library",
-    "studentPortal": "Student Portal",
-    "webmail": "Webmail",
-    "copyright": "© 2025 Kokand University. All rights reserved."
+    "contact": "Contact",
+    "rights": "All rights reserved.",
+    "developed": "Developed by",
+    "frontend": "Frontend Developer",
+    "backend": "Backend Developer"
+  },
+  "otp": {
+    "title": "OTP Verification",
+    "email": "Email",
+    "sendOTP": "Send OTP",
+    "sending": "Sending...",
+    "otpCode": "6-digit OTP",
+    "verify": "Verify",
+    "verifying": "Verifying...",
+    "otpSent": "OTP sent to email",
+    "otpVerified": "Verified! Opening application form...",
+    "error": "An error occurred"
+  },
+  "vacancy": {
+    "applyTitle": "Application for",
+    "fullName": "Full Name",
+    "age": "Age",
+    "phone": "Phone Number",
+    "email": "Email",
+    "major": "Major",
+    "majorPlaceholder": "e.g., Frontend, Backend",
+    "gender": "Gender",
+    "male": "Male",
+    "female": "Female",
+    "resume": "Upload Resume (PDF, DOC, DOCX)",
+    "resumePlaceholder": "Click to select file",
+    "submit": "Submit Application",
+    "submitting": "Submitting...",
+    "uploadResume": "Please upload your resume!",
+    "success": "Application submitted successfully!",
+    "error": "An error occurred",
+    "phonePlaceholder": "+998 ___ ___ __ __",
+    "phonePattern": "Phone number must be in +998XXXXXXXXX format"
+  },
+  "vacancies": {
+    "loading": "Loading vacancies...",
+    "notFound": "No vacancies found.",
+    "previous": "Previous",
+    "next": "Next"
   }
 }

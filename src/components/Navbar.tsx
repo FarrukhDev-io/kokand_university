@@ -16,11 +16,11 @@ const Navbar = () => {
   const logoSrc = theme === "dark" ? "/ku-white.png" : "/ku-black.png";
 
   const navLinks = [
-    { name: t.nav.home, href: "#home" },
+    { name: t.hero.title, href: "#hero" },
     { name: t.nav.about, href: "#about" },
     { name: t.nav.analytics, href: "#analytics" },
-    // { name: t.nav.future, href: "#future" },
-    // { name: t.nav.contact, href: "#contact" },
+    { name: t.nav.future, href: "#future" },
+    { name: t.nav.contact, href: "#contact" },
   ];
 
   const scrollToSection = (href: string) => {

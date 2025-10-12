@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import VacancyCard, { Vacancy } from "./VacancyCard";
 import { Button } from "@/components/ui/button";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const ITEMS_PER_PAGE = 6;
 
@@ -12,13 +13,17 @@ const VacanciesList = ({ onSubscribe }: VacanciesListProps) => {
   const [vacancies, setVacancies] = useState<Vacancy[]>([]);
   const [loading, setLoading] = useState(true);
   const [page, setPage] = useState(1);
+  const { t } = useLanguage();
 
   useEffect(() => {
     const loadVacancies = async () => {
       try {
         const res = await fetch("https://univer-xrec.onrender.com/vacancies");
         const json = await res.json();
-        setVacancies(json.data || []);
+        const sortedVacancies = (json.data || []).sort((a: Vacancy, b: Vacancy) => 
+          new Date(b.created_at).getTime() - new Date(a.created_at).getTime()
+        );
+        setVacancies(sortedVacancies);
       } catch (err) {
         console.error(err);
       } finally {
@@ -31,36 +36,24 @@ const VacanciesList = ({ onSubscribe }: VacanciesListProps) => {
   if (loading)
     return (
       <p className="text-center text-muted-foreground py-8">
-        Vakansiyalar yuklanmoqda...
+        {t.vacancies.loading}
       </p>
     );
 
   if (vacancies.length === 0)
     return (
       <p className="text-center text-muted-foreground py-8">
-        Hech qanday vakansiya topilmadi.
+        {t.vacancies.notFound}
       </p>
     );
 
-  // ✅ Pagination hisoblash
   const totalPages = Math.ceil(vacancies.length / ITEMS_PER_PAGE);
   const startIndex = (page - 1) * ITEMS_PER_PAGE;
   const paginatedVacancies = vacancies.slice(startIndex, startIndex + ITEMS_PER_PAGE);
 
   return (
     <div className="space-y-8">
-      {/* Vakansiyalar */}
-      <div
-        className="
-          grid 
-          grid-cols-2       /* 🟢 Mobil: 2 ta ustun */
-          sm:grid-cols-2    /* Sm ekranlar uchun ham 2 ta */
-          md:grid-cols-2    /* Tablet: 2 ta */
-          lg:grid-cols-3    /* Katta ekran: 3 ta */
-          gap-6 
-          mt-8
-        "
-      >
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-8">
         {paginatedVacancies.map((v) => (
           <VacancyCard
             key={v.id}
@@ -70,7 +63,6 @@ const VacanciesList = ({ onSubscribe }: VacanciesListProps) => {
         ))}
       </div>
 
-      {/* Pagination tugmalari */}
       {totalPages > 1 && (
         <div className="flex items-center justify-center gap-3 mt-6">
           <Button
@@ -78,7 +70,7 @@ const VacanciesList = ({ onSubscribe }: VacanciesListProps) => {
             disabled={page === 1}
             onClick={() => setPage((p) => p - 1)}
           >
-            Oldingi
+            {t.vacancies.previous}
           </Button>
 
           <div className="text-sm text-muted-foreground">
@@ -90,7 +82,7 @@ const VacanciesList = ({ onSubscribe }: VacanciesListProps) => {
             disabled={page === totalPages}
             onClick={() => setPage((p) => p + 1)}
           >
-            Keyingi
+            {t.vacancies.next}
           </Button>
         </div>
       )}
