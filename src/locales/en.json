@@ -10,6 +10,7 @@
     "subtitle": "",
     "quote": "There is no salvation in the world except knowledge",
     "welcomeCard": {
+      "karyera": "Career",
       "title": "Welcome!",
       "description": "Career Development and Employment Support Center for Graduates",
       "cta": "Visit University"
@@ -17,8 +18,8 @@
     "stats": {
       "students": "Students",
       "faculty": "Professors and Teachers",
-      "programs": "Educational Programs",
-      "partners": "International Partners"
+      "programs": "Grand Owners",
+      "partners": "Scholarship Holders"
     }
   },
   "about": {

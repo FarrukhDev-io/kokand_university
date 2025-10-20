@@ -10,6 +10,7 @@
     "subtitle": "",
     "quote": "Dunyoda bilimdan boshqa najot yo'q va bo'lmaydi",
     "welcomeCard": {
+      "karyera": "Karyera",
       "title": "Xush kelibsiz!",
       "description": "Bitiruvchilarniish bilan ta’minlashga ko’maklashish va karyeranirivojlantirish markazi",
       "cta": "Universitetga kirish"
@@ -17,14 +18,14 @@
     "stats": {
       "students": "Talabalar",
       "faculty": "Professor va o'qituvchilar",
-      "programs": "Ta'lim yo'nalishlari",
-      "partners": "Xalqaro hamkorlar"
+      "programs": "Grand Sohiblari",
+      "partners": "Stipendiya Sohiblari"
     }
   },
   "about": {
     "title": "Markaz Haqida",
     "subtitle": "Biz bilan orzularingizni kashf eting!",
-    "description1": "O‘zbekiston respublikasi prezidenti tomonidan2025-yil 8-avgust kuni o‘tkazilgan vidioselektordaberilgan topshiriqlarni ijrosini hamda Qo‘qonuniversiteti bitiruvchilarini xizmatlar bozorida o‘zo‘rinlarini oson topish va kelajakda o‘zmutaxassisliklari bo‘yicha munosib ish o‘rinlaridaishlashliklarini ta’minlash maqsadida “Bitiruvchilarniish bilan ta’minlashga ko’maklashish va karyeranirivojlantirish markazi” tashkil etildi.",
+    "description1": "O‘zbekiston respublikasi prezidenti tomonidan 2025-yil 8-avgust kuni o‘tkazilgan video selektorda berilgan topshiriqlarni ijrosini ta’minlash hamda Qo‘qon universiteti bitiruvchilarini xizmatlar bozorida o‘z o‘rinlarini oson topish va kelajakda o‘z mutaxassisliklari bo‘yicha munosib ish o‘rinlarida ishlashlarini ta’minlash maqsadida “Bitiruvchilarni ish bilan ta’minlashga ko’maklashish va karyerani rivojlantirish markazi” tashkil etildi",
     "description2": "",
     "partnerships": "Hamkor Tashkilot va Korxonalar",
     "stats": {

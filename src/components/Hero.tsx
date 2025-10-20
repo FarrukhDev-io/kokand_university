@@ -4,10 +4,12 @@ import { motion } from "framer-motion";
 import {
   GraduationCap,
   Users,
+  // import Image from "next/image";
   BookOpen,
   Award,
   ExternalLink,
 } from "lucide-react";
+import { FaUserGraduate } from "react-icons/fa";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { useTheme } from "@/contexts/ThemeContext";
 import { useEffect, useState } from "react";
@@ -16,6 +18,7 @@ import VacancyModal from "@/components/ui/VacancyModal";
 import OTPModal from "@/components/ui/OTPModal";
 import { Vacancy } from "@/components/ui/VacancyCard";
 import { useAuth } from "@/components/ui/AuthContext";
+// import { ExternalLink } from "lucide-react";
 
 const Hero = () => {
   const { t } = useLanguage();
@@ -52,38 +55,56 @@ const Hero = () => {
   };
 
   const stats = [
-    { icon: <GraduationCap className="h-12 w-12 mx-auto mb-3 text-primary" />, value: "11,700+", label: t.hero.stats.students },
-    { icon: <Users className="h-12 w-12 mx-auto mb-3 text-secondary" />, value: "850+", label: t.hero.stats.faculty },
-    { icon: <BookOpen className="h-12 w-12 mx-auto mb-3 text-accent" />, value: "6", label: t.hero.stats.programs },
-    { icon: <Award className="h-12 w-12 mx-auto mb-3 text-chart-4" />, value: "4", label: t.hero.stats.partners },
+    {
+      icon: <FaUserGraduate className="h-12 w-12 mx-auto mb-3 text-primary" />,
+      value: "11,700+",
+      label: t.hero.stats.students,
+    },
+    {
+      icon: <GraduationCap className="h-12 w-12 mx-auto mb-3 text-secondary" />,
+      value: "850+",
+      label: t.hero.stats.faculty,
+    },
+    {
+      icon: <BookOpen className="h-12 w-12 mx-auto mb-3 text-accent" />,
+      value: "500+",
+      label: t.hero.stats.programs,
+    },
+    {
+      icon: <Award className="h-12 w-12 mx-auto mb-3 text-chart-4" />,
+      value: "200+",
+      label: t.hero.stats.partners,
+    },
   ];
 
   return (
     <>
-      <section id="hero" className="relative min-h-screen flex items-center justify-center overflow-hidden bg-background transition-all duration-500">
+      <section
+        id="hero"
+        className="relative min-h-screen flex items-center justify-center overflow-hidden bg-background transition-all duration-500"
+      >
         <div className="container relative z-10 mx-auto px-4 lg:px-8 py-20">
           <div className="max-w-7xl mx-auto space-y-12">
-
             {/* Hero Title */}
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
-              className="text-center space-y-4"
-            >
-              <h1 className="flex justify-center items-center gap-4 text-5xl md:text-7xl font-bold text-red-600 drop-shadow-lg">
-                <img
-                  key={logoSrc}
-                  src={logoSrc}
-                  alt="Kokand University logo"
-                  className="w-16 h-16 md:w-24 md:h-24 rounded-full object-contain transition-all duration-500"
-                />
-                <span>{t.hero.title}</span>
-              </h1>
-              <p className="text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto">
-                {t.hero.subtitle}
-              </p>
-            </motion.div>
+  initial={{ opacity: 0, y: 20 }}
+  animate={{ opacity: 1, y: 0 }}
+  transition={{ duration: 0.8 }}
+  className="text-center space-y-4"
+>
+  <h1 className="flex justify-center items-center gap-4 text-5xl md:text-7xl font-bold drop-shadow-lg">
+    <img
+      key={logoSrc}
+      src={logoSrc}
+      alt="Kokand University logo"
+      className="w-16 h-16 md:w-24 md:h-24 rounded-full object-contain transition-all duration-500"
+    />
+    <span className="bg-gradient-to-r from-blue-800 via-blue-600 to-blue-400 bg-clip-text text-transparent">
+      {t.hero.title}
+    </span>
+  </h1>
+</motion.div>
+
 
             {/* Welcome Card */}
             <motion.div
@@ -97,22 +118,41 @@ const Hero = () => {
                 alt="Background"
                 className="absolute inset-0 w-full h-full object-cover opacity-25 blur-[2px]"
               />
-              <div className="relative z-10 space-y-6">
-                <div className="inline-block p-4 rounded-2xl bg-primary/10 backdrop-blur-sm">
-                  <GraduationCap className="h-16 w-16 text-primary" />
-                </div>
-                <h2 className="text-3xl font-bold text-foreground">{t.hero.welcomeCard.title}</h2>
-                <p className="text-lg text-muted-foreground">{t.hero.welcomeCard.description}</p>
-                <a
-                  href="https://www.kokanduni.uz"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 px-6 py-3 bg-primary text-primary-foreground rounded-xl font-semibold hover:scale-105 transition-transform"
-                >
-                  {t.hero.welcomeCard.cta}
-                  <ExternalLink className="h-5 w-5" />
-                </a>
-              </div>
+             <div className="relative z-10 space-y-6">
+  {/* Logo va Karyera yozuvi */}
+  <div className="inline-flex items-center gap-4 p-5 rounded-2xl bg-primary/10 backdrop-blur-sm shadow-sm hover:shadow-md transition-all duration-300">
+    <img
+      src="/ku-black.png"
+      alt="Kokand University Logo"
+      className="h-16 w-16 object-contain"
+    />
+    <p className="text-2xl font-semibold text-primary tracking-wide">
+      {t.hero.welcomeCard.karyera}
+    </p>
+  </div>
+
+  {/* Sarlavha */}
+  <h2 className="text-3xl md:text-4xl font-bold text-foreground">
+    {t.hero.welcomeCard.title}
+  </h2>
+
+  {/* Tavsif */}
+  <p className="text-lg text-muted-foreground max-w-xl leading-relaxed">
+    {t.hero.welcomeCard.description}
+  </p>
+
+  {/* Tugma */}
+  <a
+    href="https://www.kokanduni.uz"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="inline-flex items-center gap-2 px-8 py-3 bg-primary text-primary-foreground rounded-xl font-semibold hover:scale-105 hover:shadow-md transition-all duration-300"
+  >
+    {t.hero.welcomeCard.cta}
+    <ExternalLink className="h-5 w-5" />
+  </a>
+</div>
+
             </motion.div>
 
             {/* Stats Section */}
@@ -123,20 +163,28 @@ const Hero = () => {
               className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-16"
             >
               {stats.map((stat, i) => (
-                <div key={i} className="glass-card rounded-2xl p-6 text-center hover:scale-105 transition-all">
+                <div
+                  key={i}
+                  className="glass-card rounded-2xl p-6 text-center hover:scale-105 transition-all"
+                >
                   {stat.icon}
-                  <div className="text-4xl font-bold text-foreground">{stat.value}</div>
-                  <div className="text-sm text-muted-foreground mt-2">{stat.label}</div>
+                  <div className="text-4xl font-bold text-foreground">
+                    {stat.value}
+                  </div>
+                  <div className="text-sm text-muted-foreground mt-2">
+                    {stat.label}
+                  </div>
                 </div>
               ))}
             </motion.div>
 
             {/* Vacancies Section */}
             <section className="mt-20">
-              <h2 className="flex justify-center text-3xl font-bold mb-6">E'lonlar</h2>
+              <h2 className="flex justify-center text-3xl font-bold mb-6">
+                E'lonlar
+              </h2>
               <VacanciesList onSubscribe={handleSubscribe} />
             </section>
-
           </div>
         </div>
       </section>
