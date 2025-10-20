@@ -87,24 +87,23 @@ const Hero = () => {
           <div className="max-w-7xl mx-auto space-y-12">
             {/* Hero Title */}
             <motion.div
-  initial={{ opacity: 0, y: 20 }}
-  animate={{ opacity: 1, y: 0 }}
-  transition={{ duration: 0.8 }}
-  className="text-center space-y-4"
->
-  <h1 className="flex justify-center items-center gap-4 text-5xl md:text-7xl font-bold drop-shadow-lg">
-    <img
-      key={logoSrc}
-      src={logoSrc}
-      alt="Kokand University logo"
-      className="w-16 h-16 md:w-24 md:h-24 rounded-full object-contain transition-all duration-500"
-    />
-    <span className="bg-gradient-to-r from-blue-800 via-blue-600 to-blue-400 bg-clip-text text-transparent">
-      {t.hero.title}
-    </span>
-  </h1>
-</motion.div>
-
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+              className="text-center space-y-4"
+            >
+              <h1 className="flex justify-center items-center gap-4 text-5xl md:text-7xl font-bold drop-shadow-lg">
+                <img
+                  key={logoSrc}
+                  src={logoSrc}
+                  alt="Kokand University logo"
+                  className="w-16 h-16 md:w-24 md:h-24 rounded-full object-contain transition-all duration-500"
+                />
+                <span className="bg-gradient-to-r from-blue-800 via-blue-600 to-blue-400 bg-clip-text text-transparent">
+                  {t.hero.title}
+                </span>
+              </h1>
+            </motion.div>
 
             {/* Welcome Card */}
             <motion.div
@@ -118,14 +117,12 @@ const Hero = () => {
                 alt="Background"
                 className="absolute inset-0 w-full h-full object-cover opacity-25 blur-[2px]"
               />
-             <div className="relative z-10 space-y-6">
-  {/* Logo va Karyera yozuvi */}
+              <div className="relative z-10 space-y-6">
+  {/* Icon va Karyera yozuvi */}
   <div className="inline-flex items-center gap-4 p-5 rounded-2xl bg-primary/10 backdrop-blur-sm shadow-sm hover:shadow-md transition-all duration-300">
-    <img
-      src="/ku-black.png"
-      alt="Kokand University Logo"
-      className="h-16 w-16 object-contain"
-    />
+    <div className="flex items-center justify-center h-16 w-16 rounded-2xl bg-primary/20">
+      <GraduationCap className="h-10 w-10 text-primary" strokeWidth={2.5} />
+    </div>
     <p className="text-2xl font-semibold text-primary tracking-wide">
       {t.hero.welcomeCard.karyera}
     </p>
@@ -152,7 +149,6 @@ const Hero = () => {
     <ExternalLink className="h-5 w-5" />
   </a>
 </div>
-
             </motion.div>
 
             {/* Stats Section */}
