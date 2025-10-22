@@ -214,11 +214,11 @@
     "backend": "Backend dasturchi"
   },
   "otp": {
-    "title": "OTP Tasdiqlash",
+    "title": "Kirish Kodi (OTP)",
     "email": "Email",
-    "sendOTP": "OTP Yuborish",
+    "sendOTP": "Kod Yuborish",
     "sending": "Yuborilmoqda...",
-    "otpCode": "6-raqamli OTP",
+    "otpCode": "6-raqamli kod",
     "verify": "Tasdiqlash",
     "verifying": "Tekshirilmoqda...",
     "otpSent": "Bir martalik kod emailga yuborildi",

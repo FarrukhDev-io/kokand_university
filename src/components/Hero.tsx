@@ -3,8 +3,6 @@
 import { motion } from "framer-motion";
 import {
   GraduationCap,
-  Users,
-  // import Image from "next/image";
   BookOpen,
   Award,
   ExternalLink,
@@ -18,7 +16,6 @@ import VacancyModal from "@/components/ui/VacancyModal";
 import OTPModal from "@/components/ui/OTPModal";
 import { Vacancy } from "@/components/ui/VacancyCard";
 import { useAuth } from "@/components/ui/AuthContext";
-// import { ExternalLink } from "lucide-react";
 
 const Hero = () => {
   const { t } = useLanguage();
@@ -34,18 +31,13 @@ const Hero = () => {
 
   const logoSrc = theme === "dark" ? "/ku-white.png" : "/ku-black.png";
 
+  // 🔹 Prompt olib tashlandi, faqat OTPModal orqali email kiritiladi
   const handleSubscribe = (vacancy: Vacancy) => {
     if (!token) {
-      // Token yo'q - OTP modal ochilsin
-      const email = prompt("Email manzilingizni kiriting:");
-      if (email) {
-        setUserEmail(email);
-        setModalVacancy(vacancy);
-        setShowOTP(true);
-      }
-    } else {
-      // Token bor - to'g'ridan VacancyModal ochilsin
       setModalVacancy(vacancy);
+      setShowOTP(true); // OTPModal ochiladi
+    } else {
+      setModalVacancy(vacancy); // Token bor bo‘lsa — to‘g‘ridan VacancyModal
     }
   };
 
@@ -110,7 +102,7 @@ const Hero = () => {
               initial={{ opacity: 0, x: -50 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className={`relative glass-card rounded-3xl p-8 overflow-hidden shadow-2xl border border-gray-200 dark:border-gray-700`}
+              className="relative glass-card rounded-3xl p-8 overflow-hidden shadow-2xl border border-gray-200 dark:border-gray-700"
             >
               <img
                 src="https://www.kokanduni.uz/build/assets/hero-bg-CFIvlFTq.webp"
@@ -118,37 +110,37 @@ const Hero = () => {
                 className="absolute inset-0 w-full h-full object-cover opacity-25 blur-[2px]"
               />
               <div className="relative z-10 space-y-6">
-  {/* Icon va Karyera yozuvi */}
-  <div className="inline-flex items-center gap-4 p-5 rounded-2xl bg-primary/10 backdrop-blur-sm shadow-sm hover:shadow-md transition-all duration-300">
-    <div className="flex items-center justify-center h-16 w-16 rounded-2xl bg-primary/20">
-      <GraduationCap className="h-10 w-10 text-primary" strokeWidth={2.5} />
-    </div>
-    <p className="text-2xl font-semibold text-primary tracking-wide">
-      {t.hero.welcomeCard.karyera}
-    </p>
-  </div>
+                {/* Icon va Karyera yozuvi */}
+                <div className="inline-flex items-center gap-4 p-5 rounded-2xl bg-primary/10 backdrop-blur-sm shadow-sm hover:shadow-md transition-all duration-300">
+                  <div className="flex items-center justify-center h-16 w-16 rounded-2xl bg-primary/20">
+                    <GraduationCap className="h-10 w-10 text-primary" strokeWidth={2.5} />
+                  </div>
+                  <p className="text-2xl font-semibold text-primary tracking-wide">
+                    {t.hero.welcomeCard.karyera}
+                  </p>
+                </div>
 
-  {/* Sarlavha */}
-  <h2 className="text-3xl md:text-4xl font-bold text-foreground">
-    {t.hero.welcomeCard.title}
-  </h2>
+                {/* Sarlavha */}
+                <h2 className="text-3xl md:text-4xl font-bold text-foreground">
+                  {t.hero.welcomeCard.title}
+                </h2>
 
-  {/* Tavsif */}
-  <p className="text-lg text-muted-foreground max-w-xl leading-relaxed">
-    {t.hero.welcomeCard.description}
-  </p>
+                {/* Tavsif */}
+                <p className="text-lg text-muted-foreground max-w-xl leading-relaxed">
+                  {t.hero.welcomeCard.description}
+                </p>
 
-  {/* Tugma */}
-  <a
-    href="https://www.kokanduni.uz"
-    target="_blank"
-    rel="noopener noreferrer"
-    className="inline-flex items-center gap-2 px-8 py-3 bg-primary text-primary-foreground rounded-xl font-semibold hover:scale-105 hover:shadow-md transition-all duration-300"
-  >
-    {t.hero.welcomeCard.cta}
-    <ExternalLink className="h-5 w-5" />
-  </a>
-</div>
+                {/* Tugma */}
+                <a
+                  href="https://www.kokanduni.uz"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 px-8 py-3 bg-primary text-primary-foreground rounded-xl font-semibold hover:scale-105 hover:shadow-md transition-all duration-300"
+                >
+                  {t.hero.welcomeCard.cta}
+                  <ExternalLink className="h-5 w-5" />
+                </a>
+              </div>
             </motion.div>
 
             {/* Stats Section */}
@@ -164,12 +156,8 @@ const Hero = () => {
                   className="glass-card rounded-2xl p-6 text-center hover:scale-105 transition-all"
                 >
                   {stat.icon}
-                  <div className="text-4xl font-bold text-foreground">
-                    {stat.value}
-                  </div>
-                  <div className="text-sm text-muted-foreground mt-2">
-                    {stat.label}
-                  </div>
+                  <div className="text-4xl font-bold text-foreground">{stat.value}</div>
+                  <div className="text-sm text-muted-foreground mt-2">{stat.label}</div>
                 </div>
               ))}
             </motion.div>
@@ -185,14 +173,17 @@ const Hero = () => {
         </div>
       </section>
 
-      {/* OTP Modal */}
-      {showOTP && modalVacancy && (
-        <OTPModal
-          email={userEmail}
-          onClose={() => setShowOTP(false)}
-          onSuccess={() => setShowOTP(false)}
-        />
-      )}
+     {/* OTP Modal */}
+{showOTP && modalVacancy && (
+  <OTPModal
+    onClose={() => setShowOTP(false)}
+    onSuccess={() => {
+      setShowOTP(false);
+      setModalVacancy(null);
+    }}
+  />
+)}
+
 
       {/* Vacancy Modal */}
       {modalVacancy && !showOTP && token && (
