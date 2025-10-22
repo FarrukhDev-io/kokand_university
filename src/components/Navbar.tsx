@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
-import LanguageSwitcher from "./LanguageSwitcher";
+// import LanguageSwitcher from "./LanguageSwitcher";
 import ThemeToggle from "./ThemeToggle";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { useTheme } from "@/contexts/ThemeContext"; // ✅ Qo‘shildi
@@ -73,7 +73,7 @@ const Navbar = () => {
           {/* 🌗 Right side actions */}
           <div className="hidden lg:flex items-center space-x-2">
             <ThemeToggle />
-            <LanguageSwitcher />
+            {/* <LanguageSwitcher /> */}
           </div>
 
           {/* 📱 Mobile menu button */}
@@ -101,7 +101,7 @@ const Navbar = () => {
               </button>
             ))}
             <div className="px-4 pt-2 flex items-center gap-2">
-              <LanguageSwitcher />
+              {/* <LanguageSwitcher /> */}
             </div>
           </div>
         )}

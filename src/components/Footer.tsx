@@ -1,73 +1,90 @@
+import { useState } from "react";
 import { Code2, Mail } from "lucide-react";
-import { useLanguage } from "@/contexts/LanguageContext";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 
 const FooterBottom = () => {
-  const { t } = useLanguage();
+  const [showDevelopers, setShowDevelopers] = useState(false);
 
   return (
-    <motion.div
-      className="mt-12 pt-8 border-t border-border relative overflow-hidden"
+    <motion.footer
+      className="mt-16 pt-6 pb-6 border-t border-border relative text-center text-muted-foreground overflow-hidden"
       initial={{ opacity: 0, y: 10 }}
-      whileInView={{ opacity: 1, y: 0 }}
+      animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6, ease: "easeOut" }}
     >
-      <div className="text-center space-y-4">
-        <p className="text-muted-foreground text-sm">
-          © 2025 Qo‘qon Universiteti. {t.footer.rights}
-        </p>
+      {/* © yozuvi */}
+      <p className="text-sm mb-3">
+        © 2025 Qo‘qon Universiteti. Barcha huquqlar himoyalangan.
+      </p>
 
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-8 text-xs text-muted-foreground">
-          
-          {/* Dev label */}
+      {/* Markazda ishlab chiqilgan yozuvi + developerlar */}
+      <div className="relative flex flex-col items-center justify-center sm:flex-row sm:gap-10">
+        {/* Chap va o‘ng tomondagi developerlar */}
+        <AnimatePresence>
+          {showDevelopers && (
+            <>
+              {/* Frontend developer */}
+              <motion.a
+                href="mailto:farrukh.front.dev@gmail.com"
+                initial={{ opacity: 0, x: -20, y: 10 }}
+                animate={{ opacity: 1, x: 0, y: 0 }}
+                exit={{ opacity: 0, x: -20, y: 10 }}
+                transition={{ duration: 0.4 }}
+                className="flex items-center gap-2 text-xs hover:text-primary transition-colors whitespace-nowrap mb-2 sm:mb-0 sm:absolute sm:left-[10%]"
+              >
+                <Mail className="h-3 w-3 text-primary/70" />
+                <span>farrukh.front.dev@gmail.com</span>
+                <span className="text-muted-foreground/60">(Frontend)</span>
+              </motion.a>
+
+              {/* Backend developer */}
+              <motion.a
+                href="mailto:jaloliddinov009@gmail.com"
+                initial={{ opacity: 0, x: 20, y: 10 }}
+                animate={{ opacity: 1, x: 0, y: 0 }}
+                exit={{ opacity: 0, x: 20, y: 10 }}
+                transition={{ duration: 0.4 }}
+                className="flex items-center gap-2 text-xs hover:text-primary transition-colors whitespace-nowrap sm:absolute sm:right-[10%]"
+              >
+                <Mail className="h-3 w-3 text-primary/70" />
+                <span>jaloliddinov009@gmail.com</span>
+                <span className="text-muted-foreground/60">(Backend)</span>
+              </motion.a>
+            </>
+          )}
+        </AnimatePresence>
+
+        {/* Markazdagi ishlab chiqilgan yozuvi */}
+        <div
+          onMouseEnter={() => setShowDevelopers(true)}
+          onMouseLeave={() => setShowDevelopers(false)}
+          onClick={() => setShowDevelopers((prev) => !prev)}
+          className="flex items-center gap-2 cursor-pointer select-none"
+        >
           <motion.div
-            whileHover={{ scale: 1.05, rotate: 2 }}
+            whileHover={{ scale: 1.1, rotate: 3 }}
             whileTap={{ scale: 0.95 }}
-            className="flex items-center gap-2 cursor-pointer group"
+            className="flex items-center gap-2"
           >
-            <Code2 className="h-4 w-4 text-primary group-hover:text-primary/80 transition-all duration-300 group-hover:rotate-6" />
-            <span className="group-hover:text-primary transition-all duration-300">
-              {t.footer.developed}
+            <Code2
+              className={`h-5 w-5 text-primary transition-transform duration-300 ${
+                showDevelopers ? "rotate-180" : ""
+              }`}
+            />
+            <span className="text-sm hover:text-primary transition-colors">
+              Ishlab chiqilgan
             </span>
           </motion.div>
-
-          {/* Frontend email */}
-          <motion.a
-            href="mailto:farrukh.front.dev@gmail.com"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.93 }}
-            className="hover:text-primary transition-colors flex items-center gap-2 cursor-pointer"
-          >
-            <Mail className="h-3 w-3 text-primary/70 group-hover:text-primary transition-colors" />
-            <span>farrukh.front.dev@gmail.com</span>
-            <span className="text-muted-foreground/60">
-              ({t.footer.frontend})
-            </span>
-          </motion.a>
-
-          {/* Backend email */}
-          <motion.a
-            href="mailto:jaloliddinov009@gmail.com"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.93 }}
-            className="hover:text-primary transition-colors flex items-center gap-2 cursor-pointer"
-          >
-            <Mail className="h-3 w-3 text-primary/70 group-hover:text-primary transition-colors" />
-            <span>jaloliddinov009@gmail.com</span>
-            <span className="text-muted-foreground/60">
-              ({t.footer.backend})
-            </span>
-          </motion.a>
         </div>
       </div>
 
-      {/* Dekorativ pulsatsiya chizig‘i */}
+      {/* Pastdagi pulsatsiyali chiziq */}
       <motion.div
-        className="absolute bottom-0 left-0 w-full h-[1.5px] bg-gradient-to-r from-primary/0 via-primary/50 to-primary/0"
-        animate={{ opacity: [0.2, 1, 0.2] }}
-        transition={{ duration: 3, repeat: Infinity }}
+        className="absolute bottom-0 left-0 w-full h-[1.5px] bg-gradient-to-r from-primary/0 via-primary/60 to-primary/0"
+        animate={{ opacity: [0.3, 1, 0.3] }}
+        transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
       />
-    </motion.div>
+    </motion.footer>
   );
 };
 

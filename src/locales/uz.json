@@ -221,7 +221,7 @@
     "otpCode": "6-raqamli OTP",
     "verify": "Tasdiqlash",
     "verifying": "Tekshirilmoqda...",
-    "otpSent": "OTP emailga yuborildi",
+    "otpSent": "Bir martalik kod emailga yuborildi",
     "otpVerified": "Tasdiqlandi! Ariza formasiga o'tilmoqda...",
     "error": "Xatolik yuz berdi"
   },

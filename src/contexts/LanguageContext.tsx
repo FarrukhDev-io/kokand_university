@@ -3,7 +3,7 @@ import enTranslations from "@/locales/en.json";
 import uzTranslations from "@/locales/uz.json";
 import ruTranslations from "@/locales/ru.json";
 
-type Language = "uz" | "en" | "ru";
+type Language = "uz";
 
 interface LanguageContextType {
   language: Language;
