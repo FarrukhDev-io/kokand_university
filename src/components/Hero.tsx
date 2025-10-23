@@ -111,7 +111,7 @@ const Hero = () => {
     absolute inset-0 w-full h-full
     object-cover object-top
     opacity-30
-    blur-[0.5px]                /* juda yengil blur */
+    blur-[0.5px]                /* juda yengil */
     will-change-transform        /* GPU optimizatsiya */
     [mask-image:linear-gradient(to_bottom,black_80%,transparent_100%)]
     [image-rendering:auto]       /* mozaikalashni yo‘qotadi */
