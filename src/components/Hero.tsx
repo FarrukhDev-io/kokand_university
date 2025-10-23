@@ -116,7 +116,7 @@ const Hero = () => {
                     <GraduationCap className="h-10 w-10 text-primary" strokeWidth={2.5} />
                   </div>
                   <p className="text-2xl font-semibold text-primary tracking-wide">
-                    {t.hero.welcomeCard.karyera}
+                    {/* {t.hero.welcomeCard.karyera} */}
                   </p>
                 </div>
 
