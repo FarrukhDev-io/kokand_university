@@ -43,7 +43,7 @@ const Partners = () => {
   }, [isDragging, totalWidth, x]);
 
   return (
-    <section className="py-24 bg-gradient-to-b from-background via-muted/20 to-background overflow-hidden relative">
+    <section className="py-24 bg-gradient-to-b rounded-2xl from-background via-muted/20 to-background overflow-hidden relative">
       {/* Sarlavha */}
       <div className="container mx-auto px-4 text-center mb-16">
         <motion.div
