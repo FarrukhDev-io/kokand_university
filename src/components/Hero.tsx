@@ -91,7 +91,7 @@ const Hero = () => {
                   alt="Kokand University logo"
                   className="w-16 h-16 md:w-24 md:h-24 rounded-full object-contain transition-all duration-500"
                 />
-                <span className="bg-gradient-to-r from-blue-800 via-blue-600 to-blue-400 bg-clip-text text-transparent">
+                <span className="bg-gradient-to-r from-blue-800 via-blue-600 to-blue-800 bg-clip-text text-transparent">
                   {t.hero.title}
                 </span>
               </h1>
@@ -105,42 +105,43 @@ const Hero = () => {
               className="relative glass-card rounded-3xl p-8 overflow-hidden shadow-2xl border border-gray-200 dark:border-gray-700"
             >
               <img
-                src="https://www.kokanduni.uz/build/assets/hero-bg-CFIvlFTq.webp"
-                alt="Background"
-                className="absolute inset-0 w-full h-full object-cover opacity-25 blur-[2px]"
-              />
+  src="https://www.kokanduni.uz/build/assets/hero-bg-CFIvlFTq.webp"
+  alt="Background"
+  className="
+    absolute inset-0 w-full h-full
+    object-cover object-top
+    opacity-30
+    blur-[0.5px]                /* juda yengil blur */
+    will-change-transform        /* GPU optimizatsiya */
+    [mask-image:linear-gradient(to_bottom,black_80%,transparent_100%)]
+    [image-rendering:auto]       /* mozaikalashni yo‘qotadi */
+  "
+/>
+
+
               <div className="relative z-10 space-y-6">
-                {/* Icon va Karyera yozuvi */}
-                <div className="inline-flex items-center gap-4 p-5 rounded-2xl bg-primary/10 backdrop-blur-sm shadow-sm hover:shadow-md transition-all duration-300">
-                  <div className="flex items-center justify-center h-16 w-16 rounded-2xl bg-primary/20">
-                    <GraduationCap className="h-10 w-10 text-primary" strokeWidth={2.5} />
-                  </div>
-                  <p className="text-2xl font-semibold text-primary tracking-wide">
-                    {/* {t.hero.welcomeCard.karyera} */}
-                  </p>
-                </div>
+  {/* Sarlavha */}
+  <h2 className="text-3xl md:text-4xl font-bold text-foreground">
+    {t.hero.welcomeCard.title}
+  </h2>
 
-                {/* Sarlavha */}
-                <h2 className="text-3xl md:text-4xl font-bold text-foreground">
-                  {t.hero.welcomeCard.title}
-                </h2>
+  {/* Tavsif */}
+  <p className="text-lg text-muted-foreground max-w-xl leading-relaxed">
+    {t.hero.welcomeCard.description}
+  </p>
 
-                {/* Tavsif */}
-                <p className="text-lg text-muted-foreground max-w-xl leading-relaxed">
-                  {t.hero.welcomeCard.description}
-                </p>
+  {/* Tugma */}
+  <a
+    href="https://www.kokanduni.uz"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="inline-flex items-center gap-2 px-8 py-3 bg-primary text-primary-foreground rounded-xl font-semibold hover:scale-105 hover:shadow-md transition-all duration-300"
+  >
+    {t.hero.welcomeCard.cta}
+    <ExternalLink className="h-5 w-5" />
+  </a>
+</div>
 
-                {/* Tugma */}
-                <a
-                  href="https://www.kokanduni.uz"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 px-8 py-3 bg-primary text-primary-foreground rounded-xl font-semibold hover:scale-105 hover:shadow-md transition-all duration-300"
-                >
-                  {t.hero.welcomeCard.cta}
-                  <ExternalLink className="h-5 w-5" />
-                </a>
-              </div>
             </motion.div>
 
             {/* Stats Section */}
