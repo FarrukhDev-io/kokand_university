@@ -30,7 +30,7 @@ const OTPModal = ({ onClose, onSuccess }: OTPModalProps) => {
 
     setLoading(true);
     try {
-      const res = await fetch("https://univer-xrec.onrender.com/auth/send-otp", {
+      const res = await fetch("https://univer-production.up.railway.app/auth/send-otp", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email }),
@@ -63,7 +63,7 @@ const OTPModal = ({ onClose, onSuccess }: OTPModalProps) => {
     if (!email || !otp) return;
     setLoading(true);
     try {
-      const res = await fetch("https://univer-xrec.onrender.com/auth/verify-otp", {
+      const res = await fetch("https://univer-production.up.railway.app/auth/verify-otp", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email, otp }),

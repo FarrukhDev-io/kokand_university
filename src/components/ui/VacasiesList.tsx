@@ -18,7 +18,7 @@ const VacanciesList = ({ onSubscribe }: VacanciesListProps) => {
   useEffect(() => {
     const loadVacancies = async () => {
       try {
-        const res = await fetch("https://univer-xrec.onrender.com/vacancies");
+        const res = await fetch("https://univer-production.up.railway.app/vacancies");
         const json = await res.json();
         const sortedVacancies = (json.data || []).sort((a: Vacancy, b: Vacancy) => 
           new Date(b.created_at).getTime() - new Date(a.created_at).getTime()

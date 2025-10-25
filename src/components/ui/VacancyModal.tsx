@@ -62,7 +62,7 @@ const VacancyModal = ({ vacancy, onClose }: VacancyModalProps) => {
       formData.append("file", file);
       formData.set("phone", "+998" + form.phone);
 
-      const res = await fetch("https://univer-xrec.onrender.com/subscriptions", {
+      const res = await fetch("https://univer-production.up.railway.app/subscriptions", {
         method: "POST",
         headers: {
           Authorization: `Bearer ${token}`,

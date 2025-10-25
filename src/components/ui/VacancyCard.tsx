@@ -43,7 +43,7 @@ const VacancyCard = ({ vacancy, onSubscribe }: VacancyCardProps) => {
             src={
               vacancy.image.startsWith("http")
                 ? vacancy.image
-                : `https://univer-xrec.onrender.com/${vacancy.image}`
+                : `https://univer-production.up.railway.app/${vacancy.image}`
             }
             alt={vacancy.title}
             className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
