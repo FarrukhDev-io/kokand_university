@@ -1,19 +1,14 @@
 "use client";
 
 import { motion } from "framer-motion";
-import {
-  GraduationCap,
-  BookOpen,
-  Award,
-  ExternalLink,
-} from "lucide-react";
+import { GraduationCap, BookOpen, Award, ExternalLink } from "lucide-react";
 import { FaUserGraduate } from "react-icons/fa";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { useTheme } from "@/contexts/ThemeContext";
 import { useEffect, useState } from "react";
 import VacanciesList from "@/components/ui/VacasiesList";
 import VacancyModal from "@/components/ui/VacancyModal";
-import OTPModal from "@/components/ui/OTPModal";
+import CaptchaModal from "@/components/ui/CaptchaModal"; // ✅ yangi modal
 import { Vacancy } from "@/components/ui/VacancyCard";
 import { useAuth } from "@/components/ui/AuthContext";
 
@@ -23,27 +18,26 @@ const Hero = () => {
   const { token } = useAuth();
   const [mounted, setMounted] = useState(false);
   const [modalVacancy, setModalVacancy] = useState<Vacancy | null>(null);
-  const [showOTP, setShowOTP] = useState(false);
-  const [userEmail, setUserEmail] = useState("");
+  const [showCaptcha, setShowCaptcha] = useState(false);
 
   useEffect(() => setMounted(true), []);
   if (!mounted) return null;
 
   const logoSrc = theme === "dark" ? "/ku-white.png" : "/ku-black.png";
 
-  // 🔹 Prompt olib tashlandi, faqat OTPModal orqali email kiritiladi
+  // 🔹 OTP o‘rniga CAPTCHA ishlaydi
   const handleSubscribe = (vacancy: Vacancy) => {
     if (!token) {
       setModalVacancy(vacancy);
-      setShowOTP(true); // OTPModal ochiladi
+      setShowCaptcha(true); // CAPTCHA ochiladi
     } else {
-      setModalVacancy(vacancy); // Token bor bo‘lsa — to‘g‘ridan VacancyModal
+      setModalVacancy(vacancy); // Token bor bo‘lsa — VacancyModal ochiladi
     }
   };
 
   const closeModal = () => {
     setModalVacancy(null);
-    setShowOTP(false);
+    setShowCaptcha(false);
   };
 
   const stats = [
@@ -105,46 +99,31 @@ const Hero = () => {
               className="relative glass-card rounded-3xl p-8 overflow-hidden shadow-2xl border border-gray-200 dark:border-gray-700"
             >
               <img
-  src="https://www.kokanduni.uz/build/assets/hero-bg-CFIvlFTq.webp"
-  alt="Background"
-  className="
-    absolute inset-0 w-full h-full
-    object-cover object-top
-    opacity-30
-    blur-[0.5px]                /* juda yengil */
-    will-change-transform        /* GPU optimizatsiya */
-    [mask-image:linear-gradient(to_bottom,black_80%,transparent_100%)]
-    [image-rendering:auto]       /* mozaikalashni yo‘qotadi */
-  "
-/>
-
+                src="https://www.kokanduni.uz/build/assets/hero-bg-CFIvlFTq.webp"
+                alt="Background"
+                className="absolute inset-0 w-full h-full object-cover object-top opacity-30 blur-[0.5px]"
+              />
 
               <div className="relative z-10 space-y-6">
-  {/* Sarlavha */}
-  <h2 className="text-3xl md:text-4xl font-bold text-foreground">
-    {t.hero.welcomeCard.title}
-  </h2>
-
-  {/* Tavsif */}
-  <p className="text-lg text-muted-foreground max-w-xl leading-relaxed">
-    {t.hero.welcomeCard.description}
-  </p>
-
-  {/* Tugma */}
-  <a
-    href="https://www.kokanduni.uz"
-    target="_blank"
-    rel="noopener noreferrer"
-    className="inline-flex items-center gap-2 px-8 py-3 bg-primary text-primary-foreground rounded-xl font-semibold hover:scale-105 hover:shadow-md transition-all duration-300"
-  >
-    {t.hero.welcomeCard.cta}
-    <ExternalLink className="h-5 w-5" />
-  </a>
-</div>
-
+                <h2 className="text-3xl md:text-4xl font-bold text-foreground">
+                  {t.hero.welcomeCard.title}
+                </h2>
+                <p className="text-lg text-muted-foreground max-w-xl leading-relaxed">
+                  {t.hero.welcomeCard.description}
+                </p>
+                <a
+                  href="https://www.kokanduni.uz"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 px-8 py-3 bg-primary text-primary-foreground rounded-xl font-semibold hover:scale-105 hover:shadow-md transition-all duration-300"
+                >
+                  {t.hero.welcomeCard.cta}
+                  <ExternalLink className="h-5 w-5" />
+                </a>
+              </div>
             </motion.div>
 
-            {/* Stats Section */}
+            {/* Stats */}
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
@@ -157,13 +136,17 @@ const Hero = () => {
                   className="glass-card rounded-2xl p-6 text-center hover:scale-105 transition-all"
                 >
                   {stat.icon}
-                  <div className="text-4xl font-bold text-foreground">{stat.value}</div>
-                  <div className="text-sm text-muted-foreground mt-2">{stat.label}</div>
+                  <div className="text-4xl font-bold text-foreground">
+                    {stat.value}
+                  </div>
+                  <div className="text-sm text-muted-foreground mt-2">
+                    {stat.label}
+                  </div>
                 </div>
               ))}
             </motion.div>
 
-            {/* Vacancies Section */}
+            {/* Vacancies */}
             <section className="mt-20">
               <h2 className="flex justify-center text-3xl font-bold mb-6">
                 E'lonlar
@@ -174,20 +157,19 @@ const Hero = () => {
         </div>
       </section>
 
-     {/* OTP Modal */}
-{showOTP && modalVacancy && (
-  <OTPModal
-    onClose={() => setShowOTP(false)}
-    onSuccess={() => {
-      setShowOTP(false);
-      setModalVacancy(null);
-    }}
-  />
-)}
+      {/* ✅ CAPTCHA Modal */}
+      {showCaptcha && modalVacancy && (
+        <CaptchaModal
+          onClose={() => setShowCaptcha(false)}
+          onSuccess={() => {
+            setShowCaptcha(false);
+            setModalVacancy(modalVacancy);
+          }}
+        />
+      )}
 
-
-      {/* Vacancy Modal */}
-      {modalVacancy && !showOTP && token && (
+      {/* ✅ Vacancy Modal */}
+      {modalVacancy && !showCaptcha && (
         <VacancyModal vacancy={modalVacancy} onClose={closeModal} />
       )}
     </>
