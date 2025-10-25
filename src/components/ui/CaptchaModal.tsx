@@ -1,22 +1,57 @@
 "use client";
 
-import { useState } from "react";
-import ReCAPTCHA from "react-google-recaptcha";
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 
-const SITE_KEY = "6LdI5PYrAAAAAG12QVrn7j2uaHag0bkoImOgsv71";
+const SITE_KEY = "6LdI5PYrAAAAAG12QVrn7j2uaHag0bkoImOgsv71"; // 🔑 Google reCAPTCHA v3 site key
 
 interface CaptchaModalProps {
   onClose: () => void;
-  onSuccess: () => void;
+  onSuccess: (token: string) => void;
 }
 
 const CaptchaModal: React.FC<CaptchaModalProps> = ({ onClose, onSuccess }) => {
-  const [verified, setVerified] = useState(false);
+  const [status, setStatus] = useState<"loading" | "verified" | "error">("loading");
 
-  const handleVerify = (token: string | null) => {
-    if (token) setVerified(true);
-  };
+  useEffect(() => {
+    // ✅ Google reCAPTCHA skriptini dinamik yuklaymiz
+    const scriptId = "recaptcha-script";
+    if (!document.getElementById(scriptId)) {
+      const script = document.createElement("script");
+      script.id = scriptId;
+      script.src = `https://www.google.com/recaptcha/api.js?render=${SITE_KEY}`;
+      script.async = true;
+      script.defer = true;
+      document.body.appendChild(script);
+    }
+
+    const checkRecaptchaReady = setInterval(() => {
+      // @ts-ignore
+      if (window.grecaptcha && window.grecaptcha.ready) {
+        clearInterval(checkRecaptchaReady);
+        // @ts-ignore
+        window.grecaptcha.ready(async () => {
+          try {
+            // @ts-ignore
+            const token = await window.grecaptcha.execute(SITE_KEY, { action: "verify_user" });
+            if (token) {
+              console.log("✅ reCAPTCHA token:", token);
+              setStatus("verified");
+              onSuccess(token);
+              localStorage.setItem('captcha', token)
+            } else {
+              setStatus("error");
+            }
+          } catch (err) {
+            console.error("❌ reCAPTCHA xatosi:", err);
+            setStatus("error");
+          }
+        });
+      }
+    }, 300);
+
+    return () => clearInterval(checkRecaptchaReady);
+  }, [onSuccess]);
 
   return (
     <motion.div
@@ -33,7 +68,17 @@ const CaptchaModal: React.FC<CaptchaModalProps> = ({ onClose, onSuccess }) => {
           Iltimos, odamligingizni tasdiqlang
         </h2>
 
-        <ReCAPTCHA sitekey={SITE_KEY} onChange={handleVerify} />
+        {status === "loading" && (
+          <p className="text-gray-600 dark:text-gray-300 text-sm">Tekshirilmoqda...</p>
+        )}
+        {status === "verified" && (
+          <p className="text-green-600 font-semibold text-sm">Tasdiqdan o‘tdingiz ✅</p>
+        )}
+        {status === "error" && (
+          <p className="text-red-500 text-sm mt-2">
+            Xatolik yuz berdi. Iltimos, qayta urinib ko‘ring.
+          </p>
+        )}
 
         <div className="flex justify-center gap-4 mt-6">
           <button
@@ -41,17 +86,6 @@ const CaptchaModal: React.FC<CaptchaModalProps> = ({ onClose, onSuccess }) => {
             className="px-4 py-2 rounded-md bg-gray-300 dark:bg-gray-700 text-black dark:text-white"
           >
             Bekor qilish
-          </button>
-          <button
-            disabled={!verified}
-            onClick={onSuccess}
-            className={`px-4 py-2 rounded-md font-semibold transition ${
-              verified
-                ? "bg-blue-600 text-white hover:bg-blue-700"
-                : "bg-gray-400 text-gray-700 cursor-not-allowed"
-            }`}
-          >
-            Davom etish
           </button>
         </div>
       </motion.div>

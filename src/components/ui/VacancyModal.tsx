@@ -21,6 +21,7 @@ const VacancyModal = ({ vacancy, onClose }: VacancyModalProps) => {
     gender: "male",
     email: "",
     major: "",
+    captcha: ""
   });
   const [file, setFile] = useState<File | null>(null);
   const [loading, setLoading] = useState(false);
@@ -61,7 +62,10 @@ const VacancyModal = ({ vacancy, onClose }: VacancyModalProps) => {
       formData.append("vacancy_id", vacancy.id);
       formData.append("file", file);
       formData.set("phone", "+998" + form.phone);
+      const captcha = localStorage.getItem('captcha')
 
+      formData.append("captcha", captcha);
+      
       const res = await fetch("https://univer-production.up.railway.app/subscriptions", {
         method: "POST",
         headers: {
