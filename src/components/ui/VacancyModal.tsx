@@ -2,11 +2,11 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { X, Upload } from "lucide-react";
+import { X } from "lucide-react";
 import { toast } from "@/hooks/use-toast";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { Vacancy } from "./VacancyCard";
-FormData
+
 interface VacancyModalProps {
   vacancy: Vacancy;
   onClose: () => void;
@@ -15,13 +15,10 @@ interface VacancyModalProps {
 const VacancyModal = ({ vacancy, onClose }: VacancyModalProps) => {
   const [form, setForm] = useState({
     fullName: "",
-    age: "",
     phone: "",
-    gender: "male",
     email: "",
     major: "",
   });
-  const [file, setFile] = useState<File | null>(null);
   const [loading, setLoading] = useState(false);
   const { t } = useLanguage();
 
@@ -29,28 +26,26 @@ const VacancyModal = ({ vacancy, onClose }: VacancyModalProps) => {
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
   ) => {
     const { name, value } = e.target;
-    setForm({ ...form, [name]: value });
+    setForm((prev) => ({ ...prev, [name]: value }));
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
     const captcha = localStorage.getItem("captcha");
-    console.log("🧩 Captcha token:", captcha);
-    console.log("📦 Current form:", form);
-
-    if (!file) {
+    if (!captcha) {
       toast({
-        title: "❌ " + t.vacancy.uploadResume,
+        title: "❌ reCAPTCHA topilmadi",
+        description: "Iltimos, sahifani yangilang.",
         variant: "destructive",
       });
       return;
     }
 
-    if (!captcha) {
+    if (!form.phone.match(/^\d{2}\s?\d{3}\s?\d{2}\s?\d{2}$/)) {
       toast({
-        title: "❌ reCAPTCHA token topilmadi",
-        description: "Iltimos, sahifani yangilab qayta urinib ko‘ring.",
+        title: "❌ Telefon raqam noto‘g‘ri formatda",
+        description: "Masalan: 90 123 45 67",
         variant: "destructive",
       });
       return;
@@ -61,19 +56,11 @@ const VacancyModal = ({ vacancy, onClose }: VacancyModalProps) => {
     try {
       const formData = new FormData();
       formData.append("fullName", form.fullName);
-      formData.append("age", form.age);
-      formData.append("phone", "+998" + form.phone);
-      formData.append("gender", form.gender);
+      formData.append("phone", "+998" + form.phone.replace(/\s/g, ""));
       formData.append("email", form.email);
       formData.append("major", form.major);
       formData.append("vacansy_id", vacancy.id);
-      formData.append("file", file);
       formData.append("captcha", captcha);
-
-      console.log("📤 Sending FormData:");
-      for (const [key, val] of formData.entries()) {
-        console.log(`${key}:`, val);
-      }
 
       const res = await fetch(
         "https://univer-production.up.railway.app/subscriptions",
@@ -83,12 +70,8 @@ const VacancyModal = ({ vacancy, onClose }: VacancyModalProps) => {
         }
       );
 
-      console.log("📡 Response status:", res.status);
-
       const text = await res.text();
-      console.log("📩 Raw server response:", text);
-
-      let data;
+      let data: any;
       try {
         data = JSON.parse(text);
       } catch {
@@ -101,7 +84,7 @@ const VacancyModal = ({ vacancy, onClose }: VacancyModalProps) => {
       } else {
         toast({
           title: "❌ " + t.vacancy.error,
-          description: data.message || "Serverdan xato javob qaytdi",
+          description: data.message || "Server xatosi",
           variant: "destructive",
         });
       }
@@ -109,7 +92,7 @@ const VacancyModal = ({ vacancy, onClose }: VacancyModalProps) => {
       console.error("💥 Xatolik:", err);
       toast({
         title: "❌ " + t.vacancy.error,
-        description: "Tarmoq yoki server bilan muammo bo‘lishi mumkin.",
+        description: "Internet yoki server bilan muammo bo‘lishi mumkin.",
         variant: "destructive",
       });
     } finally {
@@ -146,15 +129,6 @@ const VacancyModal = ({ vacancy, onClose }: VacancyModalProps) => {
             className="w-full border border-border p-3 rounded-lg"
           />
           <input
-            name="age"
-            type="number"
-            placeholder={t.vacancy.age}
-            value={form.age}
-            onChange={handleChange}
-            required
-            className="w-full border border-border p-3 rounded-lg"
-          />
-          <input
             name="phone"
             type="tel"
             placeholder="90 123 45 67"
@@ -181,36 +155,12 @@ const VacancyModal = ({ vacancy, onClose }: VacancyModalProps) => {
             className="w-full border border-border p-3 rounded-lg"
           />
 
-          <select
-            name="gender"
-            value={form.gender}
-            onChange={handleChange}
-            className="w-full border border-border p-3 rounded-lg"
-          >
-            <option value="male">{t.vacancy.male}</option>
-            <option value="female">{t.vacancy.female}</option>
-          </select>
-
-          <label className="block w-full">
-            <input
-              type="file"
-              accept=".pdf,.doc,.docx"
-              required
-              onChange={(e) => setFile(e.target.files?.[0] || null)}
-              className="hidden"
-            />
-            <div className="cursor-pointer w-full border-2 border-dashed border-border bg-muted p-6 rounded-lg text-center">
-              <Upload className="h-8 w-8 mx-auto mb-2 text-muted-foreground" />
-              <p>{file ? file.name : t.vacancy.resume}</p>
-            </div>
-          </label>
-
           <motion.button
             type="submit"
             disabled={loading}
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
-            className="w-full bg-primary text-primary-foreground py-4 rounded-lg font-semibold text-lg disabled:opacity-50"
+            className="w-full bg-green-600 hover:bg-green-700 text-white py-4 rounded-lg font-semibold text-lg transition-all disabled:opacity-50"
           >
             {loading ? t.vacancy.submitting : t.vacancy.submit}
           </motion.button>
