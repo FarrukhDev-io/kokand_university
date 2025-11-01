@@ -1,13 +1,12 @@
+"use client";
+
 import { motion } from "framer-motion";
-import { ExternalLink, Calendar, MapPin, Briefcase } from "lucide-react";
+import { Calendar, ExternalLink } from "lucide-react";
 
 export type Vacancy = {
   id: string;
   title: string;
-  location: string;
-  experience: string;
   description: string;
-  image?: string;
   url?: string;
   created_at?: string;
 };
@@ -36,46 +35,26 @@ const VacancyCard = ({ vacancy, onSubscribe }: VacancyCardProps) => {
       whileHover={{ scale: 1.02 }}
       className="group relative overflow-hidden rounded-2xl border border-border bg-card shadow-md transition-all duration-300 hover:shadow-lg"
     >
-      {/* Rasm */}
-      {vacancy.image && (
-        <div className="relative h-44 sm:h-48 w-full overflow-hidden">
-          <img
-            src={
-              vacancy.image.startsWith("http")
-                ? vacancy.image
-                : `https://univer-production.up.railway.app/${vacancy.image}`
-            }
-            alt={vacancy.title}
-            className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
-          />
-        </div>
-      )}
-
-      {/* Ma'lumot */}
+      {/* Asosiy ma’lumot */}
       <div className="p-4 sm:p-5 flex flex-col gap-3">
+        {/* Sarlavha */}
         <h3 className="text-lg sm:text-xl font-bold text-foreground">
           {vacancy.title}
         </h3>
 
+        {/* Sana (agar mavjud bo‘lsa) */}
         {formattedDate && (
           <p className="flex items-center gap-2 text-xs sm:text-sm text-muted-foreground">
             <Calendar className="w-4 h-4 shrink-0" /> {formattedDate}
           </p>
         )}
 
-        <div className="flex flex-wrap gap-3 text-xs sm:text-sm text-muted-foreground">
-          <p className="flex items-center gap-1">
-            <MapPin className="w-4 h-4 shrink-0" /> {vacancy.location}
-          </p>
-          <p className="flex items-center gap-1">
-            <Briefcase className="w-4 h-4 shrink-0" /> {vacancy.experience}
-          </p>
-        </div>
-
-        <p className="text-xs sm:text-sm text-muted-foreground line-clamp-3 leading-relaxed">
+        {/* Tavsif */}
+        <p className="text-xs sm:text-sm text-muted-foreground line-clamp-4 leading-relaxed">
           {vacancy.description}
         </p>
 
+        {/* Tugmalar */}
         <div className="mt-4 flex items-center justify-between">
           {vacancy.url && (
             <a

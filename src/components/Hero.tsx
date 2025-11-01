@@ -48,7 +48,7 @@ const Hero = () => {
     },
     {
       icon: <GraduationCap className="h-12 w-12 mx-auto mb-3 text-secondary" />,
-      value: "850+",
+      value: "3500+",
       label: t.hero.stats.faculty,
     },
     {
