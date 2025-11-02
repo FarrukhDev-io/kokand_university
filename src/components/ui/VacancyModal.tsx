@@ -19,7 +19,6 @@ const VacancyModal = ({ vacancy, onClose }: VacancyModalProps) => {
   const [form, setForm] = useState({
     fullName: "",
     phone: "",
-    email: "",
     major: "",
   });
 
@@ -29,23 +28,18 @@ const VacancyModal = ({ vacancy, onClose }: VacancyModalProps) => {
     const { name, value } = e.target;
     let newValue = value;
 
-    // ✅ Smart validation per field
     switch (name) {
       case "fullName":
-        newValue = value.replace(/[^A-Za-zА-Яа-яЁёʻʼ‘’ ]/g, "").slice(0, 50); // only letters + space
+        newValue = value.replace(/[^A-Za-zА-Яа-яЁёʻʼ‘’ ]/g, "").slice(0, 50);
         break;
 
       case "phone":
         newValue = value
           .replace(/[^\d]/g, "")
-          .slice(0, 9) // only 9 digits after +998
+          .slice(0, 9)
           .replace(/(\d{2})(\d{3})(\d{0,2})(\d{0,2})/, (_, a, b, c, d) =>
             [a, b, c, d].filter(Boolean).join(" ")
           );
-        break;
-
-      case "email":
-        newValue = value.trim().slice(0, 60);
         break;
 
       case "major":
@@ -57,7 +51,7 @@ const VacancyModal = ({ vacancy, onClose }: VacancyModalProps) => {
   };
 
   const validateForm = () => {
-    if (!form.fullName || form.fullName.length < 3) {
+    if (form.fullName.length < 3) {
       toast({
         title: "❌ Ism juda qisqa",
         description: "Iltimos, to‘liq ismingizni kiriting.",
@@ -75,21 +69,10 @@ const VacancyModal = ({ vacancy, onClose }: VacancyModalProps) => {
       return false;
     }
 
-    if (
-      !/^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/.test(form.email)
-    ) {
-      toast({
-        title: "❌ Email noto‘g‘ri formatda",
-        description: "Masalan: example@mail.com",
-        variant: "destructive",
-      });
-      return false;
-    }
-
     if (form.major.length < 2) {
       toast({
         title: "❌ Yo‘nalish juda qisqa",
-        description: "Yo'nalish",
+        description: "Iltimos, yo‘nalishingizni kiriting.",
         variant: "destructive",
       });
       return false;
@@ -118,7 +101,6 @@ const VacancyModal = ({ vacancy, onClose }: VacancyModalProps) => {
       const formData = new FormData();
       formData.append("fullName", form.fullName.trim());
       formData.append("phone", "+998" + form.phone.replace(/\s/g, ""));
-      formData.append("email", form.email.trim());
       formData.append("major", form.major.trim());
       formData.append("vacansy_id", vacancy.id);
       formData.append("captcha", captcha);
@@ -132,12 +114,13 @@ const VacancyModal = ({ vacancy, onClose }: VacancyModalProps) => {
       );
 
       const text = await res.text();
-      let data: any;
-      try {
-        data = JSON.parse(text);
-      } catch {
-        data = { message: text };
-      }
+      const data = (() => {
+        try {
+          return JSON.parse(text);
+        } catch {
+          return { message: text };
+        }
+      })();
 
       if (res.ok) {
         toast({ title: "✅ " + t.vacancy.success });
@@ -162,27 +145,27 @@ const VacancyModal = ({ vacancy, onClose }: VacancyModalProps) => {
   };
 
   return (
-    <div className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-50 p-4">
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm p-4">
       <motion.div
         initial={{ opacity: 0, scale: 0.9, y: 20 }}
         animate={{ opacity: 1, scale: 1, y: 0 }}
         exit={{ opacity: 0, scale: 0.9, y: 20 }}
-        className="bg-card border border-border rounded-2xl p-8 max-w-2xl w-full relative shadow-2xl max-h-[90vh] overflow-y-auto"
+        className="relative w-full max-w-2xl max-h-[90vh] overflow-y-auto rounded-2xl border border-border bg-card p-8 shadow-2xl"
       >
         {/* Close button */}
         <button
           onClick={onClose}
-          className="absolute top-4 right-4 text-muted-foreground hover:text-foreground transition-colors z-10"
           aria-label="Close modal"
+          className="absolute top-4 right-4 text-muted-foreground hover:text-foreground transition-colors"
         >
           <X className="h-6 w-6" />
         </button>
 
-        <h2 className="text-3xl font-bold mb-6 text-foreground leading-tight">
+        <h2 className="mb-6 text-3xl font-bold leading-tight text-foreground">
           {t.vacancy.applyTitle} {vacancy.title}
         </h2>
 
-        {/* ✅ Optimized Form */}
+        {/* Form */}
         <form onSubmit={handleSubmit} className="space-y-4">
           <input
             name="fullName"
@@ -192,11 +175,11 @@ const VacancyModal = ({ vacancy, onClose }: VacancyModalProps) => {
             required
             minLength={3}
             maxLength={50}
-            className="w-full border border-border p-3 rounded-lg focus:ring-2 focus:ring-green-500 outline-none transition-all"
+            className="w-full rounded-lg border border-border p-3 outline-none transition-all focus:ring-2 focus:ring-green-500"
           />
 
-          <div className="flex items-center border border-border rounded-lg overflow-hidden">
-            <span className="bg-muted px-3 text-muted-foreground select-none">
+          <div className="flex items-center overflow-hidden rounded-lg border border-border">
+            <span className="select-none bg-muted px-3 text-muted-foreground">
               +998
             </span>
             <input
@@ -212,24 +195,13 @@ const VacancyModal = ({ vacancy, onClose }: VacancyModalProps) => {
           </div>
 
           <input
-            name="email"
-            type="email"
-            placeholder={t.vacancy.email}
-            value={form.email}
-            onChange={handleChange}
-            required
-            maxLength={60}
-            className="w-full border border-border p-3 rounded-lg focus:ring-2 focus:ring-green-500 outline-none transition-all"
-          />
-
-          <input
             name="major"
             placeholder={t.vacancy.majorPlaceholder}
             value={form.major}
             onChange={handleChange}
             required
             maxLength={60}
-            className="w-full border border-border p-3 rounded-lg focus:ring-2 focus:ring-green-500 outline-none transition-all"
+            className="w-full rounded-lg border border-border p-3 outline-none transition-all focus:ring-2 focus:ring-green-500"
           />
 
           <motion.button
@@ -237,7 +209,7 @@ const VacancyModal = ({ vacancy, onClose }: VacancyModalProps) => {
             disabled={loading}
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
-            className="w-full bg-green-600 hover:bg-green-700 text-white py-4 rounded-lg font-semibold text-lg transition-all disabled:opacity-50"
+            className="w-full rounded-lg bg-red-600 py-4 text-lg font-semibold text-white transition-all hover:bg-green-700 disabled:opacity-50"
           >
             {loading ? t.vacancy.submitting : t.vacancy.submit}
           </motion.button>
