@@ -1,4 +1,4 @@
-import { motion, useMotionValue, useTransform, animate } from "framer-motion";
+import { motion, useMotionValue, animate } from "framer-motion";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { useState, useEffect, useRef } from "react";
 
@@ -7,7 +7,7 @@ const Partners = () => {
   const [isDragging, setIsDragging] = useState(false);
   const constraintsRef = useRef(null);
   const x = useMotionValue(0);
-  const animationRef = useRef(null);
+  const animationRef = useRef<any>(null);
 
   const partners = [
     { name: "Ishonch", img: "/partners/logo_ishonch.png", lightLogo: true },
@@ -20,10 +20,10 @@ const Partners = () => {
   ];
 
   const duplicated = [...partners, ...partners, ...partners];
-  const itemWidth = 220; // gap bilan birga
+  const itemWidth = 220;
   const totalWidth = partners.length * itemWidth;
 
-  // Avtomatik scroll animatsiyasi
+  // Avtomatik harakat
   useEffect(() => {
     if (!isDragging) {
       const controls = animate(x, x.get() - totalWidth, {
@@ -31,10 +31,7 @@ const Partners = () => {
         ease: "linear",
         repeat: Infinity,
         onUpdate: (latest) => {
-          // Loop yaratish uchun
-          if (latest <= -totalWidth * 2) {
-            x.set(latest + totalWidth);
-          }
+          if (latest <= -totalWidth * 2) x.set(latest + totalWidth);
         },
       });
       animationRef.current = controls;
@@ -43,106 +40,77 @@ const Partners = () => {
   }, [isDragging, totalWidth, x]);
 
   return (
-    <section className="py-24 bg-gradient-to-b rounded-2xl from-background via-muted/20 to-background overflow-hidden relative">
+    <section className="py-14 sm:py-16 bg-gradient-to-b from-background via-muted/10 to-background rounded-2xl overflow-hidden relative">
       {/* Sarlavha */}
-      <div className="container mx-auto px-4 text-center mb-16">
+      <div className="container mx-auto px-4 text-center mb-10 sm:mb-14">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 15 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold bg-gradient-to-r from-primary via-primary/80 to-primary bg-clip-text text-transparent">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold bg-gradient-to-r from-primary via-primary/80 to-primary bg-clip-text text-transparent">
             {t.about.partnerships || "Bizning hamkorlarimiz"}
           </h2>
-          <p className="text-muted-foreground mt-4 text-lg md:text-xl max-w-2xl mx-auto">
+          <p className="text-muted-foreground mt-3 text-base sm:text-lg max-w-2xl mx-auto">
             {t.about.partnersSubtitle || "Yetakchi kompaniyalar bizga ishonadi"}
           </p>
         </motion.div>
       </div>
 
-      {/* Drag/Swipe qilinadigan logotiplar */}
+      {/* Logotiplar */}
       <div className="relative cursor-grab active:cursor-grabbing" ref={constraintsRef}>
         <motion.div
-          className="flex gap-12 md:gap-16 w-max"
+          className="flex gap-10 sm:gap-14 w-max"
           style={{ x }}
           drag="x"
           dragConstraints={{ left: -totalWidth * 2, right: 0 }}
           dragElastic={0.1}
-          dragTransition={{ bounceStiffness: 300, bounceDamping: 30 }}
           onDragStart={() => {
             setIsDragging(true);
-            if (animationRef.current) animationRef.current.stop();
+            animationRef.current?.stop();
           }}
-          onDragEnd={() => {
-            setIsDragging(false);
-          }}
+          onDragEnd={() => setIsDragging(false)}
         >
-          {duplicated.map((partner, i) => (
+          {duplicated.map((p, i) => (
             <motion.div
               key={i}
-              className="flex flex-col items-center justify-center min-w-[160px] sm:min-w-[200px] md:min-w-[220px] group select-none"
+              className="flex flex-col items-center justify-center min-w-[160px] sm:min-w-[200px] group select-none"
               whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.98 }}
-              transition={{ duration: 0.3 }}
+              whileTap={{ scale: 0.97 }}
             >
-              {/* Logo konteyner */}
               <div
-                className={`rounded-2xl p-5 sm:p-6 flex items-center justify-center 
-                  transition-all duration-300 shadow-lg hover:shadow-xl
-                  ${partner.lightLogo
-                    ? "bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800"
-                    : "bg-white/90 dark:bg-neutral-900/90 border border-neutral-200/50 dark:border-neutral-800/50"}
-                  group-hover:border-primary/30
+                className={`rounded-2xl p-5 sm:p-6 flex items-center justify-center border transition-all shadow-sm hover:shadow-md duration-300
+                ${p.lightLogo
+                  ? "bg-white dark:bg-neutral-900 border-neutral-200 dark:border-neutral-800"
+                  : "bg-white/90 dark:bg-neutral-900/90 border-neutral-200/60 dark:border-neutral-800/60"}
                 `}
-                style={{ width: "180px", height: "110px" }}
+                style={{ width: "170px", height: "100px" }}
               >
                 <img
-                  src={partner.img}
-                  alt={`${partner.name} logo`}
-                  loading="lazy"
+                  src={p.img}
+                  alt={p.name}
                   draggable={false}
-                  className={`max-h-full max-w-full object-contain 
-                    transition-all duration-300 filter group-hover:brightness-110
-                    ${partner.lightLogo ? "dark:invert dark:brightness-150" : ""}
-                  `}
+                  className={`max-h-full max-w-full object-contain transition-all duration-300 group-hover:brightness-110 ${
+                    p.lightLogo ? "dark:invert dark:brightness-150" : ""
+                  }`}
                 />
               </div>
-
-              {/* Hamkor nomi */}
-              <p className="text-sm sm:text-base text-muted-foreground mt-4 font-semibold text-center 
-                group-hover:text-primary transition-colors duration-300">
-                {partner.name}
+              <p className="text-sm sm:text-base mt-3 text-muted-foreground font-semibold text-center group-hover:text-primary transition-colors">
+                {p.name}
               </p>
             </motion.div>
           ))}
         </motion.div>
 
-        {/* Chap gradient fade */}
-        <div className="absolute left-0 top-0 w-32 md:w-48 h-full 
-          bg-gradient-to-r from-background via-background/80 to-transparent 
-          pointer-events-none z-10"></div>
-
-        {/* O'ng gradient fade */}
-        <div className="absolute right-0 top-0 w-32 md:w-48 h-full 
-          bg-gradient-to-l from-background via-background/80 to-transparent 
-          pointer-events-none z-10"></div>
+        {/* Gradient fade */}
+        <div className="absolute left-0 top-0 w-24 sm:w-40 h-full bg-gradient-to-r from-background via-background/70 to-transparent pointer-events-none"></div>
+        <div className="absolute right-0 top-0 w-24 sm:w-40 h-full bg-gradient-to-l from-background via-background/70 to-transparent pointer-events-none"></div>
       </div>
 
-      {/* Ko'rsatma teksti */}
-      <motion.div 
-        className="text-center mt-8 text-sm text-muted-foreground/60"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1 }}
-      >
-        {/* <p className="hidden md:block">🖱️ Sichqoncha bilan sudrab o'tkizing</p> */}
-        {/* <p className="md:hidden">👆 Barmoq bilan sudrab o'tkizing</p> */}
-      </motion.div>
-
-      {/* Dekorativ elementlar */}
-      <div className="absolute top-1/4 left-10 w-72 h-72 bg-primary/5 rounded-full blur-3xl pointer-events-none"></div>
-      <div className="absolute bottom-1/4 right-10 w-72 h-72 bg-primary/5 rounded-full blur-3xl pointer-events-none"></div>
+      {/* Blur bezaklar (kichikroq qilib qo‘yilgan) */}
+      <div className="absolute top-1/3 left-10 w-48 h-48 bg-primary/5 rounded-full blur-3xl pointer-events-none"></div>
+      <div className="absolute bottom-1/3 right-10 w-48 h-48 bg-primary/5 rounded-full blur-3xl pointer-events-none"></div>
     </section>
   );
 };
