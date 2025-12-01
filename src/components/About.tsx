@@ -25,7 +25,7 @@ const ExpandableText = ({ children }) => {
   return (
     <div className="relative">
       <motion.div
-        animate={{ maxHeight: expanded ? 2000 : 200 }}
+        animate={{ maxHeight: expanded ? 2000 : 170 }}
         transition={{ duration: 0.4, ease: "easeInOut" }}
         className="overflow-hidden space-y-4 text-lg leading-relaxed text-foreground"
       >
@@ -33,7 +33,7 @@ const ExpandableText = ({ children }) => {
       </motion.div>
 
       {!expanded && (
-        <div className="absolute bottom-0 left-0 w-full h-20 bg-gradient-to-t from-muted/90 to-transparent pointer-events-none" />
+        <div className="absolute bottom-0 left-0 w-full h-20 bg-gradient-to-t from-muted/40 rounded-lg to-transparent pointer-events-none" />
       )}
 
       <button
