@@ -2,25 +2,20 @@
 
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
-// import LanguageSwitcher from "./LanguageSwitcher";
 import ThemeToggle from "./ThemeToggle";
 import { useLanguage } from "@/contexts/LanguageContext";
-import { useTheme } from "@/contexts/ThemeContext"; // ✅ Qo‘shildi
+import { useTheme } from "@/contexts/ThemeContext";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const { t } = useLanguage();
-  const { theme } = useTheme(); // ✅ Contextdan theme olish
+  const { theme } = useTheme();
 
-  // 🔁 Themega qarab logo tanlash
   const logoSrc = theme === "dark" ? "/ku-white.png" : "/ku-black.png";
 
   const navLinks = [
     { name: t.hero.title, href: "#hero" },
     { name: t.nav.about, href: "#about" },
-    // { name: t.nav.analytics, href: "#analytics" },
-    // { name: t.nav.future, href: "#future" },
-    // { name: t.nav.contact, href: "#contact" },
   ];
 
   const scrollToSection = (href: string) => {
@@ -35,7 +30,7 @@ const Navbar = () => {
     <nav className="fixed top-0 left-0 right-0 z-50 glass-card border-b backdrop-blur-xl bg-background/80 transition-colors duration-300">
       <div className="container mx-auto px-4 lg:px-8">
         <div className="flex items-center justify-between h-16">
-          {/* 🏫 Logo */}
+          {/* Logo */}
           <a
             href="#home"
             target="_blank"
@@ -57,7 +52,7 @@ const Navbar = () => {
             </div>
           </a>
 
-          {/* 💫 Desktop Navigation */}
+          {/* Desktop Navigation */}
           <div className="hidden lg:flex items-center space-x-1">
             {navLinks.map((link) => (
               <button
@@ -70,13 +65,12 @@ const Navbar = () => {
             ))}
           </div>
 
-          {/* 🌗 Right side actions */}
+          {/* Right side actions */}
           <div className="hidden lg:flex items-center space-x-2">
             <ThemeToggle />
-            {/* <LanguageSwitcher /> */}
           </div>
 
-          {/* 📱 Mobile menu button */}
+          {/* Mobile menu button */}
           <div className="lg:hidden flex items-center gap-2">
             <ThemeToggle />
             <button
@@ -88,7 +82,7 @@ const Navbar = () => {
           </div>
         </div>
 
-        {/* 📱 Mobile menu dropdown */}
+        {/* Mobile menu dropdown */}
         {isOpen && (
           <div className="lg:hidden py-4 space-y-2 animate-fadeIn">
             {navLinks.map((link) => (
@@ -100,9 +94,6 @@ const Navbar = () => {
                 {link.name}
               </button>
             ))}
-            <div className="px-4 pt-2 flex items-center gap-2">
-              {/* <LanguageSwitcher /> */}
-            </div>
           </div>
         )}
       </div>

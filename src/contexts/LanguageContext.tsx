@@ -1,7 +1,5 @@
 import { createContext, useContext, useState, useEffect, ReactNode } from "react";
-import enTranslations from "@/locales/en.json";
 import uzTranslations from "@/locales/uz.json";
-import ruTranslations from "@/locales/ru.json";
 
 type Language = "uz";
 
@@ -12,9 +10,7 @@ interface LanguageContextType {
 }
 
 const translations = {
-  en: enTranslations,
   uz: uzTranslations,
-  ru: ruTranslations,
 };
 
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);

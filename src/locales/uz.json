@@ -1,18 +1,12 @@
 {
   "nav": {
-    "about": "Kelajakka Qadam",
-    "analytics": "Ko'rsatkichlar",
-    "contact": "Aloqa",
-    "future": "Kelajakka qadam"
+    "about": "Kelajakka Qadam"
   },
   "hero": {
     "title": "Alumni",
-    "subtitle": "",
-    "quote": "Dunyoda bilimdan boshqa najot yo'q va bo'lmaydi",
     "welcomeCard": {
-      "karyera": "Karyera",
       "title": "Xush kelibsiz!",
-      "description": "Bitiruvchilarni ish bilan ta’minlashga ko’maklashish va karyerani rivojlantirish markazi",
+      "description": "Bitiruvchilarni ish bilan ta'minlashga ko'maklashish va karyerani rivojlantirish markazi",
       "cta": "Universitetga kirish"
     },
     "stats": {
@@ -23,195 +17,32 @@
     }
   },
   "about": {
-    "title": "Markaz Haqida",
-    "subtitle": "Biz bilan orzularingizni kashf eting!",
-    "description1": "O‘zbekiston respublikasi prezidenti tomonidan 2025-yil 8-avgust kuni o‘tkazilgan video selektorda berilgan topshiriqlarni ijrosini ta’minlash hamda Qo‘qon universiteti bitiruvchilarini xizmatlar bozorida o‘z o‘rinlarini oson topish va kelajakda o‘z mutaxassisliklari bo‘yicha munosib ish o‘rinlarida ishlashlarini ta’minlash maqsadida “Bitiruvchilarni ish bilan ta’minlashga ko’maklashish va karyerani rivojlantirish markazi” tashkil etildi",
-    "description2": "",
-    "partnerships": "Hamkor Tashkilot va Korxonalar",
-    "stats": {
-      "students": "Talabalar",
-      "professors": "Professor va oʻqituvchilar",
-      "doctoral": "Doktorantlar",
-      "researchers": "Mustaqil tadqiqotchilar",
-      "classrooms": "Auditoriyalar",
-      "fields": "Taʼlim yoʻnalishlari",
-      "programs": "Qoʻshma dasturlar",
-      "faculties": "Fakultetlar"
-    }
-    
-  },
-  "programs": {
-    "title": "Dasturlar va Fakultetlar",
-    "subtitle": "Muvaffaqiyatga tayyorlash uchun moʻljallangan turli akademik dasturlarni oʻrganing",
-    "learnMore": "Batafsil",
-    "viewAll": "Barcha dasturlarni koʻrish"
-  },
-  "admissions": {
-    "title": "Qabul",
-    "subtitle": "2025/2026 oʻquv yili uchun qabul boshlandi",
-    "banner": {
-      "title": "Oʻzbekistonning yetakchi universitetlaridan birida talaba boʻling!",
-      "description": "Taʼlim mukammalligiga intilayotgan minglab talabalarga qoʻshiling. 2025/2026 oʻquv yili uchun arizalar qabul qilinmoqda.",
-      "cta": "Arizani boshlash"
-    },
-    "steps": {
-      "step1": {
-        "title": "Arizani toʻldirish",
-        "description": "Shaxsiy va akademik maʼlumotlaringiz bilan onlayn ariza shaklini toʻldiring"
-      },
-      "step2": {
-        "title": "Hujjatlarni topshirish",
-        "description": "Transkriptlar, sertifikatlar va ID nusxalarini yuklang"
-      },
-      "step3": {
-        "title": "Suhbat",
-        "description": "Qabul komissiyasi bilan suhbatda qatnashing"
-      },
-      "step4": {
-        "title": "Qaror",
-        "description": "Qabul qarori va roʻyxatdan oʻtish koʻrsatmalarini oling"
-      }
-    },
-    "help": {
-      "title": "Ariza berish uchun yordam kerakmi?",
-      "contactCenter": "Aloqa markazi",
-      "location": "Manzil",
-      "address": "Turkiston koʻchasi\nQoʻqon shahri, Fargʻona viloyati\nOʻzbekiston"
-    }
-  },
-  "employment": {
-    "title": "Bitiruvchilar ish bilan bandligi",
-    "subtitle": "Qo'qon Universiteti bitiruvchilarining bandligi va analitikasi",
-    "charts": {
-      "employmentByProgram": "Yo'nalishlar bo'yicha bandlik",
-      "employmentRate": "Bandlik ko'rsatkichi",
-      "overallEmployment": "Umumiy bandlik darajasi",
-      "employmentTrend": "Bandlik tendensiyasi (2019-2025)",
-      "graduatesVsEmployed": "Bitiruvchilar va ish bilan bandlar",
-      "employed": "Ish bilan band",
-      "unemployed": "Ishsiz",
-      "totalGraduates": "Jami bitiruvchilar",
-      "totalEmployed": "Jami ish bilan bandlar"
-    },
-    "programs": {
-      "economics": "Iqtisodiyot",
-      "finance": "Moliya",
-      "management": "Menejment",
-      "tourism": "Mehmonxona va turizm",
-      "english": "Xorijiy til va adabiyoti (ingliz tili)",
-      "preschool": "Maktabgacha ta'lim",
-      "primary": "Boshlang'ich ta'lim",
-      "psychology": "Psixologiya",
-      "computerEngineering": "Kompyuter injiniring"
-    }
-  },
-  "future": {
-    "title": "Kelajakka qadam",
-    "subtitle": "Bitiruvchilar ish bilan ta'minlanishini qo'llab-quvvatlash bo'yicha Prezident qarori",
-    "decree": {
-      "title": "O'zbekiston Respublikasi Prezidentining qarori",
-      "date": "2025-yil 14-fevral - PQ-61-son",
-      "intro": "Oliy ta'lim tashkilotlari bitiruvchilarining ishga joylashishiga ko'maklashish bo'yicha qo'shimcha chora-tadbirlar to'g'risida. Yoshlarning bandligini ta'minlash, oliy ta'lim tashkilotlari bitiruvchilarining mehnat bozoriga integratsiyasini kuchaytirish, xususiy sektor va tijorat banklari ishtirokida kadrlar tayyorlash jarayonini takomillashtirish maqsadida:",
-      "president": "O'zbekiston Respublikasi Prezidenti Sh. MIRZIYOYEV",
-      "location": "Toshkent sh., 2025-yil 14-fevral",
-      "number": "PQ-61-son"
-    },
-    "program": {
-      "title": "\"Kelajakka qadam\" dasturi",
-      "description": "Oliy ta'lim, fan va innovatsiyalar vazirligi va \"O'zmilliybank\" AJ oliy ta'lim tashkilotlarining bitiruvchilarining ishga joylashtirishiga ko'maklashishga qaratilgan \"Kelajakka qadam\" dasturini amalga oshirish to'g'risidagi taklifiga rozilik berilsin:",
-      "point1": {
-        "title": "Biznes g'oyalarini qo'llab-quvvatlash",
-        "description": "O'z biznes g'oyalarini amalga oshirish istagi bo'lgan oliy ta'lim tashkilotlarining bitiruvchi bosqich talabalari uchun \"O'zmilliybank\" AJ tomonidan biznes g'oyani tayyor loyihagacha olib borish jarayonida to'liq hamrohlik qilish, shu jumladan qulay shartlarda moliyalashtirish."
-      },
-      "point2": {
-        "title": "Ochiq tanlovlar",
-        "description": "Oliy ta'lim tashkilotlarining bitiruvchi va quyi bosqich talabalari o'rtasida sohalar bo'yicha ochiq tanlovlar o'tkazish va g'oliblarni ish bilan ta'minlashga ko'maklashish:",
-        "item1": "Salohiyatli ish beruvchi tashkilotlar, shu jumladan yirik korxonalarning oliy ma'lumotli mutaxassislarga ehtiyojini aniqlash",
-        "item2": "Individual kasbiy ta'lim dasturlari asosida kasbga dastlabki tayyorlash tadbirlarini moliyalashtirish",
-        "item3": "Ishlab chiqarish obyektlarida amaliyot o'tash va chet eldagi oliy ta'lim tashkilotlarida qisqa muddatli o'quv kurslarida qatnashish imkoniyati"
-      }
-    },
-    "implementation": {
-      "title": "Amalga oshirish",
-      "point1": "Dastur \"O'zmilliybank\" AJ tomonidan hududlarda, shu jumladan autsorsing asosida tashkil etiladigan \"Kelajakka qadam\" markazlari orqali amalga oshiriladi",
-      "point2": "Barcha oliy ta'lim tashkilotlari Dastur ishtirokchilari hisoblanadi va talabalarni ishga joylashga ko'maklashish bo'yicha Markazlar bilan hamkorlik kelishuvlarini tuzadi"
-    },
-    "funding": {
-      "title": "Dasturni moliyalashtirish",
-      "amount1": "80 million AQSH dollari ekvivalenti miqdorida 10 yilga, shu jumladan 3 yillik imtiyozli davri bilan Markaziy bankning asosiy stavkasiga teng foizda",
-      "amount2": "20 million AQSH dollari ekvivalenti miqdorida talabalarni kasbga tayyorlash va ularning kasbiy amaliyot o'tash xarajatlarini moliyalashtirish uchun beg'araz asosda"
-    }
-  },
-  "Kelajak":{
-    "title": "Universitet ko'rsatkichlari",
-    "subtitle": "Qo'qon Universiteti statistikasi va analitikasi",
-    "info": "Ma'lumotlarga asoslangan yondashuvimiz barcha fakultetlarda muvozanatli qabulni ta'minlaydi va har bir talaba uchun optimal o'quv muhiti va resurslarni taqdim etadi.",
-    "selectYear": "Yilni tanlang",
-    "allYears": "Barcha yillar",
-    "charts": {
-      "studentsByFaculty": "Fakultetlar bo'yicha talabalar soni",
-      "facultyDistribution": "Fakultetlar taqsimoti (%)",
-      "enrollmentTrend": "Talabalar sonining o'sishi",
-      "graduationRate": "Bitiruvchilar ko'rsatkichi (%)",
-      "students": "Talabalar soni",
-      "graduated": "Bitirgan",
-      "studying": "O'qiyotgan"
-    },
-    "faculties": {
-      "economics": "Iqtisodiyot va biznes",
-      "engineering": "Muhandislik va texnologiya",
-      "sciences": "Tabiiy fanlar",
-      "social": "Ijtimoiy fanlar",
-      "philology": "Filologiya",
-      "law": "Huquqshunoslik"
-    }
-    
-  },
-  "campus": {
-    "title": "Kampus hayoti va galereya",
-    "subtitle": "Qoʻqon Universitetining jonli jamiyati va goʻzal kampusini his eting",
-    "features": {
-      "excellence": {
-        "title": "Akademik mukammallik",
-        "description": "Tajribali oʻqituvchilar bilan qattiq dasturlar"
-      },
-      "global": {
-        "title": "Global imkoniyatlar",
-        "description": "Xalqaro hamkorlik va almashinuv dasturlari"
-      },
-      "success": {
-        "title": "Talaba muvaffaqiyati",
-        "description": "Martaba va shaxsiy rivojlanish uchun yordam xizmatlari"
-      }
-    }
-  },
-  "news": {
-    "title": "Soʻnggi yangiliklar va tadbirlar",
-    "subtitle": "Qoʻqon Universitetidagi soʻnggi voqealardan xabardor boʻling",
-    "readMore": "Batafsil",
-    "viewAll": "Barcha yangiliklarni koʻrish"
-  },
-  "testimonials": {
-    "title": "Talabalarimiz nimani aytishadi",
-    "subtitle": "Muvaffaqiyatli talabalarimizdan tajribalarini eshiting"
+    "partnerships": "Hamkor Tashkilot va Korxonalar"
   },
   "contact": {
     "title": "Biz bilan bogʻlaning",
-    "subtitle": "Har qanday savol yoki maʼlumot uchun biz bilan bogʻlaning",
-    "address": "Manzil",
-    "phone": "Telefon",
-    "email": "Elektron pochta",
-    "followUs": "Bizni kuzatib boring"
+    "subtitle": "Har qanday savol yoki maʼlumot uchun biz bilan bogʻlaning"
   },
   "footer": {
-    "about": "Biz haqimizda",
-    "aboutText": "2019-yilda tashkil etilgan, O'zbekistonning jahon darajasidagi ta'lim va innovatsiyalarni rivojlantirish uchun yetakchi xususiy oliy ta'lim muassasasi.",
-    "quickLinks": "Tezkor havolalar",
-    "contact": "Aloqa",
-    "rights": "Barcha huquqlar himoyalangan.",
-    "developed": "Ishlab chiqilgan",
-    "frontend": "Frontend dasturchi",
-    "backend": "Backend dasturchi"
+    "rights": "Barcha huquqlar himoyalangan."
+  },
+  "vacancy": {
+    "applyTitle": "",
+    "fullName": "To'liq ism",
+    "phone": "Telefon raqam",
+    "major": "Yo'nalish",
+    "majorPlaceholder": "Yo'nalishi",
+    "submit": "Arizani yuborish",
+    "submitting": "Yuborilmoqda...",
+    "success": "Ariza muvaffaqiyatli yuborildi!",
+    "error": "Xatolik yuz berdi",
+    "phonePattern": "Telefon raqam +998XXXXXXXXX formatida bo'lishi kerak"
+  },
+  "vacancies": {
+    "loading": "Vakansiyalar yuklanmoqda...",
+    "notFound": "Hech qanday vakansiya topilmadi.",
+    "previous": "Oldingi",
+    "next": "Keyingi"
   },
   "otp": {
     "title": "Kirish Kodi (OTP)",
@@ -223,33 +54,7 @@
     "verifying": "Tekshirilmoqda...",
     "otpSent": "Bir martalik kod emailga yuborildi",
     "otpVerified": "Tasdiqlandi! Ariza formasiga o'tilmoqda...",
-    "error": "Xatolik yuz berdi"
-  },
-  "vacancy": {
-    "applyTitle": "",
-    "fullName": "To'liq ism",
-    "age": "Yosh",
-    "phone": "Telefon raqam",
-    "email": "Email",
-    "major": "Yo'nalish",
-    "majorPlaceholder": "Yo'nalishi",
-    "gender": "Jinsi",
-    "male": "Erkak",
-    "female": "Ayol",
-    "resume": "Rezyume yuklash (PDF, DOC, DOCX)",
-    "resumePlaceholder": "Faylni tanlash uchun bosing",
-    "submit": "Arizani yuborish",
-    "submitting": "Yuborilmoqda...",
-    "uploadResume": "Iltimos, rezyumeni yuklang!",
-    "success": "Ariza muvaffaqiyatli yuborildi!",
     "error": "Xatolik yuz berdi",
-    "phonePlaceholder": "+998 ___ ___ __ __",
-    "phonePattern": "Telefon raqam +998XXXXXXXXX formatida bo'lishi kerak"
-  },
-  "vacancies": {
-    "loading": "Vakansiyalar yuklanmoqda...",
-    "notFound": "Hech qanday vakansiya topilmadi.",
-    "previous": "Oldingi",
-    "next": "Keyingi"
+    "enterEmail": "Emailni kiriting"
   }
 }

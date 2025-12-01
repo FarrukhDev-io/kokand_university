@@ -55,23 +55,6 @@ const About = () => {
     <section id="about" className="py-20 bg-muted/30" ref={ref}>
       <div className="container mx-auto px-4 lg:px-8">
         <div className="max-w-6xl mx-auto space-y-12">
-          
-          {/* HEADER */}
-          {/* <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={inView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.6 }}
-            className="text-center space-y-4"
-          >
-            <h2 className="text-4xl md:text-5xl font-bold text-primary">
-              {t.about.title}
-            </h2>
-            <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto">
-              {t.about.subtitle}
-            </p>
-          </motion.div> */}
-
-          {/* KELAJAKKA QADAM */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
@@ -81,45 +64,41 @@ const About = () => {
             <h3 className="text-3xl font-bold text-primary">Kelajakka qadam</h3>
             <p className="text-muted-foreground text-lg">3-sentabr 2025</p>
 
-            {/* MATN FAQAT SHU YERDA COLLAPSE BO'LADI */}
             <ExpandableText>
               <p>
                 2025-yil 14-fevral kuni davlatimiz rahbari mamlakatimiz yoshlari bilan
-                muloqoti chog‘ida yoshlar tadbirkorligida mutlaqo yangi davrni boshlab
-                beradigan uchta muhim qaror qabul qilganini ta’kidlagan edilar.
+                muloqoti chog'ida yoshlar tadbirkorligida mutlaqo yangi davrni boshlab
+                beradigan uchta muhim qaror qabul qilganini ta'kidlagan edilar.
               </p>
 
               <p>
-                Ushbu qarorlar ijrosini ta’minlash maqsadida Qo‘qon universitetida
+                Ushbu qarorlar ijrosini ta'minlash maqsadida Qo'qon universitetida
                 "Kelajakka qadam" markazi ochildi. Markaz bitiruvchi yoshlarning
-                kasbiy rivojlanishini qo‘llab-quvvatlash va mehnat bozori talablariga
-                mos ko‘nikma berishga qaratilgan.
+                kasbiy rivojlanishini qo'llab-quvvatlash va mehnat bozori talablariga
+                mos ko'nikma berishga qaratilgan.
               </p>
 
               <p>
                 Bitiruvchi talabalar "Start up" loyihalarini markaz orqali
-                qo‘llab-quvvatlashlari mumkin.
+                qo'llab-quvvatlashlari mumkin.
               </p>
 
               <p>
-                Dastur ijtimoiy tarmoqlari sahifalariga quyidagi QR kod orqali o‘tish mumkin:
+                Dastur ijtimoiy tarmoqlari sahifalariga quyidagi QR kod orqali o'tish mumkin:
               </p>
             </ExpandableText>
 
-            {/* QR KOD HAR DOIM KO‘RINADI */}
             <div className="flex justify-center pt-4">
-  <a href="https://kelajakkaqadammarkazi.uz/?from=qr" target="_blank" rel="noopener noreferrer">
-    <img
-      src="/kuQR.jpg"
-      alt="Kelajakka Qadam QR"
-      className="w-40 h-40 md:w-48 md:h-48 object-contain"
-    />
-  </a>
-</div>
-
+              <a href="https://kelajakkaqadammarkazi.uz/?from=qr" target="_blank" rel="noopener noreferrer">
+                <img
+                  src="/kuQR.jpg"
+                  alt="Kelajakka Qadam QR"
+                  className="w-40 h-40 md:w-48 md:h-48 object-contain"
+                />
+              </a>
+            </div>
           </motion.div>
 
-          {/* PARTNERS */}
           <PartnersSection />
         </div>
       </div>
