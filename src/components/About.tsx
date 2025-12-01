@@ -79,7 +79,7 @@ const About = () => {
             className="glass-card rounded-2xl p-6 md:p-12 space-y-6"
           >
             <h3 className="text-3xl font-bold text-primary">Kelajakka qadam</h3>
-            <p className="text-muted-foreground text-lg">6-Noyabr 2025</p>
+            <p className="text-muted-foreground text-lg">3-sentabr 2025</p>
 
             {/* MATN FAQAT SHU YERDA COLLAPSE BO'LADI */}
             <ExpandableText>
