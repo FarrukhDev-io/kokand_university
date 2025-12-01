@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KELAJAKKA QADAM MARKAZI</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+    <style>
+        /* CSS Variables for easy theme adjustments */
+        :root {
+            --dark-bg: #080f2c;
+            --accent-primary: #858ae3;
+            --accent-secondary: #d900ad;
+            --text-color: #edf2ff;
+            --card-bg: #1a203d;
+            --shadow-light: rgba(133, 138, 227, 0.4);
+            --shadow-dark: rgba(217, 0, 173, 0.4);
+            --transition-speed: 0.3s;
+        }
+
+        /* --- 1. Global Reset and Full Viewport Setup --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            height: 100%;
+            overflow: hidden; /* Crucial for single-screen, no-scroll requirement */
+            font-family: 'Poppins', sans-serif;
+            color: var(--text-color);
+            background-color: var(--dark-bg);
+            perspective: 1000px; /* Base perspective for 3D effects */
+        }
+
+        /* --- 1. Layout & Hero Section Styling --- */
+        .hero-container {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            text-align: center;
+            /* Subtle pseudo-3D background gradient for depth illusion */
+            background: radial-gradient(circle at 50% 100%, #1a203d 0%, var(--dark-bg) 50%);
+            transition: transform var(--transition-speed) ease-out; /* For JS Parallax */
+        }
+
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 10px;
+            line-height: 1.1;
+            text-shadow: 0 0 5px var(--shadow-light), 0 0 15px var(--shadow-dark);
+            opacity: 0; 
+            animation: fadeInTop 1s ease forwards;
+            transition: transform var(--transition-speed) ease-out; /* For JS Parallax */
+        }
+
+        .hero-subtitle {
+            font-size: 1.2rem;
+            font-weight: 300;
+            max-width: 800px;
+            margin-bottom: 40px;
+            opacity: 0; 
+            animation: fadeInTop 1s ease forwards 0.3s;
+            transition: transform var(--transition-speed) ease-out; /* For JS Parallax */
+        }
+
+        /* --- 4. Smooth Entrance Animations (CSS Keyframes) --- */
+        @keyframes fadeInTop {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeInBottom {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* --- 3. Social Cards and Links Grid --- */
+        .links-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr); /* 4 columns on desktop */
+            gap: 20px;
+            margin-bottom: 40px;
+            max-width: 900px;
+            width: 90%;
+            opacity: 0; 
+            animation: fadeInBottom 1s ease forwards 0.6s;
+            transition: transform var(--transition-speed) ease-out; /* For JS Parallax */
+        }
+
+        .social-card {
+            background: var(--card-bg);
+            border-radius: 15px;
+            padding: 20px 10px;
+            text-decoration: none;
+            color: var(--text-color);
+            transition: all var(--transition-speed) ease-out;
+            transform-style: preserve-3d; /* Crucial for internal 3D effects */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            /* Pseudo-3D initial shadow */
+            box-shadow: 
+                0 10px 20px rgba(0, 0, 0, 0.5),
+                inset 0 0 5px var(--shadow-light);
+        }
+
+        /* --- 2. 3D Hover Animation for Social Cards --- */
+        .social-card:hover {
+            transform: translateY(-5px) scale(1.05) rotateX(5deg) rotateY(-5deg);
+            /* Enhanced 3D shadow on hover */
+            box-shadow: 
+                0 15px 30px rgba(0, 0, 0, 0.7), 
+                0 0 30px var(--shadow-light); /* Accent color glow */
+            z-index: 10;
+        }
+
+        .social-card i {
+            /* ICON STYLING */
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            color: var(--accent-primary); /* Primary accent color for icons */
+        }
+        
+        /* Specific Icon Color Overrides for Better Brand Recognition */
+        .card-facebook i { color: #3b5998; }
+        .card-youtube i { color: #ff0000; }
+        .card-instagram i { 
+            /* Subtle gradient for Instagram icon */
+            background: linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+
+        /* --- 2. Call-to-Action Button Styling --- */
+        .cta-button {
+            display: flex; /* Use flex to align icon and text */
+            align-items: center;
+            padding: 15px 30px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            text-decoration: none;
+            color: var(--text-color);
+            background: linear-gradient(45deg, var(--accent-primary), var(--accent-secondary));
+            border-radius: 10px;
+            transition: all var(--transition-speed) ease-in-out;
+            position: relative;
+            overflow: hidden;
+            /* Initial pseudo-3D appearance */
+            box-shadow: 
+                0 8px 15px rgba(0, 0, 0, 0.4),
+                0 4px 0 var(--accent-secondary); /* "Bottom" layer shadow */
+            opacity: 0; 
+            animation: fadeInBottom 1s ease forwards 0.9s;
+        }
+
+        .cta-button i {
+            font-size: 1.3rem;
+            margin-right: 10px;
+        }
+
+        /* --- 2. 3D Hover Animation for CTA Button --- */
+        .cta-button:hover {
+            transform: translateY(-2px); /* Lift */
+            /* Adjusted shadow for pressed/hovered state */
+            box-shadow: 
+                0 12px 20px rgba(0, 0, 0, 0.6),
+                0 2px 0 var(--accent-secondary); /* Reduced "bottom" lift */
+        }
+        
+        .cta-button::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateX(-100%);
+            transition: transform var(--transition-speed) ease;
+        }
+        
+        .cta-button:hover::after {
+            transform: translateX(100%); /* Smooth shimmer effect */
+        }
+
+
+        /* --- 5. Responsive Design (Mobile and Tablet) --- */
+        @media (max-width: 900px) {
+            .hero-title { font-size: 2.5rem; }
+            .hero-subtitle { font-size: 1rem; padding: 0 10px; margin-bottom: 30px; }
+
+            /* Adjust grid for tablets (2 columns) */
+            .links-grid {
+                grid-template-columns: repeat(2, 1fr); 
+                gap: 15px;
+                max-width: 500px;
+                margin-bottom: 30px;
+            }
+
+            .social-card { padding: 15px 10px; }
+            .social-card span { font-size: 0.9rem; }
+            
+            .cta-button { padding: 12px 25px; font-size: 1rem; }
+        }
+
+        @media (max-width: 500px) {
+            /* Adjust grid for mobile (1 column) */
+            .links-grid {
+                grid-template-columns: 1fr; 
+                gap: 10px;
+                width: 80%;
+            }
+            
+            .social-card {
+                /* Stack icons and text for better vertical spacing on small screens */
+                flex-direction: row; 
+                justify-content: flex-start;
+                padding: 10px 15px;
+            }
+            
+            .social-card i {
+                font-size: 1.5rem;
+                margin-right: 10px;
+                margin-bottom: 0;
+            }
+
+            /* Ensure content fits perfectly on small screens */
+            .hero-container { justify-content: space-evenly; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="hero-container">
+        <h1 class="hero-title">KELAJAKKA QADAM MARKAZI</h1>
+
+        <p class="hero-subtitle">
+            Oliy ta’lim tashkilotlari bitiruvchilarini ishga joylashtirishiga ko'maklashuvchi «Kelajakka qadam» Markazi rasmiy kanali
+        </p>
+
+        <div class="links-grid">
+            <a href="https://t.me/nbu_kelajakkaqadam" target="_blank" class="social-card card-telegram">
+                <i class="fab fa-telegram-plane"></i>
+                <span>Telegram</span>
+            </a>
+            <a href="https://www.facebook.com/61575064864868" target="_blank" class="social-card card-facebook">
+                <i class="fab fa-facebook-f"></i>
+                <span>Facebook</span>
+            </a>
+            <a href="https://www.youtube.com/@KelajakkaQadamMarkazi" target="_blank" class="social-card card-youtube">
+                <i class="fab fa-youtube"></i>
+                <span>YouTube</span>
+            </a>
+            <a href="https://instagram.com/nbu_kelajakkaqadam/" target="_blank" class="social-card card-instagram">
+                <i class="fab fa-instagram"></i>
+                <span>Instagram</span>
+            </a>
+        </div>
+
+        <a href="https://nbu.uz/kichik-biznes/kreditlar/yangi-kelajakka-qadam-kreditlari" target="_blank" class="cta-button">
+            <!-- <i class="fas fa-money-check-alt"></i> -->
+            Kelajakka Qadam Web Sahifasi
+        </a>
+    </div>
+
+    <script>
+        const container = document.querySelector('.hero-container');
+        const title = document.querySelector('.hero-title');
+        const subtitle = document.querySelector('.hero-subtitle');
+        const linksGrid = document.querySelector('.links-grid');
+        const ctaButton = document.querySelector('.cta-button');
+
+        // Parallax function
+        function handleParallax(e) {
+            const xAxis = (window.innerWidth / 2 - e.pageX) / 40;
+            const yAxis = (window.innerHeight / 2 - e.pageY) / 40;
+
+            // Apply slight rotation to the main container
+            container.style.transform = `rotateY(${xAxis}deg) rotateX(${-yAxis}deg)`;
+
+            // Push/Pull elements based on depth (z-index illusion)
+            // Title (Closest): 80px depth
+            title.style.transform = `translateZ(80px) translateX(${-xAxis/2}px)`;
+            // Subtitle (Middle): 50px depth
+            subtitle.style.transform = `translateZ(50px) translateX(${-xAxis/3}px)`;
+            // Links Grid (Further): 30px depth
+            linksGrid.style.transform = `translateZ(30px)`;
+            // CTA Button (Slightly further than grid): 20px depth
+            ctaButton.style.transform = `translateZ(20px)`; 
+        }
+
+        function resetParallax() {
+            container.style.transform = `rotateY(0) rotateX(0)`;
+            title.style.transform = `translateZ(0) translateX(0)`;
+            subtitle.style.transform = `translateZ(0) translateX(0)`;
+            linksGrid.style.transform = `translateZ(0)`;
+            ctaButton.style.transform = `translateZ(0)`;
+        }
+
+        // Add event listeners for the parallax effect
+        container.addEventListener('mousemove', handleParallax);
+        container.addEventListener('mouseleave', resetParallax);
+
+        // Simple script to slightly randomize entrance animation delays for cards
+        const cards = document.querySelectorAll('.social-card');
+        cards.forEach((card, index) => {
+            // Start the fade-in animation slightly later than the main content
+            const baseDelay = 1.0; 
+            card.style.animationDelay = `${baseDelay + (index * 0.1)}s`;
+            card.style.animationName = 'fadeInBottom';
+        });
+
+    </script>
+</body>
+</html>

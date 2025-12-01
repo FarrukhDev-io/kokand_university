@@ -57,7 +57,7 @@ const About = () => {
         <div className="max-w-6xl mx-auto space-y-12">
           
           {/* HEADER */}
-          <motion.div
+          {/* <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6 }}
@@ -69,7 +69,7 @@ const About = () => {
             <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto">
               {t.about.subtitle}
             </p>
-          </motion.div>
+          </motion.div> */}
 
           {/* KELAJAKKA QADAM */}
           <motion.div
