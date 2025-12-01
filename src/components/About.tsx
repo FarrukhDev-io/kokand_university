@@ -108,12 +108,15 @@ const About = () => {
 
             {/* QR KOD HAR DOIM KO‘RINADI */}
             <div className="flex justify-center pt-4">
-              <img
-                src="/kuQR.jpg"
-                alt="Kelajakka Qadam QR"
-                className="w-40 h-40 md:w-48 md:h-48 object-contain"
-              />
-            </div>
+  <a href="https://kelajakkaqadammarkazi.uz/?from=qr" target="_blank" rel="noopener noreferrer">
+    <img
+      src="/kuQR.jpg"
+      alt="Kelajakka Qadam QR"
+      className="w-40 h-40 md:w-48 md:h-48 object-contain"
+    />
+  </a>
+</div>
+
           </motion.div>
 
           {/* PARTNERS */}
