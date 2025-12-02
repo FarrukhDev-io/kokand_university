@@ -85,7 +85,7 @@ const VacancyCard = ({ vacancy, onSubscribe }: VacancyCardProps) => {
           {isLongDescription && (
             <button
               onClick={() => setIsModalOpen(true)}
-              className="mt-1 text-blue-600 font-medium hover:underline text-sm flex items-center gap-1"
+              className="mt-1 text-primary font-medium hover:underline text-sm flex items-center gap-1"
             >
               Batafsil <ExternalLink className="w-4 h-4" />
             </button>
@@ -107,7 +107,7 @@ const VacancyCard = ({ vacancy, onSubscribe }: VacancyCardProps) => {
             {onSubscribe && (
               <button
                 onClick={onSubscribe}
-                className="ml-auto rounded-xl bg-blue-600 px-3 sm:px-4 py-1.5 sm:py-2 text-xs sm:text-sm font-semibold text-white shadow-sm hover:bg-blue-700 transition-all"
+                className="ml-auto rounded-xl bg-primary px-3 sm:px-4 py-1.5 sm:py-2 text-xs sm:text-sm font-semibold text-white shadow-sm hover:bg-primary/80 transition-all"
               >
                 Ro‘yxatdan o‘tish
               </button>
