@@ -50,7 +50,7 @@ const FooterBottom = () => {
           role="button"
           aria-label="Telegram sahifasiga o‘tish"
         >
-          <Code2 className="h-5 w-5 text-primary transition-all duration-300 group-hover:text-primary/80" />
+          {/* <Code2 className="h-5 w-5 text-primary transition-all duration-300 group-hover:text-primary/80" /> */}
 
           <div className="relative flex items-center justify-center w-[130px] h-[26px]">
   <AnimatePresence mode="wait">
