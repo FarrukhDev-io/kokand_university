@@ -99,7 +99,7 @@ const Hero = () => {
               className="relative glass-card rounded-3xl p-8 overflow-hidden shadow-2xl border border-gray-200 dark:border-gray-700"
             >
               <img
-                src="https://www.kokanduni.uz/build/assets/hero-bg-CFIvlFTq.webp"
+                src="/kokand_university.jpg"
                 alt="Background"
                 className="absolute inset-0 w-full h-full object-cover object-top opacity-30 blur-[0.5px]"
               />
