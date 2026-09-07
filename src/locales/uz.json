@@ -1,6 +1,10 @@
 {
   "nav": {
-    "about": "Kelajakka Qadam"
+    "home": "Bosh sahifa",
+    "vacancies": "E'lonlar",
+    "about": "Kelajakka Qadam",
+    "partners": "Hamkorlar",
+    "contact": "Aloqa"
   },
   "hero": {
     "title": "Alumni",

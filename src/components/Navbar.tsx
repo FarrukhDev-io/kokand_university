@@ -33,8 +33,11 @@ const Navbar = () => {
   const logoSrc = theme === "dark" ? "/ku-white.png" : "/ku-black.png";
 
   const navLinks = [
-    { name: t.hero.title, href: "#hero" },
-    { name: t.nav.about, href: "#about" },
+    { name: t.nav.home || "Bosh sahifa", href: "#hero" },
+    { name: t.nav.vacancies || "E'lonlar", href: "#vacancies" },
+    { name: t.nav.about || "Kelajakka Qadam", href: "#about" },
+    { name: t.nav.partners || "Hamkorlar", href: "#partners" },
+    { name: t.nav.contact || "Aloqa", href: "#contact" },
   ];
 
   const scrollToSection = (href: string) => {

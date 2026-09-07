@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 const FooterBottom = () => {
   return (
     <motion.footer
+      id="contact"
       className="relative mt-20 pt-10 pb-12 border-t border-border text-center text-muted-foreground bg-background overflow-hidden"
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
