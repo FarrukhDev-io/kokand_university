@@ -9,11 +9,15 @@ import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import MeshGradient from "./components/MeshGradient";
 import ClickSpark from "./components/ui/ClickSpark";
+import { useAutoFullscreen } from "./hooks/useAutoFullscreen";
 
 const queryClient = new QueryClient();
 
 const AppContent = () => {
   const { theme } = useTheme();
+  
+  // Try to force fullscreen on mobile upon first interaction
+  useAutoFullscreen();
   
   // Use White for dark mode, Burgundy for light mode so it's always highly visible
   const sparkColor = theme === "dark" ? "#ffffff" : "#9C1447"; 
