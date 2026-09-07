@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { X } from "lucide-react";
 import VacancyCard, { linkify } from "./VacancyCard";
+import SkeletonCard from "./SkeletonCard";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { useLanguage } from "@/contexts/LanguageContext";
@@ -35,9 +36,11 @@ const VacanciesList = ({ onSubscribe }: VacanciesListProps) => {
 
   if (loading)
     return (
-      <p className="text-center text-muted-foreground py-8">
-        {t.vacancies?.loading || "Yuklanmoqda..."}
-      </p>
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-8">
+        {[...Array(6)].map((_, i) => (
+          <SkeletonCard key={i} />
+        ))}
+      </div>
     );
 
   if (vacancies.length === 0)
