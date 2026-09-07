@@ -97,7 +97,7 @@ const VacanciesList = ({ onSubscribe }: VacanciesListProps) => {
             <DialogHeader className="flex justify-between items-center">
               <DialogTitle>{detailVacancy.title}</DialogTitle>
             </DialogHeader>
-            <div className="mt-2 text-sm sm:text-base text-foreground space-y-2 break-words max-h-[60vh] overflow-y-auto pr-2">
+            <div className="mt-2 text-sm sm:text-base text-foreground space-y-2 break-words max-h-[60vh] overflow-y-auto pr-2 allow-select">
               {linkify(detailVacancy.description).map((line, i) => (
                 <span key={i} className="block break-words">
                   {line}

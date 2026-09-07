@@ -98,7 +98,20 @@ All colors MUST be HSL.
   }
 
   body {
-    @apply bg-background text-foreground antialiased;
+    @apply bg-background text-foreground antialiased select-none;
+    -webkit-touch-callout: none; /* Disable iOS callout menu */
+    -webkit-tap-highlight-color: transparent; /* Remove blue highlight on tap */
+  }
+
+  input, textarea {
+    @apply select-auto;
+    -webkit-touch-callout: default;
+  }
+
+  /* Helper class for text that SHOULD be selectable (e.g. descriptions) */
+  .allow-select {
+    @apply select-text cursor-text;
+    -webkit-touch-callout: default;
   }
 
   html {

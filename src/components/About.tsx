@@ -13,7 +13,7 @@ const ExpandableText = ({ children }: { children: React.ReactNode }) => {
   const { t } = useLanguage();
 
   if (!isMobile) {
-    return <div className="space-y-4 text-lg leading-relaxed">{children}</div>;
+    return <div className="space-y-4 text-lg leading-relaxed allow-select">{children}</div>;
   }
 
   return (
@@ -21,7 +21,7 @@ const ExpandableText = ({ children }: { children: React.ReactNode }) => {
       <motion.div
         animate={{ maxHeight: expanded ? 2000 : 170 }}
         transition={{ duration: 0.4, ease: "easeInOut" }}
-        className="overflow-hidden space-y-4 text-lg leading-relaxed text-foreground"
+        className="overflow-hidden space-y-4 text-lg leading-relaxed text-foreground allow-select"
       >
         {children}
       </motion.div>

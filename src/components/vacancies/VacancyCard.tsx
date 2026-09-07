@@ -84,7 +84,7 @@ const VacancyCard = ({ vacancy, onSubscribe, onViewDetails }: VacancyCardProps) 
           </p>
         )}
 
-        <p className="text-xs sm:text-sm text-muted-foreground line-clamp-4 leading-relaxed break-words flex-1">
+        <p className="text-xs sm:text-sm text-muted-foreground line-clamp-4 leading-relaxed break-words flex-1 allow-select">
           {linkify(vacancy.description)}
         </p>
 
