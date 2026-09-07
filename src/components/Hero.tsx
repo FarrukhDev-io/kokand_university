@@ -24,7 +24,7 @@ const Hero = () => {
             transition={{ duration: 0.8 }}
             className="text-center space-y-4"
           >
-            <h1 className="flex justify-center items-center gap-4 text-5xl md:text-7xl font-bold drop-shadow-lg">
+            <h1 className="flex justify-center items-center gap-4 text-5xl md:text-7xl font-bold drop-shadow-lg select-none">
               <img
                 key={logoSrc}
                 src={logoSrc}
