@@ -55,7 +55,7 @@ const About = () => {
             transition={{ duration: 0.6, delay: 0.3 }}
             className="glass-card rounded-2xl p-6 md:p-12 space-y-6"
           >
-            <h3 className="text-3xl font-bold text-primary">{t.about.title}</h3>
+            <h2 className="text-3xl font-bold text-primary">{t.about.title}</h2>
             <p className="text-muted-foreground text-lg">{t.about.date}</p>
 
             <ExpandableText>
