@@ -54,7 +54,7 @@ const Navbar = () => {
         transition={{ type: "spring", stiffness: 200, damping: 20 }}
         className={`pointer-events-auto w-full max-w-5xl rounded-full transition-all duration-300 ${
           isScrolled 
-            ? "glass-card shadow-lg bg-background/70 backdrop-blur-xl border-border/50 py-2 px-4 sm:px-6" 
+            ? "shadow-lg bg-background border border-border/50 py-2 px-4 sm:px-6" 
             : "bg-transparent border-transparent py-3 px-4 sm:px-6"
         }`}
       >
