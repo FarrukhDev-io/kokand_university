@@ -1,0 +1,23 @@
+{
+  "name": "KU Alumni & Karyera Markazi",
+  "short_name": "KU Alumni",
+  "description": "Qo‘qon Universiteti bitiruvchilari va talabalari uchun",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#9C1447",
+  "icons": [
+    {
+      "src": "/ku-white.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/ku-white.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
