@@ -1,7 +1,8 @@
-import { motion } from "framer-motion";
+import { motion, useMotionTemplate, useMotionValue } from "framer-motion";
 import { Calendar, ExternalLink } from "lucide-react";
-
+import { MouseEvent } from "react";
 import { Vacancy } from "@/lib/api-client";
+import MagneticButton from "@/components/ui/MagneticButton";
 
 interface VacancyCardProps {
   vacancy: Vacancy;
@@ -19,7 +20,7 @@ export const linkify = (text: string) => {
           href={part}
           target="_blank"
           rel="noopener noreferrer"
-          className="underline px-1 rounded-sm text-blue-500 break-keep whitespace-pre-wrap"
+          className="underline px-1 rounded-sm text-blue-500 break-keep whitespace-pre-wrap relative z-20"
         >
           {part}
         </a>
@@ -30,6 +31,15 @@ export const linkify = (text: string) => {
 };
 
 const VacancyCard = ({ vacancy, onSubscribe, onViewDetails }: VacancyCardProps) => {
+  const mouseX = useMotionValue(0);
+  const mouseY = useMotionValue(0);
+
+  const handleMouseMove = (e: MouseEvent<HTMLDivElement>) => {
+    const { left, top } = e.currentTarget.getBoundingClientRect();
+    mouseX.set(e.clientX - left);
+    mouseY.set(e.clientY - top);
+  };
+
   const formattedDate = vacancy.created_at
     ? new Date(vacancy.created_at).toLocaleString("uz-UZ", {
         day: "numeric",
@@ -48,9 +58,24 @@ const VacancyCard = ({ vacancy, onSubscribe, onViewDetails }: VacancyCardProps) 
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.4 }}
       whileHover={{ scale: 1.02 }}
+      onMouseMove={handleMouseMove}
       className="group relative overflow-hidden rounded-2xl border border-border bg-card shadow-md hover:shadow-lg transition-all duration-300"
     >
-      <div className="p-5 flex flex-col gap-3 h-full">
+      {/* Spotlight Effect */}
+      <motion.div
+        className="pointer-events-none absolute -inset-px rounded-2xl opacity-0 transition duration-300 group-hover:opacity-100 z-0"
+        style={{
+          background: useMotionTemplate`
+            radial-gradient(
+              400px circle at ${mouseX}px ${mouseY}px,
+              hsl(var(--primary) / 0.1),
+              transparent 80%
+            )
+          `,
+        }}
+      />
+      
+      <div className="p-5 flex flex-col gap-3 h-full relative z-10 pointer-events-auto">
         <h3 className="text-lg sm:text-xl font-bold text-foreground">{vacancy.title}</h3>
 
         {formattedDate && (
@@ -66,7 +91,7 @@ const VacancyCard = ({ vacancy, onSubscribe, onViewDetails }: VacancyCardProps) 
         {isLongDescription && onViewDetails && (
           <button
             onClick={onViewDetails}
-            className="mt-1 text-primary font-medium hover:underline text-sm flex items-center gap-1 w-fit"
+            className="mt-1 text-primary font-medium hover:underline text-sm flex items-center gap-1 w-fit relative z-20"
           >
             Batafsil <ExternalLink className="w-4 h-4" />
           </button>
@@ -78,19 +103,19 @@ const VacancyCard = ({ vacancy, onSubscribe, onViewDetails }: VacancyCardProps) 
               href={vacancy.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-1 sm:gap-2 text-primary font-medium hover:underline text-sm sm:text-base"
+              className="inline-flex items-center gap-1 sm:gap-2 text-primary font-medium hover:underline text-sm sm:text-base relative z-20"
             >
-              Batafsil <ExternalLink className="w-4 h-4" />
+              Batafsil <ExternalLink className="w-4 h-4 pointer-events-none" />
             </a>
           )}
 
           {onSubscribe && (
-            <button
+            <MagneticButton
               onClick={onSubscribe}
-              className="ml-auto rounded-xl bg-primary px-3 sm:px-4 py-1.5 sm:py-2 text-xs sm:text-sm font-semibold text-primary-foreground shadow-sm hover:bg-primary/90 transition-all"
+              className="ml-auto rounded-xl bg-primary px-3 sm:px-4 py-1.5 sm:py-2 text-xs sm:text-sm font-semibold text-primary-foreground shadow-sm hover:bg-primary/90 transition-all z-20"
             >
               Ro‘yxatdan o‘tish
-            </button>
+            </MagneticButton>
           )}
         </div>
       </div>

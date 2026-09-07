@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { ExternalLink } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { useTheme } from "@/contexts/ThemeContext";
+import MagneticButton from "@/components/ui/MagneticButton";
 
 const Hero = () => {
   const { t } = useLanguage();
@@ -56,15 +57,16 @@ const Hero = () => {
               <p className="text-lg text-muted-foreground max-w-xl leading-relaxed">
                 {t.hero.welcomeCard.description}
               </p>
-              <a
+              <MagneticButton
+                as="a"
                 href="https://www.kokanduni.uz"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-8 py-3 bg-primary text-primary-foreground rounded-xl font-semibold hover:scale-105 hover:shadow-md transition-all duration-300"
+                className="gap-2 px-8 py-3 bg-primary text-primary-foreground rounded-xl font-semibold shadow-md hover:bg-primary/90 transition-colors"
               >
                 {t.hero.welcomeCard.cta}
-                <ExternalLink className="h-5 w-5" />
-              </a>
+                <ExternalLink className="h-5 w-5 pointer-events-none" />
+              </MagneticButton>
             </div>
           </motion.div>
         </div>
