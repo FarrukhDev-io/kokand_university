@@ -1,4 +1,3 @@
-"use client";
 
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
@@ -10,11 +9,16 @@ interface CaptchaModalProps {
   onSuccess: (token: string) => void;
 }
 
+declare global {
+  interface Window {
+    grecaptcha: any;
+  }
+}
+
 const CaptchaModal: React.FC<CaptchaModalProps> = ({ onClose, onSuccess }) => {
   const [status, setStatus] = useState<"loading" | "verified" | "error">("loading");
 
   useEffect(() => {
-    // ✅ Google reCAPTCHA skriptini dinamik yuklaymiz
     const scriptId = "recaptcha-script";
     if (!document.getElementById(scriptId)) {
       const script = document.createElement("script");
@@ -26,13 +30,10 @@ const CaptchaModal: React.FC<CaptchaModalProps> = ({ onClose, onSuccess }) => {
     }
 
     const checkRecaptchaReady = setInterval(() => {
-      // @ts-ignore
       if (window.grecaptcha && window.grecaptcha.ready) {
         clearInterval(checkRecaptchaReady);
-        // @ts-ignore
         window.grecaptcha.ready(async () => {
           try {
-            // @ts-ignore
             const token = await window.grecaptcha.execute(SITE_KEY, { action: "verify_user" });
             if (token) {
               console.log("✅ reCAPTCHA token:", token);

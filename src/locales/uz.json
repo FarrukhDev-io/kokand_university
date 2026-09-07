@@ -17,6 +17,14 @@
     }
   },
   "about": {
+    "title": "Kelajakka qadam",
+    "date": "3-sentabr 2025",
+    "p1": "2025-yil 14-fevral kuni davlatimiz rahbari mamlakatimiz yoshlari bilan muloqoti chog'ida yoshlar tadbirkorligida mutlaqo yangi davrni boshlab beradigan uchta muhim qaror qabul qilganini ta'kidlagan edilar.",
+    "p2": "Ushbu qarorlar ijrosini ta'minlash maqsadida Qo'qon universitetida \"Kelajakka qadam\" markazi ochildi. Markaz bitiruvchi yoshlarning kasbiy rivojlanishini qo'llab-quvvatlash va mehnat bozori talablariga mos ko'nikma berishga qaratilgan.",
+    "p3": "Bitiruvchi talabalar \"Start up\" loyihalarini markaz orqali qo'llab-quvvatlashlari mumkin.",
+    "p4": "Dastur ijtimoiy tarmoqlari sahifalariga quyidagi QR kod orqali o'tish mumkin:",
+    "close": "Yopish",
+    "more": "Davomi",
     "partnerships": "Hamkor Tashkilot va Korxonalar"
   },
   "contact": {

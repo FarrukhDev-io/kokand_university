@@ -17,10 +17,10 @@ All colors MUST be HSL.
     --popover: 0 0% 100%;
     --popover-foreground: 345 30% 15%;
 
-    --primary: 350 70% 40%;
+    --primary: 345 77% 35%; /* #9C1447 */
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 220 85% 55%;
+    --secondary: 220 100% 30%; /* #003399 */
     --secondary-foreground: 0 0% 100%;
 
     --muted: 210 40% 96%;
@@ -34,14 +34,14 @@ All colors MUST be HSL.
 
     --border: 220 25% 88%;
     --input: 220 25% 88%;
-    --ring: 350 70% 40%;
+    --ring: 345 77% 35%;
 
     --radius: 0.75rem;
 
     /* Custom design tokens */
-    --hero-gradient-start: 350 70% 40%;
-    --hero-gradient-mid: 220 85% 55%;
-    --hero-gradient-end: 350 75% 25%;
+    --hero-gradient-start: 220 100% 30%; /* Blue */
+    --hero-gradient-mid: 345 77% 35%; /* Burgundy */
+    --hero-gradient-end: 220 100% 30%; /* Blue */
     --glass-bg: 0 0% 100%;
     --glass-border: 220 25% 88%;
     --chart-1: 350 70% 50%;
@@ -62,10 +62,10 @@ All colors MUST be HSL.
     --popover: 220 25% 14%;
     --popover-foreground: 0 0% 98%;
 
-    --primary: 350 75% 55%;
+    --primary: 345 80% 45%; /* Lighter Burgundy for dark mode */
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 220 90% 60%;
+    --secondary: 220 100% 45%; /* Lighter Blue for dark mode */
     --secondary-foreground: 0 0% 100%;
 
     --muted: 220 20% 22%;
@@ -79,7 +79,7 @@ All colors MUST be HSL.
 
     --border: 220 25% 22%;
     --input: 220 25% 22%;
-    --ring: 350 75% 55%;
+    --ring: 345 80% 45%;
     
     --glass-bg: 220 25% 14%;
     --glass-border: 220 25% 22%;

@@ -1,22 +1,16 @@
-"use client";
 
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import { ChevronDown, ChevronUp } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
+import { useIsMobile } from "@/hooks/use-mobile";
 import PartnersSection from "./Partners";
 
-const ExpandableText = ({ children }) => {
+const ExpandableText = ({ children }: { children: React.ReactNode }) => {
   const [expanded, setExpanded] = useState(false);
-  const [isMobile, setIsMobile] = useState(false);
-
-  useEffect(() => {
-    const check = () => setIsMobile(window.innerWidth < 768);
-    check();
-    window.addEventListener("resize", check);
-    return () => window.removeEventListener("resize", check);
-  }, []);
+  const isMobile = useIsMobile();
+  const { t } = useLanguage();
 
   if (!isMobile) {
     return <div className="space-y-4 text-lg leading-relaxed">{children}</div>;
@@ -40,7 +34,7 @@ const ExpandableText = ({ children }) => {
         onClick={() => setExpanded(!expanded)}
         className="flex items-center gap-2 text-primary font-semibold mt-4 md:hidden"
       >
-        {expanded ? "Yopish" : "Davomi"}
+        {expanded ? t.about.close : t.about.more}
         {expanded ? <ChevronUp size={20} /> : <ChevronDown size={20} />}
       </button>
     </div>
@@ -61,31 +55,14 @@ const About = () => {
             transition={{ duration: 0.6, delay: 0.3 }}
             className="glass-card rounded-2xl p-6 md:p-12 space-y-6"
           >
-            <h3 className="text-3xl font-bold text-primary">Kelajakka qadam</h3>
-            <p className="text-muted-foreground text-lg">3-sentabr 2025</p>
+            <h3 className="text-3xl font-bold text-primary">{t.about.title}</h3>
+            <p className="text-muted-foreground text-lg">{t.about.date}</p>
 
             <ExpandableText>
-              <p>
-                2025-yil 14-fevral kuni davlatimiz rahbari mamlakatimiz yoshlari bilan
-                muloqoti chog'ida yoshlar tadbirkorligida mutlaqo yangi davrni boshlab
-                beradigan uchta muhim qaror qabul qilganini ta'kidlagan edilar.
-              </p>
-
-              <p>
-                Ushbu qarorlar ijrosini ta'minlash maqsadida Qo'qon universitetida
-                "Kelajakka qadam" markazi ochildi. Markaz bitiruvchi yoshlarning
-                kasbiy rivojlanishini qo'llab-quvvatlash va mehnat bozori talablariga
-                mos ko'nikma berishga qaratilgan.
-              </p>
-
-              <p>
-                Bitiruvchi talabalar "Start up" loyihalarini markaz orqali
-                qo'llab-quvvatlashlari mumkin.
-              </p>
-
-              <p>
-                Dastur ijtimoiy tarmoqlari sahifalariga quyidagi QR kod orqali o'tish mumkin:
-              </p>
+              <p>{t.about.p1}</p>
+              <p>{t.about.p2}</p>
+              <p>{t.about.p3}</p>
+              <p>{t.about.p4}</p>
             </ExpandableText>
 
             <div className="flex justify-center pt-4">

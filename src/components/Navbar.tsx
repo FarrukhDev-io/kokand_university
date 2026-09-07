@@ -1,10 +1,29 @@
-"use client";
-
 import { useState } from "react";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Globe } from "lucide-react";
 import ThemeToggle from "./ThemeToggle";
-import { useLanguage } from "@/contexts/LanguageContext";
+import { useLanguage, Language } from "@/contexts/LanguageContext";
 import { useTheme } from "@/contexts/ThemeContext";
+
+const LanguageSwitcher = () => {
+  const { language, setLanguage } = useLanguage();
+  
+  const toggleLanguage = () => {
+    // Simple toggle between uz and ru for now, can be expanded to a dropdown
+    const nextLang: Language = language === "uz" ? "ru" : language === "ru" ? "en" : "uz";
+    setLanguage(nextLang);
+  };
+
+  return (
+    <button
+      onClick={toggleLanguage}
+      className="p-2 rounded-md text-foreground hover:bg-muted transition-colors flex items-center gap-2"
+      aria-label="Tilni o'zgartirish"
+    >
+      <Globe className="h-5 w-5" />
+      <span className="text-sm font-medium uppercase">{language}</span>
+    </button>
+  );
+};
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -28,13 +47,15 @@ const Navbar = () => {
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 glass-card border-b backdrop-blur-xl bg-background/80 transition-colors duration-300">
-      <div className="container mx-auto px-4 lg:px-8">
+      <div className="container mx-auto px-4 lg:px-8 max-w-7xl">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <a
-            href="#home"
-            target="_blank"
-            rel="noopener noreferrer"
+            href="#hero"
+            onClick={(e) => {
+              e.preventDefault();
+              scrollToSection("#hero");
+            }}
             className="flex items-center space-x-2 group"
           >
             <img
@@ -53,7 +74,7 @@ const Navbar = () => {
           </a>
 
           {/* Desktop Navigation */}
-          <div className="hidden lg:flex items-center space-x-1">
+          <div className="hidden md:flex items-center space-x-1">
             {navLinks.map((link) => (
               <button
                 key={link.name}
@@ -66,12 +87,14 @@ const Navbar = () => {
           </div>
 
           {/* Right side actions */}
-          <div className="hidden lg:flex items-center space-x-2">
+          <div className="hidden md:flex items-center space-x-2">
+            <LanguageSwitcher />
             <ThemeToggle />
           </div>
 
           {/* Mobile menu button */}
-          <div className="lg:hidden flex items-center gap-2">
+          <div className="md:hidden flex items-center gap-1">
+            <LanguageSwitcher />
             <ThemeToggle />
             <button
               onClick={() => setIsOpen(!isOpen)}
@@ -84,12 +107,12 @@ const Navbar = () => {
 
         {/* Mobile menu dropdown */}
         {isOpen && (
-          <div className="lg:hidden py-4 space-y-2 animate-fadeIn">
+          <div className="md:hidden py-4 space-y-2 animate-fadeIn border-t mt-2">
             {navLinks.map((link) => (
               <button
                 key={link.name}
                 onClick={() => scrollToSection(link.href)}
-                className="block w-full text-left px-4 py-2 text-sm font-medium text-foreground hover:bg-muted rounded-md transition-colors"
+                className="block w-full text-left px-4 py-3 text-sm font-medium text-foreground hover:bg-muted rounded-md transition-colors"
               >
                 {link.name}
               </button>
