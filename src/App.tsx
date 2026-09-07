@@ -8,6 +8,7 @@ import { ThemeProvider } from "@/contexts/ThemeContext";
 import { AuthProvider } from "@/contexts/AuthContext";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
+import MeshGradient from "./components/MeshGradient";
 
 const queryClient = new QueryClient();
 
@@ -18,7 +19,7 @@ const App = () => (
         <AuthProvider>
           <TooltipProvider>
             <Toaster />
-
+            <MeshGradient />
             <BrowserRouter>
               <Routes>
                 <Route path="/" element={<Index />} />

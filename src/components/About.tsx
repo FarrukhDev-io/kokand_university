@@ -46,7 +46,7 @@ const About = () => {
   const { t } = useLanguage();
 
   return (
-    <section id="about" className="py-20 bg-muted/30" ref={ref}>
+    <section id="about" className="py-20 bg-transparent" ref={ref}>
       <div className="container mx-auto px-4 lg:px-8">
         <div className="max-w-6xl mx-auto space-y-12">
           <motion.div
