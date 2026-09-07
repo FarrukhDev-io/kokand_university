@@ -4,26 +4,6 @@ import ThemeToggle from "./ThemeToggle";
 import { useLanguage, Language } from "@/contexts/LanguageContext";
 import { useTheme } from "@/contexts/ThemeContext";
 
-const LanguageSwitcher = () => {
-  const { language, setLanguage } = useLanguage();
-  
-  const toggleLanguage = () => {
-    // Simple toggle between uz and ru for now, can be expanded to a dropdown
-    const nextLang: Language = language === "uz" ? "ru" : language === "ru" ? "en" : "uz";
-    setLanguage(nextLang);
-  };
-
-  return (
-    <button
-      onClick={toggleLanguage}
-      className="p-2 rounded-md text-foreground hover:bg-muted transition-colors flex items-center gap-2"
-      aria-label="Tilni o'zgartirish"
-    >
-      <Globe className="h-5 w-5" />
-      <span className="text-sm font-medium uppercase">{language}</span>
-    </button>
-  );
-};
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -91,13 +71,11 @@ const Navbar = () => {
 
           {/* Right side actions */}
           <div className="hidden md:flex items-center space-x-2">
-            <LanguageSwitcher />
             <ThemeToggle />
           </div>
 
           {/* Mobile menu button */}
           <div className="md:hidden flex items-center gap-1">
-            <LanguageSwitcher />
             <ThemeToggle />
             <button
               onClick={() => setIsOpen(!isOpen)}
